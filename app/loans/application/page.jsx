@@ -10,35 +10,10 @@ import { useEffect, useState } from 'react';
 export default function ApplicationForm() {
   const [files, setFiles] = useState();
   const [previous, setPrevious] = useState();
-  const [input1, setInput1] = useState('');
-  const [input2, setInput2] = useState('');
-  const [input3, setInput3] = useState('');
-
-  const handleChange = (e) => {
-    switch (e.target.name) {
-      case 'input1':
-        setInput1(e.target.value);
-        break;
-      case 'input2':
-        setInput2(e.target.value);
-        break;
-      case 'input3':
-        setInput3(e.target.value);
-        break;
-      default:
-        break;
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     toast.success('Application submitted.');
-  };
-
-  const cleaInput = () => {
-    setInput1('');
-    setInput2('');
-    setInput3('');
   };
 
   useEffect(() => {
@@ -66,7 +41,6 @@ export default function ApplicationForm() {
         className="container flex flex-col mx-auto space-y-12"
       >
         {/* Personal details of the applicant */}
-
         <label htmlFor="files" className="block text-sm font-medium">
           Applicant&#39;s passport photo
         </label>
