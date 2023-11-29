@@ -1,7 +1,8 @@
-import type { Metadata } from 'next'
-import Navbar from './components/Navbar'
+import type { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
 import Footer from './components/Footer';
-import './globals.css'
+import Navbar from './components/Navbar';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Advent Capital',
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Toaster position="top-right" reverseOrder={false} />
         <Navbar />
         {children}
         <Footer />

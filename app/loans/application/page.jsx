@@ -1,10 +1,45 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
+import Declarations from '../../components/Declarations';
+import LoanDetails from '../../components/LoanDetails';
+import PersonalDetails from '../../components/PersonalDetails';
+
+import { useEffect, useState } from 'react';
 
 export default function ApplicationForm() {
   const [files, setFiles] = useState();
   const [previous, setPrevious] = useState();
+  const [input1, setInput1] = useState('');
+  const [input2, setInput2] = useState('');
+  const [input3, setInput3] = useState('');
+
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case 'input1':
+        setInput1(e.target.value);
+        break;
+      case 'input2':
+        setInput2(e.target.value);
+        break;
+      case 'input3':
+        setInput3(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success('Application submitted.');
+  };
+
+  const cleaInput = () => {
+    setInput1('');
+    setInput2('');
+    setInput3('');
+  };
 
   useEffect(() => {
     if (!files) return;
@@ -27,6 +62,7 @@ export default function ApplicationForm() {
       <form
         noValidate=""
         action=""
+        onSubmit={handleSubmit}
         className="container flex flex-col mx-auto space-y-12"
       >
         {/* Personal details of the applicant */}
@@ -55,384 +91,25 @@ export default function ApplicationForm() {
               }
             }}
           />
-          {/* <label
-            htmlFor="dropzone-file"
-            className="flex flex-col items-center justify-center w-40 h-40 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 hover:bg-gray-100 px-4 py-4"
-          >
-            
-          </label> */}
         </div>
-        <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-300">
-          <div className="space-y-2 col-span-full lg:col-span-1">
-            <p className="font-medium">Personal Inormation</p>
-            <p className="text-xs">Fill out all the fields</p>
-          </div>
-          <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="firstname" className="text-sm">
-                Surname
-              </label>
-              <input
-                required
-                id="surname"
-                type="text"
-                placeholder="First name"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="lastname" className="text-sm">
-                Other name(s)
-              </label>
-              <input
-                required
-                id="othername"
-                type="text"
-                placeholder="Last name"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="email" className="text-sm">
-                Email
-              </label>
-              <input
-                required
-                id="email"
-                type="email"
-                placeholder="Email"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="dob" className="text-sm">
-                Date of Birth
-              </label>
-              <input
-                required
-                id="dob"
-                type="date"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-2">
-              <label htmlFor="gender" className="text-sm">
-                Gender
-              </label>
-              <select
-                defaultValue={'default'}
-                required
-                id="gender"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              >
-                <option
-                  className="text-gray-400"
-                  value="default"
-                  disabled
-                  hidden
-                >
-                  Select gender
-                </option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-            <div className="col-span-full sm:col-span-2">
-              <label htmlFor="marital" className="text-sm">
-                Marital Status
-              </label>
-              <select
-                required
-                defaultValue={'default-v'}
-                id="marital"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              >
-                <option
-                  className="text-gray-400"
-                  value="default-v"
-                  disabled
-                  hidden
-                >
-                  Select marital status
-                </option>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="widowed">Widowed</option>
-                <option value="divorced">Divorced</option>
-              </select>
-            </div>
-            <div className="col-span-full sm:col-span-2">
-              <label htmlFor="mobile" className="text-sm">
-                Mobile No.:
-              </label>
-              <input
-                required
-                id="mobile"
-                type="text"
-                placeholder="e.g. 0712345678"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="nin" className="text-sm">
-                ID Card No (NIN)
-              </label>
-              <input
-                required
-                id="nin"
-                type="text"
-                placeholder=" CM012345678PVBG"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="nin-date" className="text-sm">
-                ID Card Expiry Date
-              </label>
-              <input
-                required
-                id="nin-date"
-                type="date"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="type" className="text-sm">
-                Borrower type
-              </label>
-              <select
-                required
-                defaultValue={'default-v1'}
-                id="type"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              >
-                <option
-                  className="text-gray-400"
-                  value="default-v1"
-                  disabled
-                  hidden
-                >
-                  Select borrower type
-                </option>
-                <option value="new">New Borrower</option>
-                <option value="existing">Existing Borrower</option>
-              </select>
-            </div>
-            <div className="col-span-full">
-              <hr />
-            </div>
-            <div className="col-span-full">
-              <h1 className="text-xl">
-                Residential Details{' '}
-                <span className="italic text-xs text-gray-500">
-                  (Please provide a sketch map to the residence)
-                </span>
-              </h1>
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="owner" className="text-sm">
-                Home Ownership
-              </label>
-              <select
-                required
-                defaultValue={'default-v2'}
-                id="owner"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              >
-                <option
-                  className="text-gray-400"
-                  value="default-v2"
-                  disabled
-                  hidden
-                >
-                  Select home Ownership
-                </option>
-                <option value="owned">Owned</option>
-                <option value="rented">Rented</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="period" className="text-sm">
-                Period at residence{' '}
-                <span className="italic text-xs text-gray-500">(years)</span>
-              </label>
-              <input
-                required
-                id="period"
-                type="text"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-2">
-              <label htmlFor="district" className="text-sm">
-                District
-              </label>
-              <input
-                required
-                id="district"
-                type="text"
-                placeholder=""
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-2">
-              <label htmlFor="village" className="text-sm">
-                Village / County
-              </label>
-              <input
-                required
-                id="village"
-                type="text"
-                placeholder=""
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-2">
-              <label htmlFor="role" className="text-sm">
-                Community Role (if any)
-              </label>
-              <input
-                required
-                id="role"
-                type="text"
-                placeholder="e.g. Defence secretary"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-2">
-              <label htmlFor="child" className="text-sm">
-                School Children (No.)
-              </label>
-              <select
-                required
-                defaultValue={'default-v3'}
-                id="owner"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              >
-                <option
-                  className="text-gray-400"
-                  value="default-v3"
-                  disabled
-                  hidden
-                >
-                  Select number
-                </option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-            </div>
-            <div className="col-span-full">
-              <h1 className="text-xl">Spouse(s) Details</h1>
-            </div>
-            <div className="col-span-full">
-              <label htmlFor="spouce-name" className="text-sm">
-                Names:
-              </label>
-              <input
-                id="spouce-name"
-                type="text"
-                placeholder="e.g Joan"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="mobile" className="text-sm">
-                Mobile No.:
-              </label>
-              <input
-                required
-                id="mobile"
-                type="text"
-                placeholder="e.g. 0712345678"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="email" className="text-sm">
-                Email
-              </label>
-              <input
-                required
-                id="email"
-                type="email"
-                placeholder="Email"
-                className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-          </div>
-        </fieldset>
+        {/* Applicant's personal details */}
+        <PersonalDetails />
 
         {/* Loan details of the applicant */}
-        <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-300">
-          <div className="space-y-2 col-span-full lg:col-span-1">
-            <p className="font-medium">Profile</p>
-            <p className="text-xs">Adipisci fuga autem eum!</p>
-          </div>
-          <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="username" className="text-sm">
-                Username
-              </label>
-              <input
-                required
-                id="username"
-                type="text"
-                placeholder="Username"
-                className="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="website" className="text-sm">
-                Website
-              </label>
-              <input
-                required
-                id="website"
-                type="text"
-                placeholder="https://"
-                className="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              />
-            </div>
-            <div className="col-span-full">
-              <label htmlFor="bio" className="text-sm">
-                Bio
-              </label>
-              <textarea
-                id="bio"
-                placeholder=""
-                className="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
-              ></textarea>
-            </div>
-            <div className="col-span-full">
-              <label htmlFor="bio" className="text-sm">
-                Photo
-              </label>
-              <div className="flex items-center space-x-2">
-                <img
-                  src="https://source.unsplash.com/30x30/?random"
-                  alt=""
-                  className="w-10 h-10 rounded-full dark:bg-gray-700"
-                />
-                <button
-                  type="button"
-                  className="px-4 py-2 border rounded-md dark:border-gray-100"
-                >
-                  Change
-                </button>
-              </div>
-            </div>
-          </div>
-        </fieldset>
+        <LoanDetails />
+
+        {/* declarations and Pledge */}
+        <Declarations />
+
+        {/** submit button */}
+        <div className="flex items-center justify-center">
+          <button
+            type="submit"
+            className="p-2 rounded-md bg-teal-600 text-gray-100 font-bold text-xl"
+          >
+            Submit Application
+          </button>
+        </div>
       </form>
     </section>
   );
