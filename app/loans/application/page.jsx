@@ -5,38 +5,86 @@ import Declarations from '../../components/Declarations';
 import LoanDetails from '../../components/LoanDetails';
 import PersonalDetails from '../../components/PersonalDetails';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function ApplicationForm() {
   const [files, setFiles] = useState();
   const [previous, setPrevious] = useState();
+  const [formData, setFormData] = useState({
+    surname: '',
+    othername: '',
+    email: '',
+    dob: '',
+    gender: '',
+    marital: '',
+    mobile: '',
+    nin: '',
+    nindate: '',
+    type: '',
+    owner: '',
+    period: '',
+    district: '',
+    village: '',
+    role: '',
+    child: '',
+    spoucename: '',
+    spoucemobile: '',
+    spouceemail: '',
+    purpose: '',
+    loantype: '',
+    amount: '',
+    duration: '',
+    words: '',
+    source: '',
+    bustype: '',
+    permonth: '',
+    collateral: '',
+    appname: '',
+    appdate: '',
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    toast.success('Application submitted.');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  useEffect(() => {
-    if (!files) return;
-
-    let tmp = [];
-    for (let i = 0; i < files.length; i++) {
-      tmp.push(URL.createObjectURL(files[i]));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const res = await fetch('http://localhost:3000/api/application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      console.log(res);
+      toast.success('Application submitted');
+    } catch (error) {
+      console.log(error);
+      toast.error('Error submitting application');
     }
+  };
 
-    const objectUrls = tmp;
-    setPrevious(objectUrls);
+  // useEffect(() => {
+  //   if (!files) return;
 
-    for (let i = 0; i < objectUrls.length; i++) {
-      URL.revokeObjectURL(objectUrls[i]);
-    }
-  }, [files]);
+  //   let tmp = [];
+  //   for (let i = 0; i < files.length; i++) {
+  //     tmp.push(URL.createObjectURL(files[i]));
+  //   }
+
+  //   const objectUrls = tmp;
+  //   setPrevious(objectUrls);
+
+  //   for (let i = 0; i < objectUrls.length; i++) {
+  //     URL.revokeObjectURL(objectUrls[i]);
+  //   }
+  // }, [files]);
 
   return (
     <section className="p-6 bg-gray-200 text-gray-900 mt-20">
       <form
         noValidate=""
-        action=""
         onSubmit={handleSubmit}
         className="container flex flex-col mx-auto space-y-12"
       >
@@ -67,13 +115,13 @@ export default function ApplicationForm() {
           />
         </div>
         {/* Applicant's personal details */}
-        <PersonalDetails />
+        <PersonalDetails onChange={handleChange} value={formData.name} />
 
         {/* Loan details of the applicant */}
-        <LoanDetails />
+        <LoanDetails onChange={handleChange} value={formData.name} />
 
         {/* declarations and Pledge */}
-        <Declarations />
+        <Declarations onChange={handleChange} value={formData.name} />
 
         {/** submit button */}
         <div className="flex items-center justify-center">

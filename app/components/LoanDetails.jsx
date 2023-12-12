@@ -1,6 +1,4 @@
-import React from 'react';
-
-export default function LoanDetails() {
+export default function LoanDetails({ value, onChange }) {
   return (
     <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-300">
       <div className="space-y-2 col-span-full lg:col-span-1">
@@ -13,21 +11,27 @@ export default function LoanDetails() {
             Loan Purpose
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="purpose"
             type="text"
+            name="purpose"
             placeholder="e.g. Poultry"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
         </div>
         <div className="col-span-full">
-          <label htmlFor="type" className="text-sm">
+          <label htmlFor="loantype" className="text-sm">
             Loan Type
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
-            id="type"
+            id="loantype"
             type="text"
+            name="loantype"
             placeholder="e.g. Agribusiness loan"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -37,9 +41,12 @@ export default function LoanDetails() {
             Loan Amount
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="amount"
             type="number"
+            name="amount"
             placeholder="e.g. 1000000"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -49,9 +56,12 @@ export default function LoanDetails() {
             Loan Duration (max)
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="duration"
             type="text"
+            name="duration"
             placeholder="e.g. 6 months"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -61,9 +71,12 @@ export default function LoanDetails() {
             Amount in words
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="words"
             type="text"
+            name="words"
             placeholder="e.g. One million shillings only"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -73,9 +86,12 @@ export default function LoanDetails() {
             Loan Repayment source
           </label>
           <select
+            value={value}
+            onChange={onChange}
             defaultValue={'default'}
             required
             id="source"
+            name="source"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           >
             <option className="text-gray-400" value="default" disabled hidden>
@@ -90,9 +106,12 @@ export default function LoanDetails() {
             Business Type/employer
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="bustype"
             type="text"
+            name="bustype"
             placeholder=""
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -102,9 +121,12 @@ export default function LoanDetails() {
             How much do you generate per month?
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="permonth"
             type="text"
+            name="permonth"
             placeholder=""
             className="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -114,8 +136,12 @@ export default function LoanDetails() {
             Collateral Details:
           </label>
           <textarea
+            required
+            value={value}
+            onChange={onChange}
             id="collateral"
             placeholder=""
+            name="collateral"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           ></textarea>
         </div>

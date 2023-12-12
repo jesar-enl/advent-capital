@@ -1,4 +1,4 @@
-export default function PersonalDetails() {
+export default function PersonalDetails({value, onChange}) {
   return (
     <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-300">
       <div className="space-y-2 col-span-full lg:col-span-1">
@@ -11,9 +11,12 @@ export default function PersonalDetails() {
             Surname
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="surname"
             type="text"
+            name="surname"
             placeholder="e.g John"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -23,9 +26,12 @@ export default function PersonalDetails() {
             Other name(s)
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="othername"
             type="text"
+            name="othername"
             placeholder="e.g. Doe"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -35,9 +41,12 @@ export default function PersonalDetails() {
             Email
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="email"
             type="email"
+            name="email"
             placeholder="e.g. example@test.com"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -47,9 +56,12 @@ export default function PersonalDetails() {
             Date of Birth
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="dob"
             type="date"
+            name="dob"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
         </div>
@@ -58,9 +70,12 @@ export default function PersonalDetails() {
             Gender
           </label>
           <select
+            value={value}
+            onChange={onChange}
             defaultValue={'default'}
             required
             id="gender"
+            name="gender"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           >
             <option className="text-gray-400" value="default" disabled hidden>
@@ -75,9 +90,12 @@ export default function PersonalDetails() {
             Marital Status
           </label>
           <select
+            value={value}
+            onChange={onChange}
             required
             defaultValue={'default-v'}
             id="marital"
+            name="marital"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           >
             <option className="text-gray-400" value="default-v" disabled hidden>
@@ -94,9 +112,12 @@ export default function PersonalDetails() {
             Mobile No.:
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="mobile"
             type="text"
+            name="mobile"
             placeholder="e.g. 0712345678"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -106,9 +127,12 @@ export default function PersonalDetails() {
             ID Card No (NIN)
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="nin"
             type="text"
+            name="nin"
             placeholder=" CM012345678PVBG"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -118,8 +142,11 @@ export default function PersonalDetails() {
             ID Card Expiry Date
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="nin-date"
+            name="nindate"
             type="date"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -129,9 +156,12 @@ export default function PersonalDetails() {
             Borrower type
           </label>
           <select
+            value={value}
+            onChange={onChange}
             required
             defaultValue={'default-v1'}
             id="type"
+            name="type"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           >
             <option
@@ -162,9 +192,12 @@ export default function PersonalDetails() {
             Home Ownership
           </label>
           <select
+            value={value}
+            onChange={onChange}
             required
             defaultValue={'default-v2'}
             id="owner"
+            name="owner"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           >
             <option
@@ -186,9 +219,12 @@ export default function PersonalDetails() {
             <span className="italic text-xs text-gray-500">(years)</span>
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="period"
             type="text"
+            name="period"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
         </div>
@@ -197,9 +233,12 @@ export default function PersonalDetails() {
             District
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="district"
             type="text"
+            name="district"
             placeholder=""
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -209,9 +248,12 @@ export default function PersonalDetails() {
             Village / County
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="village"
             type="text"
+            name="village"
             placeholder=""
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -221,9 +263,12 @@ export default function PersonalDetails() {
             Community Role (if any)
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="role"
             type="text"
+            name="role"
             placeholder="e.g. Defence secretary"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -233,9 +278,12 @@ export default function PersonalDetails() {
             School Children (No.)
           </label>
           <select
+            value={value}
+            onChange={onChange}
             required
             defaultValue={'default-v3'}
-            id="owner"
+            id="child"
+            name="child"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           >
             <option
@@ -267,32 +315,41 @@ export default function PersonalDetails() {
             Names:
           </label>
           <input
+            value={value}
+            onChange={onChange}
             id="spouce-name"
             type="text"
+            name="spoucename"
             placeholder="e.g Joan"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
         </div>
         <div className="col-span-full sm:col-span-3">
-          <label htmlFor="mobile" className="text-sm">
+          <label htmlFor="spouce-mobile" className="text-sm">
             Mobile No.:
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
-            id="mobile"
+            id="spoucemobile"
             type="text"
+            name="spoucemobile"
             placeholder="e.g. 0712345678"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
         </div>
         <div className="col-span-full sm:col-span-3">
-          <label htmlFor="email" className="text-sm">
+          <label htmlFor="spouce-email" className="text-sm">
             Email
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
-            id="email"
+            id="spouce-email"
             type="email"
+            name="spouceemail"
             placeholder="Email"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />

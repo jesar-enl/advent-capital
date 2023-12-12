@@ -1,4 +1,4 @@
-export default function Declarations() {
+export default function Declarations({ value, onChange }) {
   return (
     <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-300">
       <div className="space-y-2 col-span-full lg:col-span-1">
@@ -51,9 +51,12 @@ export default function Declarations() {
             Applicant Name:
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="appname"
             type="text"
+            name="appname"
             placeholder="e.g. John Doe"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
@@ -63,9 +66,12 @@ export default function Declarations() {
             Date
           </label>
           <input
+            value={value}
+            onChange={onChange}
             required
             id="date"
             type="date"
+            name="appdate"
             className="w-full p-1 rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900"
           />
         </div>
