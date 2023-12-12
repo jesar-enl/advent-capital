@@ -5,7 +5,6 @@ import { Loans } from '../libs/loans';
 
 export default async function LoansPage({ searchParams }) {
   const applications = await Loans();
-  console.log(applications);
 
   const supabaseUrl = 'https://brervsuzfhqonpklurug.supabase.co';
   const supabaseKey =
@@ -19,8 +18,8 @@ export default async function LoansPage({ searchParams }) {
     .like('loantype', `%${search}%`);
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-16 py-4 px-4 container mx-auto max-w-4xl">
-      <div className="flex items-center px-8 py-8 justify-between">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-24 py-4 px-4 container mx-auto max-w-4xl">
+      <div className="flex items-center px-8 py-4 justify-between">
         <h2 className="text-3xl text-teal-800">
           Loan applications ({applications.length})
         </h2>
@@ -63,7 +62,7 @@ export default async function LoansPage({ searchParams }) {
             return (
               <tr
                 key={application.id}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                className="bg-white border-b dark:bg-gray-600 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-500"
               >
                 <th
                   scope="row"
