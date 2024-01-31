@@ -1,7 +1,6 @@
-
 import { createClient } from '@supabase/supabase-js';
-import Search from '../components/Search';
-import { Loans } from '../libs/loans';
+import Search from '../../components/Search';
+import { Loans } from '../../libs/loans';
 
 export default async function LoansPage({ searchParams }) {
   const applications = await Loans();
