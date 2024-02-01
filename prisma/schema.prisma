@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  directUrl         = env("DIRECT_URL")
 }
 
 model Application {
@@ -51,20 +52,26 @@ enum Role {
   user
 }
 
-model Profile {
-  id    String @id @db.Uuid
-  role  Role   @default(user)
-  notes Note[]
-
-  @@map("profile")
+model User {
+  id              String    @id @default(uuid()) @db.Uuid
+  name            String?
+  email           String?   @unique
+  emailVerified   Boolean @default(false)
+  emailVerifiedDate DateTime?
+  password        String
+  hashedPassword  String
+  role            Role      @default(user)
+  image           String?
+  verifyCount     Int?
+  verificationToken String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  profile         UserProfile?
 }
 
-model Note {
-  id   String @id @default(uuid()) @db.Uuid
-  text String
-
-  user   Profile @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String  @db.Uuid
-
-  @@map("note")
+model UserProfile {
+  id          String    @id @default(uuid()) @db.Uuid
+  username    String?
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String    @unique @db.Uuid
 }

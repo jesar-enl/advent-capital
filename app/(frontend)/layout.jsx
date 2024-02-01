@@ -1,7 +1,6 @@
-import FooterSection from '@/components/FooterSection';
-import NavbarSection from '@/components/NavbarSection';
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
+import NavbarSection from '../components/Navbar';
 
 export default function Layout({ children }) {
   return (
@@ -9,7 +8,6 @@ export default function Layout({ children }) {
       <Toaster position="top-right" reverseOrder={false} />
       <NavbarSection />
       {children}
-      <FooterSection />
     </main>
   );
 }

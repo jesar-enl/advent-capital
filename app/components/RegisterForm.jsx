@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
-export default function RegisterForm() {
+export default function RegisterForm({role}) {
   const router = useRouter();
   const {
     register,
@@ -19,6 +19,7 @@ export default function RegisterForm() {
   const [emailErr, setEmailErr] = useState('');
   async function onSubmit(data) {
     try {
+      data.role = role;
       console.log(data);
       setLoading(true);
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
