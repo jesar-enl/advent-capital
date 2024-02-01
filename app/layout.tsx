@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { extractRouterConfig } from 'uploadthing/server';
 import { ourFileRouter } from './api/uploadthing/core';
 import './globals.css';
+// import AuthProvider from '../context/AuthProviders';
 
 export const metadata: Metadata = {
   title: 'Advent Capital',

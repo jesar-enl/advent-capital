@@ -6,7 +6,7 @@ import React from 'react';
 
 export default function Navbar() {
   return (
-    <div className="flex border-b justify-between border-gray-300 py-2 px-16 bg-white items-center">
+    <div className="flex border-b justify-between border-gray-300 py-2 px-16 bg-white text-gray-900 items-center">
       <Link href="#">
         <History />
       </Link>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FaArrowCircleLeft } from 'react-icons/fa';
-import { Loan } from '../../libs/loan';
-import PreviewLoan from '../../components/PreviewLoan'
+import { Loan } from '../../../libs/loan';
+import PreviewLoan from '../../../components/PreviewLoan'
 
 export default async function LoanDetails({ params: { id } }) {
   const application = await Loan(id);

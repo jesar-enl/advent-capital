@@ -24,8 +24,8 @@ export default async function LoansPage({ searchParams }) {
         </h2>
         <Search />
       </div>
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
             <th scope="col" className="px-6 py-3">
               ID
@@ -61,11 +61,11 @@ export default async function LoansPage({ searchParams }) {
             return (
               <tr
                 key={application.id}
-                className="bg-white border-b dark:bg-gray-600 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-500"
+                className="bg-white border-b hover:bg-gray-50"
               >
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                 >
                   {application.id}
                 </th>
@@ -77,7 +77,7 @@ export default async function LoansPage({ searchParams }) {
                 <td className="px-6 py-4 text-right">
                   <a
                     href={`/loans/${application.id}`}
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    className="font-medium text-blue-600 hover:underline"
                   >
                     View
                   </a>

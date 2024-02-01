@@ -1,9 +1,9 @@
 'use client';
 
 import toast from 'react-hot-toast';
-import Declarations from '../../components/Declarations';
-import LoanDetails from '../../components/LoanDetails';
-import PersonalDetails from '../../components/PersonalDetails';
+import Declarations from '../../../components/Declarations';
+import LoanDetails from '../../../components/LoanDetails';
+import PersonalDetails from '../../../components/PersonalDetails';
 
 import { useState } from 'react';
 
@@ -50,7 +50,7 @@ export default function ApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const res = await fetch('http://localhost:3000/api/application', {
         method: 'POST',
