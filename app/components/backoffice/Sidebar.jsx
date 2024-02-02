@@ -44,7 +44,6 @@ export default function Sidebar() {
   return (
     <div className="w-[200px] min-h-screen bg-slate-800 text-slate-100  p-4">
       <Link href="/" className="flex items-center">
-        <Codesandbox className="mr-2 h-6 sm:h-9 text-purple-600" />
         <Image
           src="/images/adventcapital_logo.png"
           className="h-16"

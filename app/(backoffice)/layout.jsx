@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <div className="flex ">
       <Sidebar />
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col flex-grow bg-gray-500">
         <Navbar />
         <main className="">{children}</main>
       </div>

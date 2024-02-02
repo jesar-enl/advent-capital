@@ -25,7 +25,7 @@ export default function LoginForm() {
       console.log('Attempting to sign in with credentials:', data);
       const loginData = await signIn('credentials', {
         ...data,
-        redirect: true,
+        redirect: false,
       });
       console.log('SignIn response:', loginData);
       if (loginData?.error) {
@@ -157,7 +157,7 @@ export default function LoginForm() {
       </div>
 
       <p className="text-sm font-light text-gray-500">
-        Already have an account?{' '}
+        New user?{' '}
         <Link
           href="/register"
           className="font-medium text-blue-600 hover:underline"

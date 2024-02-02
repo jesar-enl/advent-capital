@@ -1,20 +1,19 @@
-import { createClient } from '@supabase/supabase-js';
-import Search from '../../components/Search';
+// import Search from '../../../components/Search';
 import { Loans } from '../../libs/loans';
 
 export default async function LoansPage({ searchParams }) {
   const applications = await Loans();
 
-  const supabaseUrl = 'https://brervsuzfhqonpklurug.supabase.co';
-  const supabaseKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyZXJ2c3V6Zmhxb25wa2x1cnVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3MjgwNCwiZXhwIjoyMDE3MjQ4ODA0fQ.aETGjkBx6ydDeYIZQ0V4Wswl2zOYW3RsvIvFePBKrrc';
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  // const supabaseUrl = 'https://brervsuzfhqonpklurug.supabase.co';
+  // const supabaseKey =
+  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyZXJ2c3V6Zmhxb25wa2x1cnVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3MjgwNCwiZXhwIjoyMDE3MjQ4ODA0fQ.aETGjkBx6ydDeYIZQ0V4Wswl2zOYW3RsvIvFePBKrrc';
+  // const supabase = createClient(supabaseUrl, supabaseKey);
 
-  const search = searchParams.q ?? '';
-  const loantype = await supabase
-    .from('Application')
-    .select('*')
-    .like('loantype', `%${search}%`);
+  // const search = searchParams.q ?? '';
+  // const loantype = await supabase
+  //   .from('Application')
+  //   .select('*')
+  //   .like('loantype', `%${search}%`);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-24 py-4 px-4 container mx-auto max-w-4xl">
@@ -22,7 +21,7 @@ export default async function LoansPage({ searchParams }) {
         <h2 className="text-3xl text-teal-800">
           Loan applications ({applications.length})
         </h2>
-        <Search />
+        {/* <Search /> */}
       </div>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">

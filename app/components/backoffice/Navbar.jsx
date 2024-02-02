@@ -13,6 +13,7 @@ export default function Navbar() {
       <Dropdown
         arrowIcon={false}
         inline
+        className="bg-white text-gray-900"
         label={
           <Avatar
             alt="User settings"

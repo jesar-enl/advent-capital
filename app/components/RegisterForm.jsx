@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
-export default function RegisterForm({role}) {
+export default function RegisterForm({ role }) {
   const router = useRouter();
   const {
     register,
@@ -17,6 +17,7 @@ export default function RegisterForm({role}) {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [emailErr, setEmailErr] = useState('');
+  
   async function onSubmit(data) {
     try {
       data.role = role;
@@ -37,7 +38,7 @@ export default function RegisterForm({role}) {
         setLoading(false);
         toast.success('User Created Successfully');
         reset();
-        router.push('/login');
+        router.push('/');
       } else {
         setLoading(false);
         if (response.status === 409) {
