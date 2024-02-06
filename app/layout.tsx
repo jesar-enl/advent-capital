@@ -1,9 +1,12 @@
 import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin';
 import type { Metadata } from 'next';
 import { extractRouterConfig } from 'uploadthing/server';
+import AuthProvider from '../context/AuthProviders';
 import { ourFileRouter } from './api/uploadthing/core';
 import './globals.css';
-// import AuthProvider from '../context/AuthProviders';
+
+import { Toaster } from 'react-hot-toast';
+
 
 export const metadata: Metadata = {
   title: 'Advent Capital',
@@ -19,8 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-        {children}
+        <AuthProvider>
+          <Toaster position="top-right" reverseOrder={false} />
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+          {/* <NavbarSection /> */}
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

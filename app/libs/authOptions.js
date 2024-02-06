@@ -60,7 +60,8 @@ export const authOptions = {
             role: existingUser.role,
             emailVerified: existingUser.emailVerified,
           };
-          console.log('USer compiled');
+          console.log('User compiled successfully.');
+
           return user;
         } catch (error) {
           console.log('ALL Failed');
@@ -71,7 +72,7 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, user, token }) {
       if (token) {
         console.log(`token: ${token} in session`);
         session.user.id = token.id;

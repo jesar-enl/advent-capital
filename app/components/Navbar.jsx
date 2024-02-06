@@ -1,9 +1,10 @@
 'use client';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useState } from 'react';
 // // import { AiOutlineClose } from 'react-icons/ai';
 // import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-// import Link from 'next/link';
+import Link from 'next/link';
 
 // export default function NavbarSection() {
 //   const [show, setShow] = useState(false);
@@ -79,12 +80,24 @@ import { useState } from 'react';
 export default function NavbarSection() {
   const [show, setShow] = useState(false);
   const [showUserMenu, setUser] = useState(false);
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') {
+    return <p>loading...</p>;
+  }
+  if (status === 'authenticated') {
+    console.log(session.user);
+  }
+  const isLoggedIn = false;
+
   function showMenu() {
     setShow((prev) => !prev);
   }
+
   function userMenu() {
     setUser((prev) => !prev);
   }
+
   return (
     <nav className="bg-gray-300 border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -104,72 +117,91 @@ export default function NavbarSection() {
           </span>
         </a>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            type="button"
-            className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            id="user-menu-button"
-            aria-expanded="false"
-            onClick={userMenu}
-          >
-            <span className="sr-only">Open user menu</span>
-            <Image
-              width="20"
-              height="20"
-              className="w-8 h-8 rounded-full"
-              src="https://via.placeholder.com/500?text=User+Avatar"
-              alt="user photo"
-            />
-          </button>
-          {/* <!-- Dropdown menu --> */}
-          {showUserMenu && (
-            <div
-              className="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow md:flex md:w-auto md:order-1"
-              id="user-dropdown"
-            >
-              <div className="px-4 py-3">
-                <span className="block text-sm text-gray-900 ">
-                  Bonnie Green
-                </span>
-                <span className="block text-sm  text-gray-500 truncate ">
-                  name@flowbite.com
-                </span>
-              </div>
-              <ul className="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-                  >
-                    Dashboard
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-                  >
-                    Settings
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-                  >
-                    Earnings
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Sign out
-                  </a>
-                </li>
-              </ul>
+          {status === 'authenticated' && (
+            <div className="relative">
+              <button
+                type="button"
+                className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                data-dropdown-toggle="user-dropdown"
+                data-dropdown-placement="bottom"
+                id="user-menu-button"
+                aria-expanded="false"
+                onClick={userMenu}
+              >
+                <span className="sr-only">Open user menu</span>
+                <Image
+                  width="120"
+                  height="120"
+                  className="w-8 h-8 rounded-full"
+                  src="https://via.placeholder.com/500?text=User+Avatar"
+                  alt="user photo"
+                />
+              </button>
+              {/* <!-- Dropdown menu --> */}
+              {showUserMenu && (
+                <div
+                  className="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
+                  id="user-dropdown"
+                >
+                  <div className="px-4 py-3">
+                    <span className="block text-sm text-gray-900 ">
+                      Bonnie Green
+                    </span>
+                    <span className="block text-sm  text-gray-500 truncate ">
+                      bonniemagic@gmail.com
+                    </span>
+                  </div>
+                  <ul className="py-2" aria-labelledby="user-menu-button">
+                    <li>
+                      <a
+                        href="/dashboard"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+                      >
+                        Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/dashboard/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+                      >
+                        Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+                      >
+                        Settings
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Sign out
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           )}
+
+          <Link
+            href="/login"
+            className="text-gray-800 bg-teal-400 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+          >
+            Log In
+          </Link>
+          <Link
+            href="/register"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none dark:focus:ring-blue-800"
+          >
+            Get started
+          </Link>
 
           <button
             data-collapse-toggle="navbar-user"
@@ -197,16 +229,17 @@ export default function NavbarSection() {
             </svg>
           </button>
         </div>
+
         {show && (
           <div
-            className="items-center justify-between w-full md:flex md:w-auto md:order-1"
+            className="items-center text-gray-900 justify-between w-full md:flex md:w-auto md:order-1"
             id="navbar-user"
           >
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                  className="block py-2 px-3 text-gray-900 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
                   aria-current="page"
                 >
                   Home

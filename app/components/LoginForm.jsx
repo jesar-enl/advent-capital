@@ -145,15 +145,6 @@ export default function LoginForm() {
           <FaGoogle className="mr-2 text-red-600 w-4 h-4" />
           Sign in with Google
         </button>
-        <button
-          onClick={() => signIn('github')}
-          type="button"
-          className="w-full justify-center text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-        >
-          {/* Icon */}
-          <FaGithub className="mr-2 w-4 h-4" />
-          Sign in with Github
-        </button>
       </div>
 
       <p className="text-sm font-light text-gray-500">
