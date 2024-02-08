@@ -105,7 +105,7 @@ export default function Navigationbar() {
           <Link href="/login">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button color="warning" onClick={() => signout()} variant="flat">
+          <Button color="warning" onClick={() => signOut()} variant="flat">
             Log out
           </Button>
         </NavbarItem>
