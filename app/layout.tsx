@@ -6,7 +6,7 @@ import { ourFileRouter } from './api/uploadthing/core';
 import './globals.css';
 
 import { Toaster } from 'react-hot-toast';
-
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: 'Advent Capital',
@@ -20,13 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="light">
       <body>
         <AuthProvider>
-          <Toaster position="top-right" reverseOrder={false} />
-          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-          {/* <NavbarSection /> */}
-          {children}
+          <Providers>
+            <Toaster position="top-right" reverseOrder={false} />
+            <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+            {/* <NavbarSection /> */}
+            {children}
+          </Providers>
         </AuthProvider>
       </body>
     </html>

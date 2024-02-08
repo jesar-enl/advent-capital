@@ -1,8 +1,16 @@
 // import Search from '../../../components/Search';
+import { authOptions } from '@/app/libs/authOptions';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
 
 export default async function LoansPage({ searchParams }) {
   const applications = await Loans();
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect('/login');
+  }
 
   // const supabaseUrl = 'https://brervsuzfhqonpklurug.supabase.co';
   // const supabaseKey =
@@ -16,9 +24,14 @@ export default async function LoansPage({ searchParams }) {
   //   .like('loantype', `%${search}%`);
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-24 py-4 px-4 container mx-auto max-w-4xl">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-24 py-4 px-4 container mx-auto max-w-xl">
+      <div className="flex flex-col items-center justify-start w-full h-full">
+        <h1 className="text-2xl text-teal-400">
+          Welcome {session?.user?.name}
+        </h1>
+      </div>
       <div className="flex items-center px-8 py-4 justify-between">
-        <h2 className="text-3xl text-teal-800">
+        <h2 className="text-xl text-teal-800">
           Loan applications ({applications.length})
         </h2>
         {/* <Search /> */}

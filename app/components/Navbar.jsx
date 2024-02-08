@@ -1,5 +1,5 @@
 'use client';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useState } from 'react';
 // // import { AiOutlineClose } from 'react-icons/ai';
@@ -72,11 +72,6 @@ import Link from 'next/link';
 //     </Navbar>
 //   );
 // }
-
-// 'use client';
-
-// import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-
 export default function NavbarSection() {
   const [show, setShow] = useState(false);
   const [showUserMenu, setUser] = useState(false);
@@ -176,15 +171,19 @@ export default function NavbarSection() {
                         Settings
                       </a>
                     </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
+                    {/* <li>
+                      <a href="#" className="block ">
                         Sign out
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
+                  <button
+                    type="button"
+                    className="px-4 py-2 bg-rose-700 text-sm text-slate-300 hover:bg-red-800 hover:text-gray-200"
+                    onClick={() => signOut()}
+                  >
+                    Log out
+                  </button>
                 </div>
               )}
             </div>
