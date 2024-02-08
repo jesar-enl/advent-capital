@@ -1,5 +1,6 @@
 export async function Loans() {
-  const response = await fetch('http://localhost:3000/api/application', {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const response = await fetch(`${baseUrl}/api/application`, {
     cache: 'no-store',
   });
   const applications = await response.json();

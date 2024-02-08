@@ -50,9 +50,10 @@ export default function ApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     try {
-      const res = await fetch('http://localhost:3000/api/application', {
+      const res = await fetch(`${baseUrl}/api/application`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
