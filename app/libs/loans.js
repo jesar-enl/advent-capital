@@ -1,4 +1,4 @@
-export async function Loans() {
+export async function Loans(userId) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const response = await fetch(`${baseUrl}/api/application`, {
     cache: 'no-store',

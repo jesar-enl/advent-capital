@@ -12,7 +12,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from '@nextui-org/react';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import React from 'react';
 
 export default function Navigationbar() {
@@ -23,39 +23,24 @@ export default function Navigationbar() {
     'My Settings',
     'Help & Feedback',
   ];
+  const { data: session, status } = useSession();
+  const role = session?.user?.role;
+
+  function getInitials(fullName) {
+    // Split the full name into words
+    const words = fullName.split(' ');
+    let initials = '';
+    for (let i = 0; i < words.length; i++) {
+      initials += words[i][0];
+    }
+    initials = initials.toUpperCase();
+
+    return initials;
+  }
+
+  const initials = getInitials(session?.user?.name ?? 'John Doe');
 
   return (
-    // <div className="flex border-b justify-between border-gray-300 py-2 px-16 bg-white text-gray-900 items-center">
-    //   <Link href="#">
-    //     <History />
-    //   </Link>
-    //   <Dropdown
-    //     arrowIcon={false}
-    //     inline
-    //     className="bg-white text-gray-900"
-    //     label={
-    //       <Avatar
-    //         alt="User settings"
-    //         img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-    //         rounded
-    //       />
-    //     }
-    //   >
-    //     <Dropdown.Header>
-    //       <span className="block text-sm">Bonnie Green</span>
-    //       <span className="block truncate text-sm font-medium">
-    //         name@flowbite.com
-    //       </span>
-    //     </Dropdown.Header>
-    //     <Dropdown.Item>Dashboard</Dropdown.Item>
-    //     <Dropdown.Item>Settings</Dropdown.Item>
-    //     <Dropdown.Item>
-    //       <Link href="/dashboard/profile">Profile</Link>
-    //     </Dropdown.Item>
-    //     <Dropdown.Divider />
-    //     <Dropdown.Item onClick={() => signOut()}>Sign out</Dropdown.Item>
-    //   </Dropdown>
-    // </div>
     <Navbar disableAnimation isBordered>
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
@@ -74,25 +59,18 @@ export default function Navigationbar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarBrand>
-          <Image
-            isZoomed
-            width={120}
-            height={120}
-            alt="Advent Capital Logo"
-            src="/images/adventcapital_logo.png"
-          />
-        </NavbarBrand>
         <NavbarItem>
           <Link color="foreground" href="/services">
             Services
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="/accept-letter" aria-current="page" color="warning">
-            Acceptance Letter
-          </Link>
-        </NavbarItem>
+        {role === 'admin' && (
+          <NavbarItem isActive>
+            <Link href="/accept-letter" aria-current="page" color="warning">
+              Acceptance Letter
+            </Link>
+          </NavbarItem>
+        )}
         <NavbarItem>
           <Link color="foreground" href="/contact-us">
             Contact Us
@@ -102,7 +80,16 @@ export default function Navigationbar() {
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Login</Link>
+          <div className="flex items-center space-x-4">
+            <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-600 rounded-full ">
+              <span className="font-medium text-gray-900">{initials}</span>
+            </div>
+
+            <div className="font-medium">
+              <div>{session.user.name}</div>
+              <div className="text-sm text-gray-900">{session.user.email}</div>
+            </div>
+          </div>
         </NavbarItem>
         <NavbarItem>
           <Button color="warning" onClick={() => signOut()} variant="flat">
