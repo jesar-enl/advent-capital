@@ -7,9 +7,9 @@ import { Loans } from '../../libs/loans';
 export default async function LoansPage() {
   const applications = await Loans();
   const session = await getServerSession(authOptions);
-if(session) {
-  console.log(session?.user)
-}
+  if (session) {
+    console.log(session?.user);
+  }
   if (!session) {
     redirect('/login');
   }
