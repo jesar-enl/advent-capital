@@ -86,8 +86,8 @@ export default function Navigationbar() {
             </div>
 
             <div className="font-medium">
-              <div>{session.user.name}</div>
-              <div className="text-sm text-gray-900">{session.user.email}</div>
+              <div>{session?.user?.name}</div>
+              <div className="text-sm text-gray-900">{session?.user?.email}</div>
             </div>
           </div>
         </NavbarItem>

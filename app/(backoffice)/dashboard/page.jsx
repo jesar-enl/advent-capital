@@ -7,21 +7,12 @@ import { Loans } from '../../libs/loans';
 export default async function LoansPage() {
   const applications = await Loans();
   const session = await getServerSession(authOptions);
-
+if(session) {
+  console.log(session?.user)
+}
   if (!session) {
     redirect('/login');
   }
-
-  // const supabaseUrl = 'https://brervsuzfhqonpklurug.supabase.co';
-  // const supabaseKey =
-  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyZXJ2c3V6Zmhxb25wa2x1cnVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3MjgwNCwiZXhwIjoyMDE3MjQ4ODA0fQ.aETGjkBx6ydDeYIZQ0V4Wswl2zOYW3RsvIvFePBKrrc';
-  // const supabase = createClient(supabaseUrl, supabaseKey);
-
-  // const search = searchParams.q ?? '';
-  // const loantype = await supabase
-  //   .from('Application')
-  //   .select('*')
-  //   .like('loantype', `%${search}%`);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto max-w-3xl">

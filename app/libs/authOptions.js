@@ -72,30 +72,36 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, user, token }) {
-      if (token) {
-        console.log(`token: ${token} in session`);
-        session.user.id = token.id;
-        session.user.name = token.name;
-        session.user.email = token.email;
-        session.user.role = token.role;
-        session.user.image = token.image;
-        session.user.emailVerified = token.emailVerified;
-      }
-      console.log(`session: ${session.user}`);
-      return session;
-    },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.name = user.name;
-        token.email = user.email;
-        token.role = user.role;
-        token.image = user.image;
-        token.emailVerified = user.emailVerified;
+        return {
+          ...token,
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          image: user.image,
+          emailVerified: user.emailVerified,
+        };
       }
       console.log(`token: ${token}`);
       return token;
+    },
+    async session({ session, token }) {
+      console.log(`token: ${token} in session`);
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          name: token.name,
+          email: token.email,
+          role: token.role,
+          image: token.image,
+          emailVerified: token.emailVerified,
+        },
+      };
+      console.log(`session: ${session.user}`);
     },
   },
 };
