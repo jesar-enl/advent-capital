@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
 
 export default async function LoansPage() {
-  const applications = await Loans();
+  
   const session = await getServerSession(authOptions);
   if (session) {
     console.log(session?.user);
@@ -13,6 +13,9 @@ export default async function LoansPage() {
   if (!session) {
     redirect('/login');
   }
+  const userId = session?.user?.email
+  const applications = await Loans(userId);
+  console.log(applications);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto max-w-3xl">
@@ -56,10 +59,7 @@ export default async function LoansPage() {
         <tbody>
           {applications?.map((application) => {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const applicationDate =
-              session?.user?.role === 'user'
-                ? application.appdate === session?.user?.appdate
-                : application.appdate;
+            const applicationDate = application.appdate;
             const normalDate = new Date(applicationDate).toLocaleDateString(
               undefined,
               options
@@ -68,9 +68,7 @@ export default async function LoansPage() {
             return (
               <tr
                 key={
-                  session?.user?.role === 'user'
-                    ? application.id === session?.user?.id
-                    : application.id
+                  application.id
                 }
                 className="bg-white border-b hover:bg-gray-50"
               >
@@ -78,29 +76,19 @@ export default async function LoansPage() {
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                 >
-                  {session?.user?.role === 'user'
-                    ? application.id === session?.user?.id
-                    : application.id}
+                  {application.id}
                 </th>
                 <td className="px-6 py-4">
-                  {session?.user?.role === 'user'
-                    ? application.appname === session?.user?.appname
-                    : application.appname}
+                  {application.appname}
                 </td>
                 <td className="px-6 py-4">
-                  {session?.user?.role === 'user'
-                    ? application.email === session?.user?.email
-                    : application.email}
+                  {application.email}
                 </td>
                 <td className="px-6 py-4">
-                  {session?.user?.role === 'user'
-                    ? application.mobile === session?.user?.mobile
-                    : application.mobile}
+                  {application.mobile}
                 </td>
                 <td className="px-6 py-4">
-                  {session?.user?.role === 'user'
-                    ? application.loanType === session?.user?.loanType
-                    : application.loanType}
+                  {application.loantype}
                 </td>
                 <td className="px-6 py-4">{normalDate}</td>
                 <td className="px-6 py-4 text-right">
