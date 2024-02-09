@@ -52,26 +52,55 @@ enum Role {
   user
 }
 
-model User {
-  id              String    @id @default(uuid()) @db.Uuid
-  name            String?
-  email           String?   @unique
-  emailVerified   Boolean @default(false)
-  emailVerifiedDate DateTime?
-  password        String
-  hashedPassword  String
-  role            Role      @default(user)
-  image           String?
-  verifyCount     Int?
-  verificationToken String?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  profile         UserProfile?
+model UserProfile {
+  id                 String    @id @default(cuid())
+  username           String?
+  userId             String    
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+  user               User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([provider, providerAccountId])
 }
 
-model UserProfile {
-  id          String    @id @default(uuid()) @db.Uuid
-  username    String?
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String    @unique @db.Uuid
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                  String    @id @default(cuid())
+  name                String?
+  email               String?   @unique
+  emailVerified       Boolean @default(false)
+  emailVerifiedDate   DateTime?
+  password            String
+  hashedPassword      String
+  role                Role      @default(user)
+  image               String?
+  verifyCount         Int?
+  verificationToken   String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  profile             UserProfile[]
+  session             Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
