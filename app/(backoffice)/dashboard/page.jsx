@@ -13,9 +13,8 @@ export default async function LoansPage() {
   if (!session) {
     redirect('/login');
   }
-  const userId = session?.user?.email
+  const userId = session?.user.email
   const applications = await Loans(userId);
-  console.log(applications);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto max-w-3xl">

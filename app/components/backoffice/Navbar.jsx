@@ -13,15 +13,12 @@ import {
   NavbarMenuToggle,
 } from '@nextui-org/react';
 import { signOut, useSession } from 'next-auth/react';
-import React from 'react';
 
 export default function Navigationbar() {
   const menuItems = [
-    'Profile',
-    'Dashboard',
-    'Activity',
-    'My Settings',
-    'Help & Feedback',
+    { name: 'Profile', href: '/dashboard/profile' },
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'My Settings', href: '/settings' },
   ];
   const { data: session, status } = useSession();
   const role = session?.user?.role;
@@ -87,7 +84,9 @@ export default function Navigationbar() {
 
             <div className="font-medium">
               <div>{session?.user?.name}</div>
-              <div className="text-sm text-gray-900">{session?.user?.email}</div>
+              <div className="text-sm text-gray-900">
+                {session?.user?.email}
+              </div>
             </div>
           </div>
         </NavbarItem>
@@ -110,16 +109,16 @@ export default function Navigationbar() {
                   ? 'danger'
                   : 'foreground'
               }
-              href="#"
+              href={item.href}
               size="lg"
             >
-              {item}
+              {item.name}
             </Link>
-            <button type="button" onClick={() => signOut()}>
-              Log out
-            </button>
           </NavbarMenuItem>
         ))}
+        <button type="button" className="bg-red-500 p-2 text-gray-100" onClick={() => signOut()}>
+          Log out
+        </button>
       </NavbarMenu>
     </Navbar>
   );

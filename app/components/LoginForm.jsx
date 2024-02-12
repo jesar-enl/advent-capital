@@ -120,7 +120,7 @@ export default function LoginForm() {
                 fill="currentColor"
               />
             </svg>
-            Signing you in please wait...
+            Signing in...
           </button>
         ) : (
           <button

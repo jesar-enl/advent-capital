@@ -129,11 +129,15 @@ export default function NavbarSection() {
                 >
                   {item.name}
                 </Link>
-                <button type="button" onClick={() => signOut()}>
-                  Log out
-                </button>
               </NavbarMenuItem>
             ))}
+            <button
+              type="button"
+              className="bg-red-600 text-slate-50 p-2"
+              onClick={() => signOut()}
+            >
+              Log out
+            </button>
           </NavbarMenu>
         </>
       ) : (
@@ -165,17 +169,14 @@ export default function NavbarSection() {
                 >
                   {item.name}
                 </Link>
-                <Link href="/login">Login</Link>
-                <Button
-                  as={Link}
-                  color="primary"
-                  href="/register"
-                  variant="flat"
-                >
-                  Sign Up
-                </Button>
               </NavbarMenuItem>
             ))}
+            <Button as={Link} color="secondary" variant="solid" href="/login">
+              Login
+            </Button>
+            <Button as={Link} color="primary" href="/register" variant="flat">
+              Sign Up
+            </Button>
           </NavbarMenu>
         </>
       )}
