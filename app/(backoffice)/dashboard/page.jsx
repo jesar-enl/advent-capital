@@ -1,6 +1,7 @@
 // import Search from '../../../components/Search';
 import { authOptions } from '@/app/libs/authOptions';
-import { getSession } from 'next-/client';
+// import { getSession } from 'next-/client';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
 
