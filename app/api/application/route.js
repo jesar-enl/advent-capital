@@ -47,8 +47,9 @@ export async function POST(req) {
 }
 
 export async function GET(request) {
+  console.log(request);
   try {
-    const { email } = request.query;
+    const email = request.nextUrl.searchParams.get('email');
 
     if (email) {
       const userApplications = await db.application.findMany({
@@ -65,10 +66,11 @@ export async function GET(request) {
 
     // return NextResponse.json(applications);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
         message: 'Failed to retrieve applications from database',
-        error,
+        error: error.message,
       },
       { status: 500 }
     );

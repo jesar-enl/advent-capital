@@ -1,6 +1,6 @@
 // import Search from '../../../components/Search';
 import { authOptions } from '@/app/libs/authOptions';
-// import { getSession } from 'next-/client';
+// import { getSession } from 'next-auth/client';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
@@ -40,6 +40,7 @@ export default async function LoansPage() {
   const email = session?.user?.email;
   const role = session?.user?.role;
   const applications = await Loans(email, role);
+  console.log(applications);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto max-w-3xl">
