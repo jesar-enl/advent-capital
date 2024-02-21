@@ -5,7 +5,6 @@ import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
 
 export default async function LoansPage() {
-  
   const session = await getServerSession(authOptions);
   if (session) {
     console.log(session?.user);
@@ -13,8 +12,9 @@ export default async function LoansPage() {
   if (!session) {
     redirect('/login');
   }
-  const userId = session?.user?.email
-  const applications = await Loans(userId);
+  const userId = session?.user?.email;
+  const role = session?.user?.role;
+  const applications = await Loans(userId, role);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto max-w-3xl">
@@ -66,9 +66,7 @@ export default async function LoansPage() {
 
             return (
               <tr
-                key={
-                  application.id
-                }
+                key={application.id}
                 className="bg-white border-b hover:bg-gray-50"
               >
                 <th
@@ -77,18 +75,10 @@ export default async function LoansPage() {
                 >
                   {application.id}
                 </th>
-                <td className="px-6 py-4">
-                  {application.appname}
-                </td>
-                <td className="px-6 py-4">
-                  {application.email}
-                </td>
-                <td className="px-6 py-4">
-                  {application.mobile}
-                </td>
-                <td className="px-6 py-4">
-                  {application.loantype}
-                </td>
+                <td className="px-6 py-4">{application.appname}</td>
+                <td className="px-6 py-4">{application.email}</td>
+                <td className="px-6 py-4">{application.mobile}</td>
+                <td className="px-6 py-4">{application.loantype}</td>
                 <td className="px-6 py-4">{normalDate}</td>
                 <td className="px-6 py-4 text-right">
                   <a
