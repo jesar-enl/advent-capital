@@ -1,11 +1,15 @@
 export async function Loans(userId, role) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const response = await fetch(`${baseUrl}/api/application?userId=${userId}`, {
+  let url;
+
+  if (role === 'admin') {
+    url = `${baseUrl}/api/application`
+  } else {
+    url = `${baseUrl}/api/application?userId=${userId}`
+  }
+  const response = await fetch(url, {
     cache: 'no-store',
   });
-  if (role === 'admin') {
-    return response.json();
-  }
-
-  return response.filter((loan) => loan.userId === userId);
+  const applications = await response.json();
+  return applications;
 }
