@@ -4,41 +4,41 @@ import { getSession } from 'next-/client';
 import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
 
-export async function getServerSideProps(context) {
-  const session = await getSession({ req: context.req });
+// export async function getServerSideProps(context) {
+//   const session = await getSession({ req: context.req });
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   const email = session.user.email;
+//   const role = session.user.role;
+//   const applications = await Loans(email, role);
+
+//   return {
+//     props: {
+//       session,
+//       applications,
+//     },
+//   };
+// }
+
+export default async function LoansPage() {
+  const session = await getServerSession(authOptions);
+  if (session) {
+    console.log(session?.user);
   }
-
-  const email = session.user.email;
-  const role = session.user.role;
+  if (!session) {
+    redirect('/login');
+  }
+  const email = session?.user?.email;
+  const role = session?.user?.role;
   const applications = await Loans(email, role);
-
-  return {
-    props: {
-      session,
-      applications,
-    },
-  };
-}
-
-export default async function LoansPage(session, applications) {
-  // const session = await getServerSession(authOptions);
-  // if (session) {
-  //   console.log(session?.user);
-  // }
-  // if (!session) {
-  //   redirect('/login');
-  // }
-  // const userId = session?.user?.email;
-  // const role = session?.user?.role;
-  // const applications = await Loans(userId, role);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto max-w-3xl">
