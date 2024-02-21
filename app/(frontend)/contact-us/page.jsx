@@ -8,7 +8,10 @@ export default function Contact() {
       <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
         <div className="py-6 md:py-0 md:px-6">
           <h1 className="text-4xl font-bold">Get in touch</h1>
-          <p className="pt-2 pb-4">Fill out the form to start a conversation. We are ready to get back to you as soon as possible</p>
+          <p className="pt-2 pb-4">
+            Fill out the form to start a conversation. We are ready to get back
+            to you as soon as possible.
+          </p>
           <div className="space-y-4">
             <p className="flex items-center gap-3">
               <FaLocationDot className="text-cyan-600" />
@@ -41,7 +44,7 @@ export default function Contact() {
               id="name"
               name="fullname"
               placeholder="e.g. John Doe"
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3"
+              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             />
           </label>
           <label htmlFor="email" className="block">
@@ -51,7 +54,7 @@ export default function Contact() {
               id="email"
               name="email"
               placeholder="e.g. example@host.domain"
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3"
+              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             />
           </label>
           <label htmlFor="message" className="block">
@@ -61,7 +64,7 @@ export default function Contact() {
               name="message"
               rows="3"
               placeholder="Place your message here ..."
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3"
+              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             ></textarea>
           </label>
           <button

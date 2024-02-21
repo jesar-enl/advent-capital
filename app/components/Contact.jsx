@@ -41,7 +41,7 @@ export default function Contact() {
               id="name"
               name="fullname"
               placeholder="e.g. John Doe"
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3"
+              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             />
           </label>
           <label htmlFor="email" className="block">
@@ -51,7 +51,7 @@ export default function Contact() {
               id="email"
               name="email"
               placeholder="e.g. example@host.domain"
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3"
+              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             />
           </label>
           <label htmlFor="message" className="block">
@@ -61,10 +61,15 @@ export default function Contact() {
               name="message"
               rows="3"
               placeholder="Place your message here ..."
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3"
+              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             ></textarea>
           </label>
-          <button type="submit" className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ri bg-violet-600 text-gray-50 focus:ri hover:ri">Send</button>
+          <button
+            type="submit"
+            className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ri bg-violet-600 text-gray-50 focus:ri hover:ri"
+          >
+            Send
+          </button>
         </form>
       </div>
     </section>
