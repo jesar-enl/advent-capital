@@ -13,7 +13,7 @@ export default async function LoansPage() {
   if (!session) {
     redirect('/login');
   }
-  const userId = session?.user.email
+  const userId = session?.user?.email
   const applications = await Loans(userId);
 
   return (
