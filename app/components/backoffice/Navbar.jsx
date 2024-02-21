@@ -13,12 +13,15 @@ import {
   NavbarMenuToggle,
 } from '@nextui-org/react';
 import { signOut, useSession } from 'next-auth/react';
+import { useState } from 'react';
 
 export default function Navigationbar() {
+  const [activePage, setActivePage] = useState('/services')
   const menuItems = [
+    {name: 'Home', href: '/'},
     { name: 'Profile', href: '/dashboard/profile' },
     { name: 'Dashboard', href: '/dashboard' },
-    { name: 'My Settings', href: '/settings' },
+    { name: 'Services', href: '/services' },
   ];
   const { data: session, status } = useSession();
   const role = session?.user?.role;
@@ -56,20 +59,29 @@ export default function Navigationbar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="/services">
+        <NavbarItem
+          isActive={activePage === '/services'}
+          onClick={() => setActivePage('/services')}
+        >
+          <Link color="primary" href="/services">
             Services
           </Link>
         </NavbarItem>
         {role === 'admin' && (
-          <NavbarItem isActive>
-            <Link href="/accept-letter" aria-current="page" color="warning">
+          <NavbarItem
+            isActive={activePage === '/accept-letter'}
+            onClick={() => setActivePage('/accept-letter')}
+          >
+            <Link href="/accept-letter" aria-current="page" color="secondary">
               Acceptance Letter
             </Link>
           </NavbarItem>
         )}
-        <NavbarItem>
-          <Link color="foreground" href="/contact-us">
+        <NavbarItem
+          isActive={activePage === '/contact-us'}
+          onClick={() => setActivePage('/contact-us')}
+        >
+          <Link color="primary" href="/contact-us">
             Contact Us
           </Link>
         </NavbarItem>
@@ -102,13 +114,7 @@ export default function Navigationbar() {
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
               className="w-full"
-              color={
-                index === 2
-                  ? 'warning'
-                  : index === menuItems.length - 1
-                  ? 'danger'
-                  : 'foreground'
-              }
+              color='primary'
               href={item.href}
               size="lg"
             >
@@ -116,7 +122,11 @@ export default function Navigationbar() {
             </Link>
           </NavbarMenuItem>
         ))}
-        <button type="button" className="bg-red-500 p-2 text-gray-100" onClick={() => signOut()}>
+        <button
+          type="button"
+          className="bg-red-500 p-2 text-gray-100"
+          onClick={() => signOut()}
+        >
           Log out
         </button>
       </NavbarMenu>

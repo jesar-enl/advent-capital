@@ -1,6 +1,7 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import Declarations from '../../../components/Declarations';
@@ -50,7 +51,9 @@ export default function ApplicationForm() {
   if (!session) {
     return (
       <div className="flex flex-col items-center justify-center align-center bg-gradient-to-b from-green-800 via-teal-700 to-teal-500">
-        <p className="mb-2 text-lg text-slate-100">Please Login to your to apply for a loan</p>
+        <p className="mb-2 text-lg text-slate-100">
+          Please Login to your to apply for a loan
+        </p>
         <Link
           href="/login"
           className="bg-blue-600 p-2 text-gray-100 rounded-lg"
@@ -109,7 +112,14 @@ export default function ApplicationForm() {
   // }, [files]);
 
   return (
-    <section className="p-6 bg-gray-200 text-gray-900 mt-20">
+    <section className="p-6 bg-gray-200 text-gray-900 mt-1">
+      <Image
+        src="/images/adventcapital_logo.png"
+        alt="Advent Capital Logo"
+        className="absolute top-16 right-0 h-16 w-auto"
+        width="120"
+        height={120}
+      />
       {status === 'authenticated' && (
         <form
           noValidate=""

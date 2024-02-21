@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function PreviewLoan({ data }) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   const dob = new Date(data.dob).toLocaleDateString(undefined, options);
@@ -5,6 +7,7 @@ export default function PreviewLoan({ data }) {
   const appdate = new Date(data.appdate).toLocaleDateString(undefined, options);
   return (
     <div className="p-6 bg-gray-100 text-gray-900">
+      <Image src="/images/adventcapital_logo.png" alt="Advent Capital Logo" className="absolute top-16 right-0 h-16 w-auto" width="120" height={120} />
       <div className="container flex flex-col mx-auto space-y-2">
         {/* personal details */}
         <div className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-200">
