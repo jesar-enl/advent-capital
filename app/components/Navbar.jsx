@@ -50,7 +50,10 @@ export default function NavbarSection() {
   const initials = getInitials(session?.user?.name ?? 'John Doe');
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      onMenuOpenChange={setIsMenuOpen}
+      className="bg-gradient-to-l from-green-800 via-teal-700 to-teal-500"
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
