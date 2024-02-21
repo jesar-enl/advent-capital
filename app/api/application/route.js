@@ -48,9 +48,22 @@ export async function POST(req) {
 
 export async function GET(request) {
   try {
-    const applications = await db.application.findMany();
+    const { userId } = request.query;
 
-    return NextResponse.json(applications);
+    if (userId) {
+      const userApplications = await db.application.findMany({
+        where: {
+          email: userId,
+        },
+      });
+      return NextResponse.json(userApplications);
+    } else {
+      const applications = await db.application.findMany();
+      return NextResponse.json(applications);
+    }
+    // const applications = await db.application.findMany();
+
+    // return NextResponse.json(applications);
   } catch (error) {
     return NextResponse.json(
       {
