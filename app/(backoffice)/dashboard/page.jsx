@@ -58,12 +58,16 @@ export default async function LoansPage() {
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
-            <th scope="col" className="px-6 py-3">
-              ID
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Applicant&#39;s Name
-            </th>
+            {role !== 'user' && (
+              <>
+                <th scope="col" className="px-6 py-3 hidden sm:table-cell">
+                  ID
+                </th>
+                <th scope="col" className="px-6 py-3 hidden sm:table-cell">
+                  Applicant&#39;s Name
+                </th>
+              </>
+            )}
             <th scope="col" className="px-6 py-3">
               Applicant&#39;s Email
             </th>
@@ -95,13 +99,19 @@ export default async function LoansPage() {
                 key={application.id}
                 className="bg-white border-b hover:bg-gray-50"
               >
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  {application.id}
-                </th>
-                <td className="px-6 py-4">{application.appname}</td>
+                {role !== 'user' && (
+                  <>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap hidden sm:table-cell"
+                    >
+                      {application.id}
+                    </th>
+                    <td className="px-6 py-4 hidden sm:table-cell">
+                      {application.appname}
+                    </td>
+                  </>
+                )}
                 <td className="px-6 py-4">{application.email}</td>
                 <td className="px-6 py-4">{application.mobile}</td>
                 <td className="px-6 py-4">{application.loantype}</td>
