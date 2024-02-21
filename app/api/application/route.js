@@ -48,12 +48,12 @@ export async function POST(req) {
 
 export async function GET(request) {
   try {
-    const { userId } = request.query;
+    const { email } = request.query;
 
-    if (userId) {
+    if (email) {
       const userApplications = await db.application.findMany({
         where: {
-          email: userId,
+          email: email,
         },
       });
       return NextResponse.json(userApplications);
