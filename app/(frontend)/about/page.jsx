@@ -39,7 +39,7 @@ export default function AboutUs() {
           </ul>
         </div>
       </div>
-      <div className="self-end p-3 mt-18">
+      <div className="self-end p-3 md:mt-36">
         <div className="max-w-md p-6 bg-slate-100 bg-opacity-20 rounded-lg shadow">
           <h3 className="mb-2 text-2xl text-center uppercase font-bold tracking-tight text-gray-50">
             Objectives
