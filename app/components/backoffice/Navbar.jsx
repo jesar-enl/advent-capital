@@ -16,9 +16,9 @@ import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 
 export default function Navigationbar() {
-  const [activePage, setActivePage] = useState('/services')
+  const [activePage, setActivePage] = useState('/services');
   const menuItems = [
-    {name: 'Home', href: '/'},
+    { name: 'Home', href: '/' },
     { name: 'Profile', href: '/dashboard/profile' },
     { name: 'Dashboard', href: '/dashboard' },
     { name: 'Services', href: '/services' },
@@ -48,13 +48,15 @@ export default function Navigationbar() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <Image
-            isZoomed
-            width={120}
-            height={120}
-            alt="Advent Capital Logo"
-            src="/images/adventcapital_logo.png"
-          />
+          <Link href="/">
+            <Image
+              isZoomed
+              width={120}
+              height={120}
+              alt="Advent Capital Logo"
+              src="/images/adventcapital_logo.png"
+            />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -112,12 +114,7 @@ export default function Navigationbar() {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color='primary'
-              href={item.href}
-              size="lg"
-            >
+            <Link className="w-full" color="primary" href={item.href} size="lg">
               {item.name}
             </Link>
           </NavbarMenuItem>

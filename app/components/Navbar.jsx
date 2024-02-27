@@ -60,13 +60,15 @@ export default function NavbarSection() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <Image
-            isZoomed
-            width={100}
-            height={100}
-            alt="Advent Capital Logo"
-            src="/images/adventcapital_logo.png"
-          />
+          <Link href="/">
+            <Image
+              isZoomed
+              width={100}
+              height={100}
+              alt="Advent Capital Logo"
+              src="/images/adventcapital_logo.png"
+            />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -81,8 +83,8 @@ export default function NavbarSection() {
             About
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="/services" aria-current="page">
+        <NavbarItem>
+          <Link href="/services" color="foreground">
             Services
           </Link>
         </NavbarItem>
@@ -119,13 +121,7 @@ export default function NavbarSection() {
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
                 <Link
-                  color={
-                    index === 2
-                      ? 'primary'
-                      : index === menuItems.length - 1
-                      ? 'danger'
-                      : 'foreground'
-                  }
+                  color="foreground"
                   className="w-full"
                   href={item.href}
                   size="lg"
@@ -159,13 +155,7 @@ export default function NavbarSection() {
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
                 <Link
-                  color={
-                    index === 2
-                      ? 'primary'
-                      : index === menuItems.length - 1
-                      ? 'danger'
-                      : 'foreground'
-                  }
+                  color="foreground"
                   className="w-full"
                   href={item.href}
                   size="lg"
