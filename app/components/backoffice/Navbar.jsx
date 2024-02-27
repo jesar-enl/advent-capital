@@ -60,7 +60,10 @@ export default function Navigationbar() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent
+        className="hidden sm:flex gap-4 text-xl text-gray-50"
+        justify="center"
+      >
         <NavbarItem
           isActive={activePage === '/services'}
           onClick={() => setActivePage('/services')}

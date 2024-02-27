@@ -72,7 +72,7 @@ export default function NavbarSection() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-4 text-xl text-gray-50" justify="center">
         <NavbarItem>
           <Link color="foreground" href="/dashboard">
             Dashboard
