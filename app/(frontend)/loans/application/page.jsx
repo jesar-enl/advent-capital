@@ -50,8 +50,8 @@ export default function ApplicationForm() {
 
   if (!session) {
     return (
-      <div className="flex flex-col items-center justify-center align-center bg-gradient-to-b from-green-800 via-teal-700 to-teal-500">
-        <p className="mb-2 text-lg text-slate-100">
+      <div className="flex flex-col items-center justify-center h-screen">
+        <p className="mb-2 text-3xl text-slate-100">
           Please Login to your to apply for a loan
         </p>
         <Link

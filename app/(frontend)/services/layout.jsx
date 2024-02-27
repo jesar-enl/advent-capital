@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarSection from '../components/Navbar';
+// import NavbarSection from '../components/Navbar';
 // import AuthProvider from '../context/AuthProviders';
 
 export const metadata = {

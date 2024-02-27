@@ -1,5 +1,5 @@
-import Navbar from '../components/backoffice/Navbar';
-import Sidebar from '../components/backoffice/Sidebar';
+// import Navbar from '../components/backoffice/Navbar';
+// import Sidebar from '../components/backoffice/Sidebar';
 
 export const metadata = {
   title: 'Profile - Advent Capital',
