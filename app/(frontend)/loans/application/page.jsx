@@ -3,7 +3,6 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 import Declarations from '../../../components/Declarations';
 import LoanDetails from '../../../components/LoanDetails';
@@ -73,8 +72,7 @@ export default function ApplicationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const router = useRouter();
+   
 
     try {
       setLoading(true);
@@ -90,7 +88,6 @@ export default function ApplicationForm() {
         return;
       }
       toast.success('Application submitted');
-      router.push('/dashboard');
     } catch (error) {
       setLoading(false);
       console.log(error);
