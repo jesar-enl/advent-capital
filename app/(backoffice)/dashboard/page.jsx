@@ -35,7 +35,6 @@ export default async function LoansPage() {
     console.log(session?.user);
   }
   if (!session) {
-    
     redirect('/login');
   }
   const email = session?.user?.email;
