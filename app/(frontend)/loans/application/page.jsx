@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import Declarations from '../../../components/Declarations';
 import LoanDetails from '../../../components/LoanDetails';
 import PersonalDetails from '../../../components/PersonalDetails';
+import {useRouter} from 'next/router';
 
 import { useState } from 'react';
 
@@ -47,11 +48,12 @@ export default function ApplicationForm() {
     appdate: '',
   });
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   if (!session) {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
-        <p className="mb-2 text-3xl text-slate-100">
+        <p className="mb-2 text-3xl text-gray-900">
           Please Login to your to apply for a loan
         </p>
         <Link
