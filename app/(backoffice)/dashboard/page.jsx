@@ -1,33 +1,7 @@
-// import Search from '../../../components/Search';
 import { authOptions } from '@/app/libs/authOptions';
-// import { getSession } from 'next-auth/client';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
-
-// export async function getServerSideProps(context) {
-//   const session = await getSession({ req: context.req });
-
-//   if (!session) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//         permanent: false,
-//       },
-//     };
-//   }
-
-//   const email = session.user.email;
-//   const role = session.user.role;
-//   const applications = await Loans(email, role);
-
-//   return {
-//     props: {
-//       session,
-//       applications,
-//     },
-//   };
-// }
 
 export default async function LoansPage() {
   const session = await getServerSession(authOptions);
@@ -50,10 +24,9 @@ export default async function LoansPage() {
         </h1>
       </div>
       <div className="flex items-center px-8 py-4 justify-between">
-        <h2 className="text-xl text-teal-800">
+        <h2 className="text-xl text-green-700">
           Loan applications ({applications.length})
         </h2>
-        {/* <Search /> */}
       </div>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
