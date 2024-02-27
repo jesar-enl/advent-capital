@@ -1,7 +1,7 @@
 export default function AboutUs() {
   return (
     <div className="mt-6 flex flex-col">
-      <div className="flex flex-col space-y-4 h-screen ml-6 mb-0 p-4 bg-[url('/images/adventcapital_logo-removebg-preview.png')] bg-no-repeat bg-center">
+      <div className="flex flex-col space-y-4 h-screen ml-6 mb-0 p-4 bg-[url('/images/adventcapital_logo-removebg-preview.png')] bg-no-repeat bg-center blur-sm">
         <div className="self-start max-w-lg mb-1 p-6 text-center bg-opacity-20 rounded-lg shadow">
           <h3 className="mb-2 text-center uppercase text-2xl font-bold tracking-tight text-green-500">
             Vision
