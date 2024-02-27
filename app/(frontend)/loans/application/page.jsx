@@ -3,11 +3,11 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Declarations from '../../../components/Declarations';
 import LoanDetails from '../../../components/LoanDetails';
 import PersonalDetails from '../../../components/PersonalDetails';
-import {useRouter} from 'next/router';
 
 import { useState } from 'react';
 
