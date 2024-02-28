@@ -1,7 +1,8 @@
 import { authOptions } from '@/app/libs/authOptions';
 import { getServerSession } from 'next-auth';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { Loans } from '../../libs/loans';
+import {  Loans } from '../../libs/loans';
 
 export default async function LoansPage() {
   const session = await getServerSession(authOptions);
@@ -17,9 +18,9 @@ export default async function LoansPage() {
   console.log(applications);
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto max-w-3xl">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto w-full">
       <div className="flex flex-col items-center justify-start w-full h-full">
-        <h1 className="text-2xl text-teal-400">
+        <h1 className="text-2xl text-green-600">
           Welcome {session?.user?.name}
         </h1>
       </div>
@@ -27,6 +28,13 @@ export default async function LoansPage() {
         <h2 className="text-xl text-green-700">
           Loan applications ({applications.length})
         </h2>
+        {session?.user?.role === 'user' && (
+          <Link href="/loans/application">
+            <button className="p-2 rounded-md bg-green-600 hover:bg-green-700 transform transition duration-500 hover:scale-110 text-gray-100 font-bold text-base">
+              Apply for a loan
+            </button>
+          </Link>
+        )}
       </div>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">

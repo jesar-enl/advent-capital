@@ -74,22 +74,22 @@ export default function NavbarSection() {
 
       <NavbarContent className="hidden sm:flex gap-4 text-xl text-gray-50" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="/dashboard">
+          <Link className="text-xl text-gray-50"  href="/dashboard">
             Dashboard
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/about">
+          <Link className="text-xl text-gray-50"  href="/about">
             About
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/services" color="foreground">
+          <Link className="text-xl text-gray-50" href="/services">
             Services
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/contact-us">
+          <Link className="text-xl text-gray-50" href="/contact-us">
             Contact us
           </Link>
         </NavbarItem>
@@ -121,7 +121,6 @@ export default function NavbarSection() {
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
                 <Link
-                  color="foreground"
                   className="w-full"
                   href={item.href}
                   size="lg"
@@ -155,7 +154,6 @@ export default function NavbarSection() {
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
                 <Link
-                  color="foreground"
                   className="w-full"
                   href={item.href}
                   size="lg"

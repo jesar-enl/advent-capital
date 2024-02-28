@@ -3,6 +3,7 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+// import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Declarations from '../../../components/Declarations';
 import LoanDetails from '../../../components/LoanDetails';
@@ -47,6 +48,7 @@ export default function ApplicationForm() {
     appdate: '',
   });
   const [loading, setLoading] = useState(false);
+  // const router = useRouter();
 
   if (!session) {
     return (
@@ -72,7 +74,6 @@ export default function ApplicationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-   
 
     try {
       setLoading(true);
@@ -88,6 +89,7 @@ export default function ApplicationForm() {
         return;
       }
       toast.success('Application submitted');
+      router.push('/dashboard');
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -177,12 +179,20 @@ export default function ApplicationForm() {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="p-2 rounded-md bg-teal-600 text-gray-100 font-bold text-xl"
+                className="p-2 rounded-md bg-green-600 hover:bg-green-700 transform transition duration-500 hover:scale-110 text-gray-100 font-bold text-xl"
               >
                 Submit Application
               </button>
             </div>
           )}
+          <div className="flex justify-end">
+            <Link
+              href="/dashboard"
+              className="text-green-600 text-md hover:text-white hover:bg-green-400 hover:p-3 hover:rounded-lg transform transition duration-500 hover:scale-110"
+            >
+              Go to your Dashboard
+            </Link>
+          </div>
         </form>
       )}
     </section>

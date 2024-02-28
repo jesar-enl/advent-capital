@@ -1,12 +1,11 @@
 'use client';
-import { signIn } from 'next-auth/react';
+import { signIn, getSession } from 'next-auth/react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
 import { FaGoogle } from 'react-icons/fa';
-import { FaGithub } from 'react-icons/fa';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -35,7 +34,15 @@ export default function LoginForm() {
         // Sign-in was successful
         toast.success('Login Successful');
         reset();
-        router.push('/dashboard');
+
+        const session = await getSession();
+        const user = session.user;
+
+        if (user.role === 'admin') {
+          router.push('/dashboard');
+        } else if (user.role === 'user') {
+          router.push('/services');
+        }
       }
     } catch (error) {
       setLoading(false);
