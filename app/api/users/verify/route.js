@@ -16,7 +16,7 @@ export async function PUT(request) {
       }, {status: 500})
     }
 
-    const updateUser = await db.user.update(
+    const updatedUser = await db.user.update(
       where: { id },
       data: {emailVerified: true}
     )
