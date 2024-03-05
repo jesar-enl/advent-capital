@@ -16,10 +16,10 @@ export async function PUT(request) {
       }, {status: 500})
     }
 
-    const updatedUser = await db.user.update(
+    const updatedUser = await db.user.update({
       where: { id },
       data: {emailVerified: true},
-    )
+    })
 
     return NextResponse.json(updatedUser);
   } catch(error){
