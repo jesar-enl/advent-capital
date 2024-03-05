@@ -1,10 +1,10 @@
-import Buttons from '@/app/components/backoffice/Buttons';
+// import Buttons from '@/app/components/backoffice/Buttons';
 import { authOptions } from '@/app/libs/authOptions';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import Printable from '../../../components/Printable';
-import { Loan } from '../../../libs/loan';
+import { Loan } from '@/app/libs/loan';
 // import {useRef} from 'react';
 
 export default async function LoanDetails({ params: { id } }) {
@@ -29,7 +29,7 @@ export default async function LoanDetails({ params: { id } }) {
             </h2>
           </div>
         </div>
-        {session?.user?.role === 'admin' && <Buttons />}
+        {/* {session?.user?.role === 'admin' && <Buttons />} */}
       </div>
       <Printable app={application} />
     </div>

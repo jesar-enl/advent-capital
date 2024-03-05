@@ -1,11 +1,14 @@
 'use client';
-import { signIn, getSession } from 'next-auth/react';
+import { getSession, signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
+// import {useSearchParams} from 'next/navigation';
+// import {useEffect} from 'react';
+// import { getData } from '@/app/libs/getData';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -16,6 +19,42 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
+  // const searchParams = useSearchParams();
+  // const [isVerifying, setIsVerifying] = useState(false);
+
+  // useEffect(() => {
+  //   setIsVerifying(true);
+  //   const token = searchParams.get('token');
+  //   const id = searchParams.get('id');
+  //   const baseUrl =  process.env.NEXT_PUBLIC_BASE _URL;
+  //   const verifyData = {token, id};
+
+  //   async function verify() {
+  //     const data = await getData(`users/${id}`);
+
+  //     if (data) {
+  //      try {
+  //        const response = await fetch(`${baseUrl}/api/users/verify`, {
+  //         method: "PUT",
+  //         headers: {'Content-Type': 'application.json',},
+  //         body: JSON.stringify(verifyData)
+  //       });
+
+  //       if (response.ok) {
+  //         setIsVerifying(false);
+  //         toast.success('Account verified')
+  //       } else {
+  //         setIsVerifying(false);
+  //         toast.error('Something went wrong')
+  //       };
+  //      } catch (error) {
+  //         setIsVerifying(false);
+  //        console.log(error);
+  //      }
+  //     }
+  //     verify()
+  //   }
+  // });
 
   async function onSubmit(data) {
     console.log(data);
@@ -53,6 +92,7 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 " action="#">
+      {/* {isVerifying && <p>loading...</p>} */}
       <div>
         <label
           htmlFor="email"

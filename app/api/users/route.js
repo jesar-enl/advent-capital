@@ -1,6 +1,10 @@
 import db from '../../libs/db';
 import bcrypt from 'bcrypt';
 import { NextResponse } from 'next/server';
+import { v4 as uuidv4 } from 'uuid';
+import base64url from 'base64url';
+// import { Resend } from 'resend';
+// import {EmailTemplate} from '@/app/components/EmailTemplate'
 
 export async function POST(request) {
   try {
@@ -23,6 +27,12 @@ export async function POST(request) {
     }
     // Encrypt the Password =>bcrypt
     const hashedPassword = await bcrypt.hash(password, 10);
+    // Generate new token for the user
+    const rawToken = uuidv4();
+    console.log(rawToken);
+    const token = base64url.encode(rawToken);
+    console.log(token);
+    //Create the user
     const newUser = await db.user.create({
       data: {
         name,
@@ -30,9 +40,21 @@ export async function POST(request) {
         password,
         hashedPassword,
         role,
+        verificationToken: token,
       },
     });
     console.log(newUser);
+    // send verification email to user
+    // const resend = new Resend(prcess.env.RESEND_API_KEY);
+    // const userId = newUser.id;
+    // const redirectUrl = `login?token=${token}&id=${userId}`
+    // const sendMail = await resend.emails.send({
+    //   from: 'Advent Capital <info@adventcapital.com>',
+    //   to: email,
+    //   subject: 'Account Verification',
+    //   react: EmailTemplate({name, redirectUrl}),
+    // })
+    // console.log(sendMail);
     return NextResponse.json(
       {
         data: newUser,

@@ -17,7 +17,7 @@ export default function RegisterForm({ role }) {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [emailErr, setEmailErr] = useState('');
-  
+
   async function onSubmit(data) {
     try {
       data.role = role;
@@ -39,6 +39,7 @@ export default function RegisterForm({ role }) {
         toast.success('User Created Successfully');
         reset();
         router.push('/dashboard');
+        // router.push(`/verify-account/${responseData.data.id}`);
       } else {
         setLoading(false);
         if (response.status === 409) {
