@@ -2,7 +2,7 @@ export const loans = [
   {
     name: 'Agribusiness Loan',
     desc: 'A loan that aims to fund agribusiness activities such as buying seeds, fertilizers, equipment, or storage facilities.',
-    image: '/images/agribusiness.jpg',
+    image: '/images/agribusiness_2.jpg',
     alt: 'agribusiness loan',
   },
   {
