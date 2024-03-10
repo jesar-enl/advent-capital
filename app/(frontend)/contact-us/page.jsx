@@ -57,7 +57,6 @@ export default function Contact() {
         <form
          onSubmit={handleSubmit}
           className="flex flex-col py-6 space-y-6 md:py-0 md:px-6"
-{/*           method="POST" */}
         >
           <label htmlFor="name" className="block">
             <span className="mb-1">Full Name: </span>
