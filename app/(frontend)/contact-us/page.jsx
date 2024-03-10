@@ -3,6 +3,29 @@ import { FaLocationDot, FaWhatsapp } from 'react-icons/fa6';
 import { MdOutlineMailOutline } from 'react-icons/md';
 
 export default function Contact() {
+  // const [result, setResult] = useState("");
+// 6c269648-f1e2-49da-929c-89d58f9990e2
+  async function handleSubmit(e) {
+        e.preventDefault();
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify({
+                access_key: "6c269648-f1e2-49da-929c-89d58f9990e2",
+                name: e.target.name.value,
+                email: e.target.email.value,
+                message: e.target.message.value,
+            }),
+        });
+        const result = await response.json();
+        if (result.success) {
+            console.log(result);
+        }
+    }
+  
   return (
     <section className="py-6 bg-gray-700 text-white max-h-screen">
       <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
@@ -32,18 +55,18 @@ export default function Contact() {
           </div>
         </div>
         <form
-          action="https://formspree.io/f/meqbbzkg"
-          noValidate=""
+         onSubmit={handleSubmit}
           className="flex flex-col py-6 space-y-6 md:py-0 md:px-6"
-          method="POST"
+{/*           method="POST" */}
         >
           <label htmlFor="name" className="block">
             <span className="mb-1">Full Name: </span>
             <input
               type="text"
               id="name"
-              name="fullname"
+              name="name"
               placeholder="e.g. John Doe"
+              required
               className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             />
           </label>
@@ -53,6 +76,7 @@ export default function Contact() {
               type="email"
               id="email"
               name="email"
+              required
               placeholder="e.g. example@host.domain"
               className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             />
@@ -63,6 +87,7 @@ export default function Contact() {
               id="message"
               name="message"
               rows="3"
+              required
               placeholder="Place your message here ..."
               className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
             ></textarea>
