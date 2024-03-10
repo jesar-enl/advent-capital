@@ -14,7 +14,7 @@ export default function AboutUs() {
             Advent Capital is a micro finance, whose main focus and product
             offering is to provide convinient, accessible, online pay day loans
             to clients. Advent Capital provides a short term credit to clients
-            up to a maximum of <strong>UGX. 1,000,000</strong>. We are ready to
+            up to a maximum of <strong>UGX. 5,000,000</strong>. We are ready to
             get you on the go with our loans.
           </p>
           <hr className="mt-2 mb-4 border-gray-600 sm:mx-auto lg:my-8" />
@@ -49,7 +49,7 @@ export default function AboutUs() {
             <p className="text-white">
               Life is a continuous process, where we need cash flow to manage
               our mid-monthly expenses. Unfortunately, easy and affordable cash
-              has become scarce in Uganda. Peopl are finding it hard to pay
+              has become scarce in Uganda. People are finding it hard to pay
               bills and banks are not inclined towards helping out. To resolve
               this burning financial issue,{' '}
               <span className="text-green-500 text-sm font-bold">
@@ -57,11 +57,7 @@ export default function AboutUs() {
               </span>{' '}
               offers short term loans, through a revolutionary online
               application system that takes only a few minutes. Our personal
-              application process is easy and fast. Our loans have had the
-              lowest interest rates since inception.{' '}
-              <span className="text-sm italic">
-                (We dare you to try us and compare the rates)
-              </span>
+              application process is easy and fast.
             </p>
           </div>
           <div className=" relative flex flex-wrap gap-6 p-4 ml-8">
