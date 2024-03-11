@@ -26,7 +26,7 @@ export default function Contact() {
   const [message, setMessage] = useState(false);
 
   const apiKey =
-    process.env.NEXT_PUBLIC_ACCESS_KEY || '6c269648-f1e2-49da-929c-89d58f9990e2';
+    process.env.NEXT_PUBLIC_ACCESS_KEY || '16ed8abf-bbc0-445b-be0a-567ec62cca76';
 
   const { submit: onSubmit } = useWeb3Forms({
     access_key: apiKey,
