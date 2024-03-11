@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth';
 import Benefits from '../components/Benefits';
 import Contact from '../components/Contact';
+import Choice from '../components/Choice';
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Overview from '../components/Overview';
@@ -18,6 +19,7 @@ export default async function Home() {
       <Hero />
       <Overview />
       <Benefits />
+      <Choice />
       <Testimonial />
       <Contact />
       <Footer />
