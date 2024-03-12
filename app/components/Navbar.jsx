@@ -1,6 +1,10 @@
 'use client';
 import {
   Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
   Image,
   Link,
   Navbar,
@@ -25,10 +29,6 @@ export default function NavbarSection() {
     },
     { name: 'Dashboard', href: '/dashboard' },
     { name: 'About', href: '/about' },
-    {
-      name: 'Services',
-      href: '/services',
-    },
     {
       name: 'Contact',
       href: '/contact-us',
@@ -72,22 +72,47 @@ export default function NavbarSection() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4 text-xl text-gray-50" justify="center">
+      <NavbarContent
+        className="hidden sm:flex gap-4 text-xl text-gray-50"
+        justify="center"
+      >
         <NavbarItem>
-          <Link className="text-xl text-gray-50"  href="/dashboard">
+          <Link className="text-xl text-gray-50" href="/dashboard">
             Dashboard
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-xl text-gray-50"  href="/about">
+          <Link className="text-xl text-gray-50" href="/about">
             About
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link className="text-xl text-gray-50" href="/services">
-            Services
-          </Link>
-        </NavbarItem>
+        <Dropdown>
+          <NavbarItem>
+            <DropdownTrigger>
+              <Button
+                disableRipple
+                
+                radius="sm"
+                variant="light"
+                className="text-xl text-gray-50 p-0 bg-transparent data-[hover=true]:bg-transparent"
+              >
+                Services
+              </Button>
+            </DropdownTrigger>
+          </NavbarItem>
+          <DropdownMenu
+            aria-label="Link actions"
+            className=""
+            itemClasses={{ base: 'gap-4' }}
+          >
+            <DropdownItem key="loans" href="/services/loans">
+              Loans
+            </DropdownItem>
+            <DropdownItem key="other-services" href="/services/other-services">
+              Other Services
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
         <NavbarItem>
           <Link className="text-xl text-gray-50" href="/contact-us">
             Contact us
@@ -118,13 +143,39 @@ export default function NavbarSection() {
             </NavbarItem>
           </NavbarContent>
           <NavbarMenu>
+            <Dropdown>
+              <NavbarMenuItem>
+                <DropdownTrigger>
+                  <Button
+                    disableRipple
+                    
+                    radius="sm"
+                    variant="light"
+                    className="text-xl text-gray-50 p-0 bg-transparent data-[hover=true]:bg-transparent"
+                  >
+                    Services
+                  </Button>
+                </DropdownTrigger>
+              </NavbarMenuItem>
+              <DropdownMenu
+                aria-label="Link actions"
+                className=""
+                itemClasses={{ base: 'gap-4' }}
+              >
+                <DropdownItem key="loans" href="/services/loans">
+                  Loans
+                </DropdownItem>
+                <DropdownItem
+                  key="other-services"
+                  href="/services/other-services"
+                >
+                  Other Services
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
-                <Link
-                  className="w-full"
-                  href={item.href}
-                  size="lg"
-                >
+                <Link className="w-full" href={item.href} size="lg">
                   {item.name}
                 </Link>
               </NavbarMenuItem>
@@ -151,13 +202,39 @@ export default function NavbarSection() {
             </NavbarItem>
           </NavbarContent>
           <NavbarMenu>
+            <Dropdown>
+              <NavbarMenuItem>
+                <DropdownTrigger>
+                  <Button
+                    disableRipple
+                    
+                    radius="sm"
+                    variant="light"
+                    className="text-xl text-gray-50 p-0 bg-transparent data-[hover=true]:bg-transparent"
+                  >
+                    Services
+                  </Button>
+                </DropdownTrigger>
+              </NavbarMenuItem>
+              <DropdownMenu
+                aria-label="Link actions"
+                className=""
+                itemClasses={{ base: 'gap-4' }}
+              >
+                <DropdownItem key="loans" href="/services/loans">
+                  Loans
+                </DropdownItem>
+                <DropdownItem
+                  key="other-services"
+                  href="/services/other-services"
+                >
+                  Other Services
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
-                <Link
-                  className="w-full"
-                  href={item.href}
-                  size="lg"
-                >
+                <Link className="w-full" href={item.href} size="lg">
                   {item.name}
                 </Link>
               </NavbarMenuItem>

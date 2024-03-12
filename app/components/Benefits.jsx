@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Benefits() {
   const benefits = [
     {
-      ben: 'Get up to UGX 1,000,000.',
+      ben: 'Get up to UGX 5,000,000.',
     },
     {
       ben: 'Get loans as low as UGX 10,000 and pay UGX 500 only per day.',
@@ -44,7 +44,7 @@ export default function Benefits() {
             return (
               <p
                 key={i}
-                className="flex gap-2 items-center mb-1 text-sm font-medium tracki text-blue-600"
+                className="flex gap-2 items-center mb-1 text-sm font-medium tracking-wide text-blue-600"
               >
                 <PiSealCheckLight className="text-green-600" />
                 {benefit.ben}

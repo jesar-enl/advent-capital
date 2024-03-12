@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaServicestack } from 'react-icons/fa';
-import { TbUserCheck } from 'react-icons/tb';
-import { loans, reqs, others } from './services';
 
-export default function Services() {
+import { TbUserCheck } from 'react-icons/tb';
+import { loans, reqs } from '../services';
+
+function LoansServices() {
   return (
-    <div className="mt-24">
+    <div className="mt-3">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center text-gray-800">
           Offered Services
@@ -53,19 +53,6 @@ export default function Services() {
             );
           })}
         </div>
-        <div className="text-lg text-gray-800 mt-3 ">
-          <h2 className="text-xl font-semibold text-gray-800">
-            Other services include:
-          </h2>
-          {others.map((other, i) => {
-            return (
-              <div key={i} className="items-center flex gap-3">
-                <FaServicestack className="text-blue-600" />
-                {other.service}
-              </div>
-            );
-          })}
-        </div>
       </div>
       {/* requirements div */}
       <section className="py-6 bg-gray-700 text-gray-100">
@@ -91,3 +78,5 @@ export default function Services() {
     </div>
   );
 }
+
+export default LoansServices;
