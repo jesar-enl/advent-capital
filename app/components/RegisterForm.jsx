@@ -38,7 +38,7 @@ export default function RegisterForm({ role }) {
         setLoading(false);
         toast.success('User Created Successfully');
         reset();
-        router.push('/dashboard');
+        router.push('/');
         // router.push(`/verify-account/${responseData.data.id}`);
       } else {
         setLoading(false);

@@ -80,7 +80,7 @@ export default function LoginForm() {
         if (user.role === 'admin') {
           router.push('/dashboard');
         } else if (user.role === 'user') {
-          router.push('/services');
+          router.push('/');
         }
       }
     } catch (error) {
