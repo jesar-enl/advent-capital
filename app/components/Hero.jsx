@@ -1,78 +1,46 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { GiMoneyStack } from 'react-icons/gi';
-import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io';
-import { IoWaterOutline } from 'react-icons/io5';
-import {
-  MdBusinessCenter,
-  MdOutlineAddHomeWork,
-  MdOutlineAgriculture,
-  MdOutlineSchool,
-} from 'react-icons/md';
+import Image from 'next/image';
 
 export default function HeroSection() {
-  const dataCard = [
-    {
-      Icon: MdOutlineAgriculture,
-      loan_type: 'Agribusiness loan',
-    },
-    {
-      Icon: MdOutlineSchool,
-      loan_type: 'School fees loan',
-    },
-    {
-      Icon: MdBusinessCenter,
-      loan_type: 'Business loan',
-    },
-    {
-      Icon: GiMoneyStack,
-      loan_type: 'Salary loan',
-    },
-    {
-      Icon: MdOutlineAddHomeWork,
-      loan_type: 'home Improvement',
-    },
-    {
-      Icon: IoWaterOutline,
-      loan_type: 'Water & Sanitation',
-    },
-  ];
-
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    handleResize();
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
-    <div className="text-gray-900 text-4xl bg-hero-img w-full h-screen flex flex-col gap-4 items-center justify-center bg-opacity-20">
-      <h3 className="text-slate-900 font-bold text-3xl md:text-4xl sm:text-center">
-        Good day. Let&#39;s get you on the go!
-      </h3>
-      <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6 text-base px-4 md:px-16 py-4 md:py-16 text-slate-800 bg-gray-200 bg-opacity-80 rounded-lg md:gap-4">
-        {dataCard.map(({ Icon, loan_type }, i) => {
-          return (
+    <div className="bg-gray-200 w-full flex flex-col gap-4 p-4 pt-7 pb-7">
+      <div className="flex gap-4 flex-col md:flex-row mx-auto">
+        {/* image for the company */}
+        <div className="w-full md:w-1/3 flex items-center justify-center">
+          <Image
+            src="/images/adventcapital_logo.png"
+            alt="Advent Capital Logo"
+            width={200}
+            height={200}
+          />
+        </div>
+        <div className="w-full md:w-2/3 flex flex-col justify-center items-center gap-4">
+          <h1 className="text-2xl md:text-4xl text-green-500 font-bold tracking-wide mb-2 text-center">
+            Welcome to Advent Capital
+          </h1>
+          <p className="text-lg text-center text-gray-800 tracking-wider md:text-xl mb-2">
+            Your trusted partner in financial growth. We believe in your dreams.
+            Get the support you need to make them a reality and let&#39;s build
+            your future together.
+          </p>
+          <div className="flex justify-center">
             <Link
-              key={i}
-              href="/services"
-              className="flex sm:mb-4 md:items-center items-center justify-center sm:justify-start gap-3 hover:bg-slate-800 hover:text-gray-200 hover:p-3 hover:rounded"
+              href="/loans/application"
+              className="bg-green-500 text-white px-4 py-2 hover:bg-green-600 transition hover:-translate-y-1 hover:scale-110 rounded-lg shadow-lg
+            duration:300 ease-in-out delay-100"
             >
-              <Icon />
-              <span>{loan_type}</span>
-              {isSmallScreen ? <IoIosArrowForward /> : <IoIosArrowDown />}
+              Apply Now!
             </Link>
-          );
-        })}        
+          </div>
+        </div>
+      </div>
+      <div className="w-full md:w-1/3 text-center text-sm md:text-lg italic mt-6">
+        &#39;We make a living by what we get but we make a life by what we
+        give.&#39; You got{' '}
+        {new Date().toLocaleString('default', { month: 'long' })} financial
+        crisis? We have got you covered. Apply Today!
       </div>
     </div>
   );

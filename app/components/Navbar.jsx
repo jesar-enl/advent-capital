@@ -52,7 +52,7 @@ export default function NavbarSection() {
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-gradient-to-l from-green-800 via-teal-700 to-teal-500"
+      className="bg-green-600"
     >
       <NavbarContent>
         <NavbarMenuToggle
@@ -125,12 +125,12 @@ export default function NavbarSection() {
             <NavbarItem className="hidden lg:flex">
               <div className="flex items-center space-x-4">
                 <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-600 rounded-full ">
-                  <span className="font-medium text-gray-900">{initials}</span>
+                  <span className="font-medium text-slate-200">{initials}</span>
                 </div>
 
                 <div className="font-medium">
                   <div>{session.user.name}</div>
-                  <div className="text-sm text-gray-900">
+                  <div className="text-sm text-slate-200">
                     {session.user.email}
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export default function NavbarSection() {
                     
                     radius="sm"
                     variant="light"
-                    className="text-xl text-gray-50 p-0 bg-transparent data-[hover=true]:bg-transparent"
+                    className="text-xl p-0 bg-transparent data-[hover=true]:bg-transparent"
                   >
                     Services
                   </Button>
@@ -196,7 +196,7 @@ export default function NavbarSection() {
               <Link href="/login">Login</Link>
             </NavbarItem>
             <NavbarItem>
-              <Button as={Link} color="primary" href="/register" variant="flat">
+              <Button as={Link} color="primary" href="/register" variant="solid">
                 Sign Up
               </Button>
             </NavbarItem>
@@ -210,7 +210,7 @@ export default function NavbarSection() {
                     
                     radius="sm"
                     variant="light"
-                    className="text-xl text-gray-50 p-0 bg-transparent data-[hover=true]:bg-transparent"
+                    className="text-xl p-0 bg-transparent data-[hover=true]:bg-transparent"
                   >
                     Services
                   </Button>
@@ -242,7 +242,7 @@ export default function NavbarSection() {
             <Button as={Link} color="secondary" variant="solid" href="/login">
               Login
             </Button>
-            <Button as={Link} color="primary" href="/register" variant="flat">
+            <Button as={Link} color="primary" href="/register" variant="solid">
               Sign Up
             </Button>
           </NavbarMenu>

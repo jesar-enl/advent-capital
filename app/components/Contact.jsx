@@ -182,45 +182,6 @@ export default function Contact() {
               'Send Message'
             )}
           </button>
-          {/* <label htmlFor="name" className="block">
-            <span className="mb-1">Full Name: </span>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="e.g. John Doe"
-              required
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
-            />
-          </label> */}
-          {/* <label htmlFor="email" className="block">
-            <span className="mb-1">Email: </span>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="e.g. example@host.domain"
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
-            />
-          </label> */}
-          {/* <label htmlFor="message" className="block">
-            <span className="mb-1">Message </span>
-            <textarea
-              id="message"
-              name="message"
-              rows="3"
-              required
-              placeholder="Place your message here ..."
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
-            ></textarea>
-          </label> */}
-          {/* <button
-            type="submit"
-            className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ri bg-violet-600 text-gray-50 focus:ri hover:ri"
-          >
-            Send
-          </button> */}
         </form>
 
         {isSubmitSuccessful &&
