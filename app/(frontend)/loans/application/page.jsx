@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 // import { useRouter } from 'next/navigation';
+import { UploadButton } from '@/utils/uploadthing';
 import toast from 'react-hot-toast';
 import Declarations from '../../../components/Declarations';
 import LoanDetails from '../../../components/LoanDetails';
@@ -49,6 +50,7 @@ export default function ApplicationForm() {
   });
   const [loading, setLoading] = useState(false);
   // const router = useRouter();
+  const [image, setImage] = useState('');
 
   if (!session) {
     return (
@@ -80,7 +82,7 @@ export default function ApplicationForm() {
       const res = await fetch(`${baseUrl}/api/application`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, image }),
       });
       console.log(res);
       if (!res.ok) {
@@ -89,7 +91,7 @@ export default function ApplicationForm() {
         return;
       }
       toast.success('Application submitted');
-      router.push('/dashboard');
+      // router.push('/dashboard');
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -116,28 +118,22 @@ export default function ApplicationForm() {
           <label htmlFor="files" className="block text-sm font-medium">
             Applicant&#39;s passport photo
           </label>
-          {/* {profilePic ? (
-            <CldImage
-              width="140"
-              height="140"
-              src={profilePic}
-              alt="My profile picture"
-            />
+
+          {image ? (
+            <Image src={image} alt="profile pic" width={120} height={120} />
           ) : (
-            <CldUploadButton className="bg-rose-600 text-gray-100 w-24 h-10 rounded-lg p-1" uploadPreset="profilePic" onUpload={(data) => setProfilePic(data.info.secure_url)} />
-          )} */}
-          <div className="flex items-center">
-            <input
-              id="dropzone-file"
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                  setFiles(e.target.files);
-                }
+            <UploadButton
+              endpoint="imageUploader"
+              onClientUploadComplete={(res) => {
+                // Do something with the response
+                setImage(res[0].url);
+              }}
+              onUploadError={(error) => {
+                // Do something with the error.
+                toast.error(`ERROR! ${error.message}`);
               }}
             />
-          </div>
+          )}
           {/* Applicant's personal details */}
           <PersonalDetails onChange={handleChange} value={formData.name} />
 

@@ -37,11 +37,13 @@ export async function POST(req) {
         collateral: formdata.collateral,
         appname: formdata.appname,
         appdate: `${formdata.appdate}T00:00:00Z`,
+        image: formdata.image,
       },
     });
 
     return NextResponse.json(application, { status: 200 });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(error, { status: 500 });
   }
 }

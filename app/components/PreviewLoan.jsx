@@ -20,6 +20,15 @@ export default function PreviewLoan({ data }) {
         </div>
         <h1 className="text-green-600 flex justify-center text-3xl">Application Form</h1>
         {/* personal details */}
+        <div className="flex justify-start">
+          <Image
+            src={data.image}
+            alt="Advent Capital Logo"
+            className=" right-0"
+            width="120"
+            height={120}
+          />
+        </div>
         <div className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-200">
           <div className="space-y-2 col-span-full lg:col-span-1 text-xl text-green-600">
             <p className="font-medium">Personal Inormation</p>
