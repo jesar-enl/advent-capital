@@ -55,7 +55,7 @@ export default function Sidebar() {
   const navLinks = session?.user?.role === 'admin' ? adminLinks : userLinks;
 
   return (
-    <div className="w-[200px] min-h-screen bg-slate-800 text-slate-100  p-4 hidden sm:block">
+    <div className="w-[200px] min-h-screen bg-green-700 text-slate-100  p-4 hidden md:block">
       <Link href="/" className="flex items-center">
         <Image
           src="/images/adventcapital_logo.png"
@@ -74,7 +74,7 @@ export default function Sidebar() {
               href={link.href}
               className={
                 pathname === link.href
-                  ? 'text-slate-100 flex items-center bg-purple-600 px-4 py-2 rounded-md mb-2'
+                  ? 'text-slate-100 flex items-center bg-green-400 px-4 py-2 rounded-md mb-2'
                   : 'text-slate-100 flex items-center py-2'
               }
             >
