@@ -2,7 +2,10 @@ import { authOptions } from '@/app/libs/authOptions';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import {  Loans } from '../../libs/loans';
+// import ChartRepresentation from '../../components/backoffice/Chart';
+import { Loans } from '../../libs/loans';
+import { columns } from './columns';
+import { DataTable } from './data-table';
 
 export default async function LoansPage() {
   const session = await getServerSession(authOptions);
@@ -14,8 +17,17 @@ export default async function LoansPage() {
   }
   const email = session?.user?.email;
   const role = session?.user?.role;
-  const applications = await Loans(email, role);
-  console.log(applications);
+
+  async function getData() {
+    // Fetch data from your API here.
+    const application = await Loans(email, role);
+    return application;
+  }
+  // const applications = await Loans(email, role);
+  // console.log(applications);
+  const data = await getData();
+
+  console.log(data);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto w-full">
@@ -26,7 +38,7 @@ export default async function LoansPage() {
       </div>
       <div className="flex items-center px-8 py-4 justify-between">
         <h2 className="text-lg md:text-xl text-green-700">
-          Loan applications ({applications.length})
+          Loan applications ({data.length})
         </h2>
         {session?.user?.role === 'user' && (
           <Link href="/loans/application">
@@ -36,90 +48,14 @@ export default async function LoansPage() {
           </Link>
         )}
       </div>
-      <div className="overflow-x-scroll sm:overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-              {role !== 'user' && (
-                <>
-                  <th scope="col" className="px-6 py-3 hidden md:table-cell">
-                    ID
-                  </th>
-                  <th scope="col" className="px-6 py-3 hidden md:table-cell">
-                    Applicant&#39;s Name
-                  </th>
-                </>
-              )}
-              <th scope="col" className="px-6 py-3">
-                Applicant&#39;s Email
-              </th>
-              <th scope="col" className="px-6 py-3 hidden md:table-cell">
-                Applicant&#39;s Mobile
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Loan Type
-              </th>
-              <th scope="col" className="px-6 py-3 hidden md:table-cell">
-                Application Date
-              </th>
-              <th scope="col" className="px-6 py-3">
-                <span className="sr-only">View</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {applications?.map((application) => {
-              const options = {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              };
-              const applicationDate = application.appdate;
-              const normalDate = new Date(applicationDate).toLocaleDateString(
-                undefined,
-                options
-              );
-
-              return (
-                <tr
-                  key={application.id}
-                  className="bg-white border-b hover:bg-gray-50"
-                >
-                  {role !== 'user' && (
-                    <>
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap hidden md:table-cell"
-                      >
-                        {application.id}
-                      </th>
-                      <td className="px-6 py-4 hidden md:table-cell">
-                        {application.appname}
-                      </td>
-                    </>
-                  )}
-                  <td className="px-6 py-4">{application.email}</td>
-                  <td className="px-6 py-4 hidden md:table-cell">
-                    {application.mobile}
-                  </td>
-                  <td className="px-6 py-4">{application.loantype}</td>
-                  <td className="px-6 py-4 hidden md:table-cell">
-                    {normalDate}
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <a
-                      href={`/loans/${application.id}`}
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      View
-                    </a>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="container mx-auto py-10">
+        <DataTable columns={columns} data={data} />
       </div>
+      {/* {session?.user?.role === 'admin' && (
+        <div className="containe">
+          <ChartRepresentation />
+        </div>
+      )} */}
     </div>
   );
 }

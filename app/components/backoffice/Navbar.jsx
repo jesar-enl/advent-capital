@@ -44,7 +44,7 @@ export default function Navigationbar() {
   const initials = getInitials(session?.user?.name ?? 'John Doe');
 
   return (
-    <Navbar disableAnimation isBordered className="bg-green-600">
+    <Navbar disableAnimation isBordered className="bg-green-600 p-2 rounded-lg">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
@@ -127,7 +127,7 @@ export default function Navigationbar() {
           </div>
         </NavbarItem>
         <NavbarItem>
-          <Button color="warning" onClick={() => signOut()} variant="solid">
+          <Button color="danger" onClick={() => signOut()} variant="solid">
             Log out
           </Button>
         </NavbarItem>

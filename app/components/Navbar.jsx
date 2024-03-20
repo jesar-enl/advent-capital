@@ -50,10 +50,7 @@ export default function NavbarSection() {
   const initials = getInitials(session?.user?.name ?? 'John Doe');
 
   return (
-    <Navbar
-      onMenuOpenChange={setIsMenuOpen}
-      className="bg-green-600"
-    >
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-green-600">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -91,7 +88,6 @@ export default function NavbarSection() {
             <DropdownTrigger>
               <Button
                 disableRipple
-                
                 radius="sm"
                 variant="light"
                 className="text-xl text-gray-50 p-0 bg-transparent data-[hover=true]:bg-transparent"
@@ -137,7 +133,7 @@ export default function NavbarSection() {
               </div>
             </NavbarItem>
             <NavbarItem>
-              <Button color="danger" onClick={() => signOut()} variant="flat">
+              <Button color="danger" onClick={() => signOut()} variant="solid">
                 Log out
               </Button>
             </NavbarItem>
@@ -148,7 +144,6 @@ export default function NavbarSection() {
                 <DropdownTrigger>
                   <Button
                     disableRipple
-                    
                     radius="sm"
                     variant="light"
                     className="text-xl p-0 bg-transparent data-[hover=true]:bg-transparent"
@@ -196,7 +191,12 @@ export default function NavbarSection() {
               <Link href="/login">Login</Link>
             </NavbarItem>
             <NavbarItem>
-              <Button as={Link} color="primary" href="/register" variant="solid">
+              <Button
+                as={Link}
+                color="primary"
+                href="/register"
+                variant="solid"
+              >
                 Sign Up
               </Button>
             </NavbarItem>
@@ -207,7 +207,6 @@ export default function NavbarSection() {
                 <DropdownTrigger>
                   <Button
                     disableRipple
-                    
                     radius="sm"
                     variant="light"
                     className="text-xl p-0 bg-transparent data-[hover=true]:bg-transparent"

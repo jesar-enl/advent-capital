@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { RiUser2Fill } from 'react-icons/ri';
 
+
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -55,7 +56,7 @@ export default function Sidebar() {
   const navLinks = session?.user?.role === 'admin' ? adminLinks : userLinks;
 
   return (
-    <div className="w-[200px] min-h-screen bg-green-700 text-slate-100  p-4 hidden md:block">
+    <div className="w-[200px] min-h-screen bg-green-500 text-slate-100  p-4 hidden md:block sticky top-10">
       <Link href="/" className="flex items-center">
         <Image
           src="/images/adventcapital_logo.png"
