@@ -1,7 +1,7 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -69,7 +69,12 @@ export const columns: ColumnDef<Application>[] = [
               Copy application ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View application</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={`loans/${application.id}`} className="flex items-center gap-2">
+                <Eye />
+                View application
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
