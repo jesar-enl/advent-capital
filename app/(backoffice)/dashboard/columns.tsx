@@ -1,5 +1,5 @@
 'use client';
-
+import Link from 'next/link';
 import { ColumnDef } from '@tanstack/react-table';
 import { MoreHorizontal, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
