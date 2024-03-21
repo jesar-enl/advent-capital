@@ -30,7 +30,7 @@ export default async function LoansPage() {
   console.log(data);
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto w-full">
+    <div className="relative shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto w-full">
       <div className="flex flex-col items-center justify-start w-full h-full">
         <h1 className="text-xl md:text-2xl text-green-600">
           Welcome {session?.user?.name}
