@@ -28,7 +28,7 @@ function OtherServices() {
                       </div>
                       <div className="flex justify-center">
                       <Link
-                        href="#contact-us"
+                        href="/contact-us"
                         className="mt-10 bottom-0 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
                       >
                         Contact us
