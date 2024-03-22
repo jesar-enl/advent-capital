@@ -3,10 +3,10 @@
 import useWeb3Forms from '@web3forms/react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { FaFacebook, FaPhoneAlt } from 'react-icons/fa';
 import { FaLocationDot, FaSquareXTwitter, FaWhatsapp } from 'react-icons/fa6';
 import { MdOutlineMailOutline } from 'react-icons/md';
-import toast from 'react-hot-toast';
 
 export default function Contact() {
   // const [result, setResult] = useState("");
@@ -26,12 +26,13 @@ export default function Contact() {
   const [message, setMessage] = useState(false);
 
   const apiKey =
-    process.env.NEXT_PUBLIC_ACCESS_KEY || '16ed8abf-bbc0-445b-be0a-567ec62cca76';
+    process.env.NEXT_PUBLIC_ACCESS_KEY ||
+    '16ed8abf-bbc0-445b-be0a-567ec62cca76';
 
   const { submit: onSubmit } = useWeb3Forms({
     access_key: apiKey,
     settings: {
-      from_name: "Advent Capital message",
+      from_name: 'Advent Capital message',
       subject: 'New Contact Message from Advent Capital User',
     },
     onSuccess: (msg, data) => {
@@ -67,7 +68,7 @@ export default function Contact() {
 
   return (
     <section
-      className="py-6 text-white max-h-screen relative bg-cover bg-center"
+      className="py-6 text-white h-full relative bg-cover bg-center"
       style={{ backgroundImage: "url('/images/adventcapital_logo.png')" }}
     >
       <div className="bg-black bg-opacity-75 h-full w-full absolute"></div>
@@ -249,9 +250,9 @@ export default function Contact() {
           toast.error('Something went wrong. Please try later.')}
       </div>
       <div className="relative mt-4 mb-4 px-8 py-4 flex items-center justify-center gap-4">
-        <FaFacebook className='text-blue-500' />
-        <FaSquareXTwitter className='text-gray-800' />
-        <FaWhatsapp className="text-green-500" />
+        <FaFacebook className="text-blue-500 text-2xl" />
+        <FaSquareXTwitter className="text-gray-800 text-2xl" />
+        <FaWhatsapp className="text-green-500 text-2xl" />
       </div>
     </section>
   );
