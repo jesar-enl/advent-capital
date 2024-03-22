@@ -3,8 +3,8 @@
 import useWeb3Forms from '@web3forms/react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { FaLocationDot, FaWhatsapp } from 'react-icons/fa6';
+import { FaFacebook, FaPhoneAlt } from 'react-icons/fa';
+import { FaLocationDot, FaSquareXTwitter, FaWhatsapp } from 'react-icons/fa6';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import toast from 'react-hot-toast';
 
@@ -161,6 +161,28 @@ export default function Contact() {
             )}
           </div>
 
+          <div className="mb-5">
+            <input
+              type="text"
+              placeholder="Address"
+              autoComplete="false"
+              className={`block text-gray-900 shadow-sm w-full px-4 py-3 border-2 placeholder:text-gray-600 rounded-md outline-none focus:ring-4 bg-gray-100 ${
+                errors.address
+                  ? 'border-red-600 focus:border-red-600 ring-red-100'
+                  : 'border-gray-300 focus:border-gray-600 ring-gray-100'
+              }`}
+              {...register('address', {
+                required: 'Address is required',
+                maxLength: 80,
+              })}
+            />
+            {errors.address && (
+              <div className="mt-1 text-red-600">
+                <small>{errors.address.message}</small>
+              </div>
+            )}
+          </div>
+
           <div className="mb-3">
             <textarea
               name="message"
@@ -211,45 +233,6 @@ export default function Contact() {
               'Send Message'
             )}
           </button>
-          {/* <label htmlFor="name" className="block">
-            <span className="mb-1">Full Name: </span>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="e.g. John Doe"
-              required
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
-            />
-          </label> */}
-          {/* <label htmlFor="email" className="block">
-            <span className="mb-1">Email: </span>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="e.g. example@host.domain"
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
-            />
-          </label> */}
-          {/* <label htmlFor="message" className="block">
-            <span className="mb-1">Message </span>
-            <textarea
-              id="message"
-              name="message"
-              rows="3"
-              required
-              placeholder="Place your message here ..."
-              className="block w-full rounded-lg shadow-sm focus:ring focus:ri focus:ri bg-gray-100 p-3 text-gray-900"
-            ></textarea>
-          </label> */}
-          {/* <button
-            type="submit"
-            className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ri bg-violet-600 text-gray-50 focus:ri hover:ri"
-          >
-            Send
-          </button> */}
         </form>
 
         {isSubmitSuccessful &&
@@ -264,6 +247,11 @@ export default function Contact() {
           //   {message || 'Something went wrong. Please try later.'}
           // </div>
           toast.error('Something went wrong. Please try later.')}
+      </div>
+      <div className="relative mt-4 mb-4 px-8 py-4 flex items-center justify-center gap-4">
+        <FaFacebook className='text-blue-500' />
+        <FaSquareXTwitter className='text-gray-800' />
+        <FaWhatsapp className="text-green-500" />
       </div>
     </section>
   );
