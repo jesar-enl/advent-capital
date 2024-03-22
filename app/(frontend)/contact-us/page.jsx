@@ -249,10 +249,10 @@ export default function Contact() {
           // </div>
           toast.error('Something went wrong. Please try later.')}
       </div>
-      <div className="relative mt-4 mb-4 px-8 py-4 flex items-center justify-center gap-4">
-        <FaFacebook className="text-blue-500 text-2xl" />
-        <FaSquareXTwitter className="text-gray-800 text-2xl" />
-        <FaWhatsapp className="text-green-500 text-2xl" />
+      <div className="relative mt-4 mb-4 px-8 py-4 flex items-center justify-between gap-4 bg-gray-300 rounded-xl">
+        <FaFacebook className="text-blue-500 text-4xl" />
+        <FaSquareXTwitter className="text-gray-800 text-4xl" />
+        <FaWhatsapp className="text-green-500 text-4xl" />
       </div>
     </section>
   );
