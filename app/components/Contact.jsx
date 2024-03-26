@@ -56,7 +56,7 @@ export default function Contact() {
             </p>
             <p className="flex items-center gap-3">
               <FaPhoneAlt />
-              <span>0784 208372 / 0703 008045</span>
+              <span>(+256) 200 915172</span>
             </p>
             <p className="flex items-center gap-3">
               <FaWhatsapp className="text-green-400" />
@@ -64,7 +64,7 @@ export default function Contact() {
             </p>
             <p className="flex items-center gap-3">
               <MdOutlineMailOutline className="text-rose-400" />
-              <span>adventcapital@gmail.com</span>
+              <span>adventcapital2023@gmail.com</span>
             </p>
           </div>
         </div>
