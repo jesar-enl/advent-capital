@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { UploadButton } from '@/utils/uploadthing';
 import toast from 'react-hot-toast';
 import Declarations from '../../../components/Declarations';
@@ -49,7 +49,7 @@ export default function ApplicationForm() {
     appdate: '',
   });
   const [loading, setLoading] = useState(false);
-  // const router = useRouter();
+  const router = useRouter();
   const [image, setImage] = useState('');
 
   if (!session) {
@@ -60,7 +60,7 @@ export default function ApplicationForm() {
         </p>
         <Link
           href="/login"
-          className="bg-blue-600 p-2 text-gray-100 rounded-lg"
+          className="bg-blue-600 py-2 px-4 text-gray-100 rounded-lg"
         >
           Login
         </Link>
@@ -90,8 +90,9 @@ export default function ApplicationForm() {
         toast.error('Error while submitting application');
         return;
       }
+      setLoading(false);
       toast.success('Application submitted');
-      // router.push('/dashboard');
+      router.push('/dashboard');
     } catch (error) {
       setLoading(false);
       console.log(error);
