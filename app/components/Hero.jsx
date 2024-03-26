@@ -10,7 +10,7 @@ export default function HeroSection() {
         {/* image for the company */}
         <div className="w-full md:w-1/3 flex items-center justify-center">
           <Image
-            src="/images/adventcapital_logo.png"
+            src="/images/IMG.jpg"
             alt="Advent Capital Logo"
             width={200}
             height={200}
