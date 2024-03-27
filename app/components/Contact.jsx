@@ -60,7 +60,7 @@ export default function Contact() {
             </p>
             <p className="flex items-center gap-3">
               <FaWhatsapp className="text-green-400" />
-              <span>0774 130798</span>
+              <span>(+256) 784 208372</span>
             </p>
             <p className="flex items-center gap-3">
               <MdOutlineMailOutline className="text-rose-400" />
