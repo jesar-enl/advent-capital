@@ -12,8 +12,8 @@ export default function HeroSection() {
           <Image
             src="/images/adventcapital_logo.png"
             alt="Advent Capital Logo"
-            width={200}
-            height={200}
+            width={400}
+            height={420}
           />
         </div>
         <div className="w-full md:w-2/3 flex flex-col justify-center items-center gap-4">
