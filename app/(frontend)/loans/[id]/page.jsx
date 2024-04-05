@@ -14,22 +14,19 @@ export default async function LoanDetails({ params: { id } }) {
 
   return (
     <div className="flex flex-col mt-4">
-      <div className="flex items-center px-8 py-4 justify-between">
-        <div>
+      <div className="flex flex-col px-4 py-2 gap-2">
           <Link
             href="/dashboard"
             className="text-gray-600 flex gap-2 items-center"
           >
             <FaArrowCircleLeft /> Back to dashboard
           </Link>
-          <div className="flex gap-3 items-center">
+          {/* <div className="flex gap-3 items-center">
             <h2 className="text-3xl text-teal-800">
               Loan Type:{' '}
               <span className="text-gray-800">{application.loantype}</span>
             </h2>
-          </div>
-        </div>
-        {/* {session?.user?.role === 'admin' && <Buttons />} */}
+          </div> */}
       </div>
       <Printable app={application} />
     </div>
