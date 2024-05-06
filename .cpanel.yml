@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/adventca/public_html/advent-capital
+    - /bin/cp -R out/* $DEPLOYPATH
