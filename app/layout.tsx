@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Advent Capital',
+  title: 'Home - Advent Capital',
   description:
     'To transform livelihoods by providing inclusive, affordable and innovative financial services to micro and small enterprises.',
 };

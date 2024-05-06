@@ -1,6 +1,12 @@
 import LoginForm from '../../components/LoginForm';
 import React from 'react';
 
+export const metadata = {
+  title: 'Login - Advent Capital',
+  description:
+    'Login to your account to access the services offered at Advent Capital.',
+};
+
 export default function Login() {
   return (
     <section className="bg-gray-50 dark:bg-gray-900">

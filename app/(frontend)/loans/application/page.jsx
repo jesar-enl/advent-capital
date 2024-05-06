@@ -12,6 +12,11 @@ import PersonalDetails from '../../../components/PersonalDetails';
 
 import { useState } from 'react';
 
+export const metadata = {
+  title: 'Loan Application - Advent Capital',
+  description: 'Apply now to get a loan that suits your needs and goals.',
+};
+
 export default function ApplicationForm() {
   const { data: session, status } = useSession();
   const [files, setFiles] = useState();

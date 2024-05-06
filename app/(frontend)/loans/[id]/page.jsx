@@ -5,12 +5,15 @@ import Link from 'next/link';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import Printable from '../../../components/Printable';
 import { Loan } from '@/app/libs/loan';
-// import {useRef} from 'react';
+
+export const metadata = {
+  title: 'Loan Application - Advent Capital',
+  description: 'Apply now to get a loan that suits your needs and goals.',
+};
 
 export default async function LoanDetails({ params: { id } }) {
   const application = await Loan(id);
   const session = await getServerSession(authOptions);
-  // const printForm = useRef();
 
   return (
     <div className="flex flex-col mt-4">

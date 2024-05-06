@@ -1,5 +1,11 @@
 import RegisterForm from '../../components/RegisterForm';
 
+export const metadata = {
+  title: 'Registration - Advent Capital',
+  description:
+    'Register your account to access more benefits at Advent Capital..',
+};
+
 export default function Register() {
   return (
     <section className="bg-gray-50">

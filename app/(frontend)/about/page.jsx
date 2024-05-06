@@ -2,6 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { objectives, values } from './data';
 
+export const metadata = {
+  title: 'About Us - Advent Capital',
+  description:
+    'Here are some the details that you can know about us and will help you to trust us.',
+};
+
 export default function AboutUs() {
   return (
     <div className="mt-6 flex flex-col font-['Urbanist']">

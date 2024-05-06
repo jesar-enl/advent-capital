@@ -4,6 +4,12 @@ import Link from 'next/link';
 import { TbUserCheck } from 'react-icons/tb';
 import { loans, reqs } from '../services';
 
+export const metadata = {
+  title: 'Loans Services - Advent Capital',
+  description:
+    'Are you looking for a loan that suits your needs and goals? Whether you want to grow your business, pay for your education, improve your home, or access clean water and sanitation, we have a loan for you. Our loans are affordable, flexible, and convenient. Check out our loan products below and find the one that matches your situation.',
+};
+
 function LoansServices() {
   return (
     <div className="mt-3">
