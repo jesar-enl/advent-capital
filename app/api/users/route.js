@@ -4,7 +4,8 @@ import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import base64url from 'base64url';
 import { Resend } from 'resend';
-import {EmailTemplate} from '@/app/components/EmailTemplate'
+import  {EmailTemplate} from '../../components/EmailTemplate'
+// import {EmailTemplate} from '@/app/components/EmailTemplate'
 
 export async function POST(request) {
   try {
