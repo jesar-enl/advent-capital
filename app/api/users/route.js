@@ -45,7 +45,7 @@ export async function POST(request) {
     });
     console.log(newUser);
     // send verification email to user
-    const resend = new Resend(prcess.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const userId = newUser.id;
     const redirectUrl = `login?token=${token}&id=${userId}`
     const sendMail = await resend.emails.send({
