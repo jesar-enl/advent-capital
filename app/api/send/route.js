@@ -1,5 +1,5 @@
-import { AcceptLetterTemplate } from '@/app/components/AcceptLetterTemplate';
 import { Resend } from 'resend';
+import AcceptLetterTemplate from '../../components/AcceptLetterTemplate';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

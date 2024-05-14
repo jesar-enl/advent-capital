@@ -15,7 +15,7 @@ import db from '../libs/db';
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-export default async function AcceptLetterTemplate({
+async function AcceptLetterTemplate({
   name,
   email,
   loanType,
@@ -88,6 +88,8 @@ export default async function AcceptLetterTemplate({
     </Html>
   );
 }
+
+export default AcceptLetterTemplate;
 
 const main = {
   backgroundColor: '#f6f9fc',
