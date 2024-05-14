@@ -39,6 +39,7 @@ export const EmailTemplate = ({ name, redirectUrl = '/login' }) => (
             Hey <strong>{name}</strong>!
           </Text>
           <Text style={text}>
+            We thank you for registering your account with us at Advent Capital.
             Please verify your account to ensure that your account is secure.
           </Text>
 

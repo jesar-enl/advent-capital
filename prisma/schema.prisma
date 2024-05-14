@@ -11,6 +11,12 @@ datasource db {
   directUrl         = env("DIRECT_URL")
 }
 
+enum Status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model Application {
   id          Int   @id @default(autoincrement())
   image       String  @unique
@@ -44,6 +50,7 @@ model Application {
   collateral  String
   appname     String
   appdate     DateTime
+  status Status @default(PENDING)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -104,4 +111,20 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Letter {
+  id          Int   @id @default(autoincrement())
+  name        String
+  email       String
+  date        DateTime
+  bustype     String
+  busLocation String
+  loanType    String
+  purpose     String
+  loanAmount  String
+  loanInterest String
+  security    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

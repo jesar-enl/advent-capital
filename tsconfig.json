@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/application/route.js", "app/(frontend)/page.jsx", "tailwind.config.js", "app/(backoffice)/dashboard/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/application/route.js", "app/(frontend)/page.jsx", "tailwind.config.js", "app/(backoffice)/dashboard/page.jsx", "app/api/send/route.js"],
   "exclude": ["node_modules"]
 }

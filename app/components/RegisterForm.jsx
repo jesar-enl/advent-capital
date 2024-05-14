@@ -38,8 +38,8 @@ export default function RegisterForm({ role }) {
         setLoading(false);
         toast.success('User Created Successfully');
         reset();
-        router.push('/');
-        // router.push(`/verify-account/${responseData.data.id}`);
+        // router.push('/');
+        router.push(`/verify-account/${responseData.data.id}`);
       } else {
         setLoading(false);
         if (response.status === 409) {

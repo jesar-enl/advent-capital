@@ -11,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {Badge} from '@/components/ui/badge'
 
 // This type is used to define the shape of our data.
 export type Application = {
@@ -20,6 +21,7 @@ export type Application = {
   mobile: string;
   loantype: string;
   appdate: string;
+  status: string;
 };
 
 export const columns: ColumnDef<Application>[] = [
@@ -49,6 +51,39 @@ export const columns: ColumnDef<Application>[] = [
     },
   },
   {
+    accessorKey: 'status',
+    header: 'Status',
+    cell: ({ row }) => {
+      const status = row.original.status;
+      switch (status) {
+        case 'PENDING':
+          return (
+            <div className="hover:bg-transparent capitalize bg-orange-100 text-orange-900">
+              {status}
+            </div>
+          );
+        case 'APPROVED':
+          return (
+            <div className="hover:bg-transparent capitalize bg-green-100 text-green-900">
+              {status}
+            </div>
+          );
+        case 'REJECTED':
+          return (
+            <div className="hover:bg-transparent capitalize bg-red-100 text-red-900">
+              {status}
+            </div>
+          );
+        default:
+          return (
+            <div className="capitalize bg-neutral-100 text-neutral-600">
+              {status}
+            </div>
+          );
+      }
+    },
+  },
+  {
     id: 'actions',
     cell: ({ row }) => {
       const application = row.original;
@@ -70,7 +105,10 @@ export const columns: ColumnDef<Application>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link href={`loans/${application.id}`} className="flex items-center gap-2">
+              <Link
+                href={`loans/${application.id}`}
+                className="flex items-center gap-2"
+              >
                 <Eye />
                 View application
               </Link>
