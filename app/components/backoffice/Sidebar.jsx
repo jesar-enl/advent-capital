@@ -111,7 +111,7 @@ export default function Sidebar() {
 
     return initials;
   }
-  const initials = getInitials(session?.user?.name);
+  const initials = getInitials(session?.user?.name ?? 'John Doe');
 
   return (
     <div className="w-[200px] min-w-[200px] min-h-screen bg-green-500 text-slate-100  p-4 hidden md:block sticky top-10">
