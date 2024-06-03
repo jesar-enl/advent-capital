@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import Declarations from '../../../../components/Declarations';
 import LoanDetails from '../../../../components/LoanDetails';
 import PersonalDetails from '../../../../components/PersonalDetails';
+import { redirect } from 'next/navigation';
 
 import { useState } from 'react';
 import React from 'react';
@@ -54,19 +55,7 @@ export default function Application() {
   const [image, setImage] = useState('');
 
   if (!session) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <p className="mb-2 text-3xl text-gray-900">
-          Please Login to your to apply for a loan
-        </p>
-        <Link
-          href="/login"
-          className="bg-blue-600 py-2 px-4 text-gray-100 rounded-lg"
-        >
-          Login
-        </Link>
-      </div>
-    );
+    redirect('/login?callbackUrl=/loans/application')
   }
 
   const handleChange = (e) => {
