@@ -115,48 +115,50 @@ export default function Sidebar() {
 
   return (
     <div className="w-[200px] min-w-[200px] min-h-screen bg-green-500 text-slate-100  p-4 hidden md:block sticky top-10">
-      <Link href="/" className="flex items-center">
-        <Image
-          src="/images/adventcapital_logo.png"
-          className="h-16"
-          alt="Advent Capital Logo"
-          width="100"
-          height="240"
-        />
-      </Link>
-      <div className="grow">
-        <Command style={{ overflow: 'visible' }}>
-          <CommandList style={{ overflow: 'visible' }}>
-            {navLinks.map((nav, key) => (
-              <CommandGroup heading={nav.group} key={key}>
-                {nav.items.map((item, itemKey) => (
-                  <CommandItem
-                    key={itemKey}
-                    href={item.href}
-                    className="flex gap-2 cursor-pointer"
-                  >
-                    {item.icon} {item.title}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            ))}
-          </CommandList>
-        </Command>
-      </div>
-      <div className="flex items-center justify-between gap-2 py-2 px-2 border rounded-[16px]">
-        <div className="rounded-full min-h-8 min-w-8 bg-emerald-600 flex items-center justify-center">
-          <span className="font-medium text-gray-50">{initials}</span>
+      <div className="flex flex-col">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/adventcapital_logo.png"
+            className="h-16"
+            alt="Advent Capital Logo"
+            width="100"
+            height="240"
+          />
+        </Link>
+        <div className="grow text-gray-50">
+          <Command style={{ overflow: 'visible' }}>
+            <CommandList style={{ overflow: 'visible' }}>
+              {navLinks.map((nav, key) => (
+                <CommandGroup heading={nav.group} key={key}>
+                  {nav.items.map((item, itemKey) => (
+                    <CommandItem
+                      key={itemKey}
+                      href={item.href}
+                      className="flex gap-2 cursor-pointer"
+                    >
+                      {item.icon} {item.title}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ))}
+            </CommandList>
+          </Command>
         </div>
-        <div className="grow">
-          <p className="text-gray-50 text-[16px] font-semibold">
-            {session?.user?.name}
-          </p>
-          <p className="text-[12px] text-gray-50">{session?.user?.email}</p>
+        <div className="flex items-center justify-between gap-2 py-2 px-2 border rounded-[16px]">
+          <div className="rounded-full min-h-8 min-w-8 bg-emerald-600 flex items-center justify-center">
+            <span className="font-medium text-gray-50">{initials}</span>
+          </div>
+          <div className="grow">
+            <p className="text-gray-50 text-[16px] font-semibold">
+              {session?.user?.name}
+            </p>
+            <p className="text-[12px] text-gray-50">{session?.user?.email}</p>
+          </div>
         </div>
+        <Button variant="destructive" className='bg-red-600' onClick={() => signOut()}>
+          Log out
+        </Button>
       </div>
-      <Button variant="destructive" onClick={() => signOut()}>
-        Log out
-      </Button>
     </div>
   );
 }
