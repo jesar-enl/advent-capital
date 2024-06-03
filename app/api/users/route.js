@@ -1,10 +1,10 @@
-import db from '../../libs/db';
+import base64url from 'base64url';
 import bcrypt from 'bcrypt';
 import { NextResponse } from 'next/server';
-import { v4 as uuidv4 } from 'uuid';
-import base64url from 'base64url';
 import { Resend } from 'resend';
-import  {EmailTemplate} from '../../components/EmailTemplate'
+import { v4 as uuidv4 } from 'uuid';
+import { EmailTemplate } from '../../components/EmailTemplate';
+import db from '../../libs/db';
 // import {EmailTemplate} from '@/app/components/EmailTemplate'
 
 export async function POST(request) {
@@ -48,14 +48,14 @@ export async function POST(request) {
     // send verification email to user
     const resend = new Resend(process.env.RESEND_API_KEY);
     const userId = newUser.id;
-    const redirectUrl = `login?token=${token}&id=${userId}`
+    const redirectUrl = `login?token=${token}&id=${userId}`;
     const sendMail = await resend.emails.send({
       from: 'Advent Capital <info@adventcapital-uganda.com>',
       to: email,
       subject: 'Account Verification',
       reply_to: 'adventcapital2023@gmail.com',
-      react: EmailTemplate({name, redirectUrl}),
-    })
+      react: EmailTemplate({ name, redirectUrl }),
+    });
     console.log(sendMail);
     return NextResponse.json(
       {

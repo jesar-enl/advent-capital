@@ -12,7 +12,19 @@ import { Providers } from './providers';
 export const metadata: Metadata = {
   title: 'Home - Advent Capital',
   description:
-    'To transform livelihoods by providing inclusive, affordable and innovative financial services to micro and small enterprises.',
+    'At Advent Capital, we transform livelihoods by providing inclusive, affordable and innovative financial services to micro and small enterprises.',
+  keywords: [
+    'loans',
+    'Advent Capital',
+    'Advent',
+    'Capital',
+    'School fees loan',
+  ],
+  openGraph: {
+    title: 'Advent Capital',
+    description:
+      'We transform livelihoods by providing affordable and innovative financial solutions to micro and small enterprizes.',
+  },
 };
 
 const urbanist = Urbanist({ subsets: ['latin'], display: 'swap' });
