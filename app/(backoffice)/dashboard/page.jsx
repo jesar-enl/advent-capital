@@ -13,7 +13,7 @@ export default async function LoansPage() {
     console.log(session?.user);
   }
   if (!session) {
-    redirect('/login');
+    redirect('/login?callbackUrl=/dashboard');
   }
   const email = session?.user?.email;
   const role = session?.user?.role;

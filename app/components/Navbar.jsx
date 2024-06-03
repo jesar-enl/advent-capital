@@ -1,5 +1,4 @@
 'use client';
-import { SignInButton, SignOutButton } from '@/components/Button';
 import {
   Button,
   Dropdown,
@@ -16,7 +15,6 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from '@nextui-org/react';
-
 import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 
@@ -177,13 +175,19 @@ export default function NavbarSection() {
                 </Link>
               </NavbarMenuItem>
             ))}
-            {SignOutButton}
+            <Button color="danger" onClick={() => signOut()} variant="solid">
+              Log out
+            </Button>
           </NavbarMenu>
         </>
       ) : (
         <>
           <NavbarContent justify="end">
-            <NavbarItem>{SignInButton}</NavbarItem>
+            <NavbarItem>
+              <Button as={Link} color="primary" href="/login" variant="solid">
+                Get Started
+              </Button>
+            </NavbarItem>
           </NavbarContent>
           <NavbarMenu>
             <Dropdown>
@@ -222,7 +226,9 @@ export default function NavbarSection() {
                 </Link>
               </NavbarMenuItem>
             ))}
-            {SignInButton}
+            <Button as={Link} color="primary" href="/login" variant="solid">
+              Get Started
+            </Button>
           </NavbarMenu>
         </>
       )}

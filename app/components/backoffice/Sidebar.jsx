@@ -1,62 +1,120 @@
 'use client';
+
+import { Button } from '@/components/ui/button';
+import {
+  Command,
+  CommandGroup,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
 import { Home, Settings, User2 } from 'lucide-react';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
+import { FaRegBell } from 'react-icons/fa6';
 import { RiUser2Fill } from 'react-icons/ri';
-
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const router = useRouter();
   const { data: session, status } = useSession();
 
-  
   if (status === 'unauthenticated') {
-    router.push('/login');
-    return;
+    redirect('/login?callbackUrl=/dashboard');
   }
 
   const adminLinks = [
     {
-      title: 'Dashboard',
-      icon: Home,
-      href: '/dashboard',
+      group: 'General',
+      items: [
+        {
+          title: 'Dashboard',
+          icon: <Home />,
+          href: '/dashboard',
+        },
+        {
+          title: 'Profile',
+          icon: <User2 />,
+          href: '/dashboard/profile',
+        },
+      ],
     },
     {
-      title: 'Profile',
-      icon: User2,
-      href: '/dashboard/profile',
-    },
-    {
-      title: 'Manage Users',
-      icon: RiUser2Fill,
-      href: '/dashboard/users',
-    },
-    {
-      title: 'Settings',
-      icon: Settings,
-      href: '/dashboard/settings',
+      group: 'Settings',
+      items: [
+        {
+          title: 'General settings',
+          icon: <Settings />,
+          href: '/dashboard/settings',
+        },
+        {
+          title: 'Manage Users',
+          icon: <RiUser2Fill />,
+          href: '/dashboard/users',
+        },
+        {
+          title: 'Logs',
+          icon: <Settings />,
+          href: '/dashboard/logs',
+        },
+      ],
     },
   ];
   const userLinks = [
     {
-      title: 'Dashboard',
-      icon: Home,
-      href: '/dashboard',
+      group: 'General',
+      items: [
+        {
+          title: 'Dashboard',
+          icon: <Home />,
+          href: '/dashboard',
+        },
+        {
+          title: 'Profile',
+          icon: <User2 />,
+          href: '/dashboard/profile',
+        },
+        {
+          title: 'Notifications',
+          icon: <FaRegBell />,
+          href: '/dashboard/notifications',
+        },
+      ],
     },
     {
-      title: 'Profile',
-      icon: User2,
-      href: '/dashboard/profile',
+      group: 'Settings',
+      items: [
+        {
+          title: 'General settings',
+          icon: <Settings />,
+          href: '/dashboard/settings',
+        },
+        {
+          title: 'Logs',
+          icon: <Settings />,
+          href: '/dashboard/logs',
+        },
+      ],
     },
   ];
 
   const navLinks = session?.user?.role === 'admin' ? adminLinks : userLinks;
 
+  function getInitials(fullName) {
+    // Split the full name into words
+    const words = fullName.split(' ');
+    let initials = '';
+    for (let i = 0; i < words.length; i++) {
+      initials += words[i][0];
+    }
+    initials = initials.toUpperCase();
+
+    return initials;
+  }
+  const initials = getInitials(session?.user?.name);
+
   return (
-    <div className="w-[200px] min-h-screen bg-green-500 text-slate-100  p-4 hidden md:block sticky top-10">
+    <div className="w-[200px] min-w-[200px] min-h-screen bg-green-500 text-slate-100  p-4 hidden md:block sticky top-10">
       <Link href="/" className="flex items-center">
         <Image
           src="/images/adventcapital_logo.png"
@@ -66,25 +124,39 @@ export default function Sidebar() {
           height="240"
         />
       </Link>
-      <div className="my-6 flex flex-col space-y-2">
-        {navLinks.map((link, i) => {
-          const Icon = link.icon;
-          return (
-            <Link
-              key={i}
-              href={link.href}
-              className={
-                pathname === link.href
-                  ? 'text-slate-100 flex items-center bg-green-400 px-4 py-2 rounded-md mb-2'
-                  : 'text-slate-100 flex items-center py-2'
-              }
-            >
-              <Icon className="w-4 h-4 mr-2 " />
-              <span>{link.title}</span>
-            </Link>
-          );
-        })}
+      <div className="grow">
+        <Command style={{ overflow: 'visible' }}>
+          <CommandList style={{ overflow: 'visible' }}>
+            {navLinks.map((nav, key) => (
+              <CommandGroup heading={nav.group} key={key}>
+                {nav.items.map((item, itemKey) => (
+                  <CommandItem
+                    key={itemKey}
+                    href={item.href}
+                    className="flex gap-2 cursor-pointer"
+                  >
+                    {item.icon} {item.title}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ))}
+          </CommandList>
+        </Command>
       </div>
+      <div className="flex items-center justify-between gap-2 py-2 px-2 border rounded-[16px]">
+        <div className="rounded-full min-h-8 min-w-8 bg-emerald-600 flex items-center justify-center">
+          <span className="font-medium text-gray-50">{initials}</span>
+        </div>
+        <div className="grow">
+          <p className="text-gray-50 text-[16px] font-semibold">
+            {session?.user?.name}
+          </p>
+          <p className="text-[12px] text-gray-50">{session?.user?.email}</p>
+        </div>
+      </div>
+      <Button variant="destructive" onClick={() => signOut()}>
+        Log out
+      </Button>
     </div>
   );
 }
