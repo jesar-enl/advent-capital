@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
 import { FaRegBell } from 'react-icons/fa6';
 import { RiUser2Fill } from 'react-icons/ri';
+import { Send } from 'lucide-react';
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -36,6 +37,11 @@ export default function Sidebar() {
           title: 'Profile',
           icon: <User2 />,
           href: '/dashboard/profile',
+        },
+        {
+          title: 'Acceptance letter',
+          icon: <Send />,
+          href: '/accept-letter',
         },
       ],
     },
