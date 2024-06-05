@@ -6,7 +6,6 @@ import {
   Hr,
   Html,
   Img,
-  Link,
   Preview,
   Section,
   Text,
@@ -39,7 +38,7 @@ async function AcceptLetterTemplate({
         <Container style={container}>
           <Section style={box}>
             <Img
-              src="adventcapital_logo.png"
+              src={`${baseUrl}/public/images/adventcapital_logo.png`}
               width="49"
               height="21"
               alt="Advent Capital"
@@ -54,9 +53,12 @@ async function AcceptLetterTemplate({
             </Text>
             <Text style={paragraph}>
               Loan Amount: UGX {loanAmount}
+              <br />
               {amountInWords}
-              Loan Period: {loanPeriod} working days/months. Loan Interest:{' '}
-              {loanInterest}%
+              <br />
+              Loan Period: {loanPeriod} working days/months.
+              <br />
+              Loan Interest: {loanInterest}%
             </Text>
             <Hr style={hr} />
             <Text style={paragraph}>
@@ -65,12 +67,12 @@ async function AcceptLetterTemplate({
               the loan. You are also required to have a copy of your National ID
               and a copy of your guarantors&#39; National IDs and their passport
               photos.
-              <Link
-                style={anchor}
+              <Button
+                style={button}
                 href={`${baseUrl}/accept-letter/${letterId}`}
               >
-                <Button style={button}>Acceptance letter</Button>
-              </Link>
+                Your Acceptance letter
+              </Button>
             </Text>
             <Text style={paragraph}>
               Attach the copies as mentioned above and submit them, along with
