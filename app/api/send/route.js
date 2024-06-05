@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import * as z from 'zod';
 import AcceptLetterTemplate from '../../components/AcceptLetterTemplate';
 import db from '../../libs/db';
-import * as z from 'zod';
 
 const letterSchema = z.object({
   name: z
@@ -38,7 +38,20 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request) {
   try {
     const formdata = await request.json();
-    const { name, email, date, bustype, busLocation, loanType, loanAmount, loanPeriod, loanInterest, purpose, amountInWords } = letterSchema.parse(formdata);
+    const {
+      name,
+      email,
+      date,
+      bustype,
+      busLocation,
+      loanType,
+      loanAmount,
+      loanPeriod,
+      loanInterest,
+      purpose,
+      amountInWords,
+      security,
+    } = letterSchema.parse(formdata);
 
     const letter = await db.letter.create({
       data: {
