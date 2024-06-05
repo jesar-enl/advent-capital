@@ -1,5 +1,5 @@
 'use client';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -9,6 +9,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import ImageInput from '../FormInputs/ImageInput';
 
 export default function ProfileForm() {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const {
     register,
@@ -39,8 +40,8 @@ export default function ProfileForm() {
       if (response.ok) {
         setLoading(false);
         toast.success('User Created Successfully');
-        reset();
-        router.push('/login');
+        // reset();
+        router.push('/dashboard');
       } else {
         setLoading(false);
         if (response.status === 409) {
@@ -74,7 +75,7 @@ export default function ProfileForm() {
           htmlFor="name"
           className="block mb-2 text-sm font-medium text-gray-900"
         >
-          Your name
+          Name
         </label>
         <input
           {...register('name', { required: true })}
@@ -82,7 +83,8 @@ export default function ProfileForm() {
           name="name"
           id="name"
           className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-          placeholder="John Doe"
+          // placeholder="John Doe"
+          defaultValue={session?.user?.name}
           required=""
         />
         {errors.name && (
@@ -104,7 +106,7 @@ export default function ProfileForm() {
           name="email"
           id="email"
           className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-          placeholder="name@company.com"
+          defaultValue={session?.user?.email}
           required=""
         />
         {errors.email && (

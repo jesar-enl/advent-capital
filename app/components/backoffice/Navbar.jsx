@@ -44,7 +44,7 @@ export default function Navigationbar() {
   const initials = getInitials(session?.user?.name ?? 'John Doe');
 
   return (
-    <Navbar disableAnimation isBordered className="bg-green-600 p-2 rounded-lg">
+    <Navbar disableAnimation isBordered className="bg-green-600 p-2 rounded-lg block md:hidden">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
