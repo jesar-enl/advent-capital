@@ -16,6 +16,7 @@ import db from '../libs/db';
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 async function AcceptLetterTemplate({
+  id,
   name,
   email,
   loanType,
