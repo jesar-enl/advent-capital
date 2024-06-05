@@ -42,16 +42,16 @@ export async function POST(request) {
 
     const letter = await db.letter.create({
       data: {
-        name: name,
-        email: email,
+        name,
+        email,
         date: `${date}T00:00:00Z`,
-        bustype: bustype,
-        busLocation: busLocation,
-        loanType: loanType,
-        purpose: purpose,
-        loanAmount: loanAmount,
-        loanInterest: loanInterest,
-        security: security,
+        bustype,
+        busLocation,
+        loanType,
+        purpose,
+        loanAmount,
+        loanInterest,
+        security,
       },
     });
 
