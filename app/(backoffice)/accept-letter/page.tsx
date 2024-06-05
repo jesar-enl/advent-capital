@@ -107,8 +107,8 @@ const AcceptanceLetter = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="container">
-        <div className="space-y-2 mb-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="container bg-zinc-100 p-2">
+        <div className="space-y-2 grid grid-cols-2 gap-2 mb-6">
           <FormField
             control={form.control}
             name="name"

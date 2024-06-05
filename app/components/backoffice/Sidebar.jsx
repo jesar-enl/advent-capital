@@ -131,7 +131,7 @@ export default function Sidebar() {
             height="240"
           />
         </Link>
-        <div className="grow text-gray-50">
+        <div className="flex mb-2 grow text-gray-50">
           <Command style={{ overflow: 'visible' }}>
             <CommandList style={{ overflow: 'visible' }}>
               {navLinks.map((nav, key) => (
@@ -139,10 +139,11 @@ export default function Sidebar() {
                   {nav.items.map((item, itemKey) => (
                     <CommandItem
                       key={itemKey}
-                      href={item.href}
                       className="flex gap-2 cursor-pointer"
                     >
-                      {item.icon} {item.title}
+                      <Link href={item.href}>
+                        {item.icon} {item.title}
+                      </Link>
                     </CommandItem>
                   ))}
                 </CommandGroup>
@@ -150,7 +151,7 @@ export default function Sidebar() {
             </CommandList>
           </Command>
         </div>
-        <div className="flex items-center justify-between gap-2 py-2 px-2 border rounded-[16px]">
+        <div className="flex items-center justify-between gap-2 py-1 px-2 border rounded-[16px] mb-4">
           <div className="rounded-full min-h-8 min-w-8 bg-emerald-600 flex items-center justify-center">
             <span className="font-medium text-gray-50">{initials}</span>
           </div>
@@ -161,7 +162,11 @@ export default function Sidebar() {
             <p className="text-[12px] text-gray-50">{session?.user?.email}</p>
           </div>
         </div>
-        <Button variant="destructive" className='bg-red-600' onClick={() => signOut()}>
+        <Button
+          variant="destructive"
+          className="bg-red-600"
+          onClick={() => signOut()}
+        >
           Log out
         </Button>
       </div>
