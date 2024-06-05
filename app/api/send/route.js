@@ -38,7 +38,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request) {
   try {
     const formdata = await request.json();
-    const { name, email, date, bustype, busLocation, loanType, loanAmount, loanPeriod, loanInterest, amountInWords } = letterSchema.parse(formdata);
+    const { name, email, date, bustype, busLocation, loanType, loanAmount, loanPeriod, loanInterest, purpose, amountInWords } = letterSchema.parse(formdata);
 
     const letter = await db.letter.create({
       data: {
