@@ -98,9 +98,9 @@ const AcceptanceLetter = () => {
         toast.success('Email sent successfully and sent to client!');
         setLoading(false);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      toast.error('Email not sent!');
+      toast.error('Email not sent!', error);
     }
     setLoading(false);
   };

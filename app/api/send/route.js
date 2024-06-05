@@ -55,7 +55,7 @@ export async function POST(request) {
       },
     });
 
-    
+    console.log(letter);
 
     const emailData = await resend.emails.send({
       from: 'Advent Capital <info@adventcapital-uganda.com>',
@@ -63,8 +63,8 @@ export async function POST(request) {
       subject: 'Loan Appication Accepted',
       reply_to: 'adventcapital2023@gmail.com',
       react: AcceptLetterTemplate({
-        name: formdata.name,
-        email: formdata.email,
+        name: name,
+        email: email,
         loanType,
         loanAmount,
         loanPeriod,

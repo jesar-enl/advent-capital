@@ -131,7 +131,7 @@ export default function Sidebar() {
             height="240"
           />
         </Link>
-        <div className="flex mb-2 grow text-gray-50">
+        <div className="grow text-gray-50">
           <Command style={{ overflow: 'visible' }}>
             <CommandList style={{ overflow: 'visible' }}>
               {navLinks.map((nav, key) => (
@@ -151,7 +151,7 @@ export default function Sidebar() {
             </CommandList>
           </Command>
         </div>
-        <div className="flex items-center justify-between gap-2 py-1 px-2 border rounded-[16px] mb-4">
+        <div className="flex items-center justify-between gap-2 py-1 px-2 border rounded-[16px] mt-10 mb-4">
           <div className="rounded-full min-h-8 min-w-8 bg-emerald-600 flex items-center justify-center">
             <span className="font-medium text-gray-50">{initials}</span>
           </div>
