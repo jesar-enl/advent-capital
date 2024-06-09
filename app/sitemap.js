@@ -5,7 +5,7 @@ export default function sitemap() {
       lastModified: new Date(),
     },
     {
-      url: 'https:/www./adventcapital-uganda.com/about',
+      url: 'https:/www.adventcapital-uganda.com/about',
       lastModified: new Date(),
     },
     {
