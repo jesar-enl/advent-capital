@@ -15,10 +15,7 @@ export const metadata = {
   description: 'Apply now to get a loan that suits your needs and goals.',
 };
 
-export default async function LoanDetails({ params: { id } }) {
-  const application = await Loan(id);
-  const session = await getServerSession(authOptions);
-
+const ApproveButton = ({ id }) => {
   const handleUpdateStatus = async () => {
     try {
       const response = await fetch(`/api/application/${id}`, {
@@ -41,6 +38,22 @@ export default async function LoanDetails({ params: { id } }) {
   };
 
   return (
+    <button
+      type="button"
+      onClick={handleUpdateStatus}
+      className="inline-flex items-center px-3 py-1 text-xl font-medium text-gray-900 bg-white border-t border-b border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-500 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-500"
+    >
+      <TiTick className="me-2 text-green-600 text-xl" />
+      Approve
+    </button>
+  );
+};
+
+export default async function LoanDetails({ params: { id } }) {
+  const application = await Loan(id);
+  const session = await getServerSession(authOptions);
+
+  return (
     <div className="flex flex-col mt-4">
       <div className="flex flex-col px-4 py-2 gap-2">
         <Link
@@ -51,14 +64,7 @@ export default async function LoanDetails({ params: { id } }) {
         </Link>
         {session?.user?.role === 'admin' && (
           <div className="inline-flex rounded-md shadow-sm" role="group">
-            <button
-              type="button"
-              onClick={handleUpdateStatus}
-              className="inline-flex items-center px-3 py-1 text-xl font-medium text-gray-900 bg-white border-t border-b border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-500 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-500"
-            >
-              <TiTick className="me-2 text-green-600 text-xl" />
-              Approve
-            </button>
+            <ApproveButton id={id} />
             <button
               type="button"
               className="inline-flex items-center px-3 py-1 text-xl font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-500 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-500"
