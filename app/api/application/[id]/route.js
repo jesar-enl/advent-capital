@@ -20,3 +20,26 @@ export async function GET(request, {params:{id}}) {
     );
   }
 }
+
+export async function PUT(request, { params: { id } }) {
+  try {
+    const updateStatus = await db.application.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        status: 'APPROVED', // Update the status to APPROVED
+      },
+    });
+
+    return NextResponse.json(updateStatus);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: 'Failed to update application in database',
+        error,
+      },
+      { status: 500 }
+    );
+  }
+}
