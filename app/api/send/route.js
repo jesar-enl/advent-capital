@@ -68,6 +68,15 @@ export async function POST(request) {
       },
     });
 
+    const updateStatus = await db.application.update({
+      where: {
+        id: application.id,
+      },
+      data: {
+        status: 'APPROVED', // Update the status to APPROVED
+      },
+    });
+
     console.log(letter);
 
     const emailData = await resend.emails.send({
@@ -87,7 +96,7 @@ export async function POST(request) {
       }),
     });
 
-    const response = { data: letter, emailData };
+    const response = { data: letter, emailData, updateStatus };
 
     return NextResponse.json(response, { status: 200 });
   } catch (error) {

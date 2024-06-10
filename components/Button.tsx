@@ -1,20 +1,18 @@
+'use client';
 import { Button } from '@/components/ui/button';
-import { signOut } from 'next-auth/react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { TiTick } from 'react-icons/ti';
 
-export function SignOutButton() {
+export function AcceptButton() {
+  const router = useRouter();
   return (
-    <Button variant="destructive" onClick={() => signOut()}>
-      Log out
+    <Button
+      type="button"
+      onClick={() => router.push('/accept-letter')}
+      className="inline-flex items-center px-4 py-2 text-xl font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+    >
+      <TiTick className="me-2 text-green-600 text-xl" />
+      Approve
     </Button>
   );
 }
-
-export function SignInButton() {
-  return (
-    <Button asChild>
-      <Link href="/login">Get Started</Link>
-    </Button>
-  );
-}
-

@@ -280,6 +280,7 @@ const AcceptanceLetter = () => {
             </FormItem>
           )}
         />
+        <div className="mt-6">
         {loading ? (
           <div className="flex items-center justify-center">
             <LoadingButton />
@@ -289,6 +290,7 @@ const AcceptanceLetter = () => {
             <SendButton />
           </div>
         )}
+        </div>
       </form>
     </Form>
   );

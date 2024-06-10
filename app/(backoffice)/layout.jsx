@@ -1,4 +1,4 @@
-import Navbar from '../components/backoffice/Navbar';
+// import Navbar from '../components/backoffice/Navbar';
 import Sidebar from '../components/backoffice/Sidebar';
 
 export const metadata = {
@@ -11,8 +11,8 @@ export default function Layout({ children }) {
   return (
     <div className="flex ">
       <Sidebar />
-      <div className="flex flex-col flex-grow">
-        <Navbar />
+      <div className="ml-[300px] flex flex-col flex-grow">
+        {/* <Navbar /> */}
         <main className="">{children}</main>
       </div>
     </div>
