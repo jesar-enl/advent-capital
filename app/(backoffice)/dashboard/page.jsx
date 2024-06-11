@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { Loans } from '../../libs/loans';
 import { columns } from './columns';
 import { DataTable } from './data-table';
+import { CalendarDemo } from '../../components/calendar';
 
 export default async function LoansPage() {
   const session = await getServerSession(authOptions);
@@ -51,11 +52,9 @@ export default async function LoansPage() {
       <div className="container mx-auto px-8 py-10">
         <DataTable columns={columns} data={data} />
       </div>
-      {/* {session?.user?.role === 'admin' && (
-        <div className="containe">
-          <ChartRepresentation />
-        </div>
-      )} */}
+      <div className="container">
+        <CalendarDemo />
+      </div>
     </div>
   );
 }

@@ -22,9 +22,6 @@ const ApproveButton = ({ id }) => {
       if (response.ok) {
         toast.success('Status updated successfully.');
         redirect('/accept-letter');
-      } else {
-        toast.error('Error updating status');
-        console.error('Error updating status:', response.status);
       }
     } catch (error) {
       toast.error('Error updating status');

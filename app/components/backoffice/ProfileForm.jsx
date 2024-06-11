@@ -22,6 +22,7 @@ export default function ProfileForm() {
   );
   const [loading, setLoading] = useState(false);
   const [emailErr, setEmailErr] = useState('');
+  
   async function onSubmit(data) {
     try {
       console.log(data);
@@ -39,8 +40,8 @@ export default function ProfileForm() {
 
       if (response.ok) {
         setLoading(false);
-        toast.success('User Created Successfully');
-        // reset();
+        toast.success('User updated Successfully');
+        reset();
         router.push('/dashboard');
       } else {
         setLoading(false);
