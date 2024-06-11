@@ -7,6 +7,7 @@ import { Loans } from '../../libs/loans';
 import { columns } from './columns';
 import { DataTable } from './data-table';
 import { CalendarDemo } from '../../components/calendar';
+import TimelineDemo from '@/components/timeline';
 
 export default async function LoansPage() {
   const session = await getServerSession(authOptions);
@@ -52,8 +53,9 @@ export default async function LoansPage() {
       <div className="container mx-auto px-8 py-10">
         <DataTable columns={columns} data={data} />
       </div>
-      <div className="container">
+      <div className="container flex justify-between px-2 py-1">
         <CalendarDemo />
+        <TimelineDemo />
       </div>
     </div>
   );
