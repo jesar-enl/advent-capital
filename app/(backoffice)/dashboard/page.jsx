@@ -53,7 +53,7 @@ export default async function LoansPage() {
       <div className="container mx-auto px-8 py-10">
         <DataTable columns={columns} data={data} />
       </div>
-      <div className="container flex justify-between px-2 py-1">
+      <div className="container flex flex-col gap-4 px-2 py-1">
         <CalendarDemo />
         <TimelineDemo />
       </div>
