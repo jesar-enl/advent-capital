@@ -143,9 +143,9 @@ export default function SidebarDesktop() {
                   </div>
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="mb-2 w-56 p-3 rounded-[1rem]">
+              <PopoverContent className="mb-2 w-56 p-2 rounded-[1rem]">
                 <Button
-                variant='destuctive'
+                variant='destructive'
                   onClick={() => signOut()}
                   className="w-full flex items-center"
                 >
