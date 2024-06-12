@@ -1,13 +1,14 @@
-import { authOptions } from '@/app/libs/authOptions';
-import { getServerSession } from 'next-auth';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { authOptions } from "@/app/libs/authOptions";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 // import ChartRepresentation from '../../components/backoffice/Chart';
-import { Loans } from '../../libs/loans';
-import { columns } from './columns';
-import { DataTable } from './data-table';
-import { CalendarDemo } from '../../components/calendar';
-import TimelineDemo from '@/components/timeline';
+import AreaChartWithLabel from "@/components/area-chart";
+import TimelineDemo from "@/components/timeline";
+import { CalendarDemo } from "../../components/calendar";
+import { Loans } from "../../libs/loans";
+import { columns } from "./columns";
+import { DataTable } from "./data-table";
 
 export default async function LoansPage() {
   const session = await getServerSession(authOptions);
@@ -15,7 +16,7 @@ export default async function LoansPage() {
     console.log(session?.user);
   }
   if (!session) {
-    redirect('/login?callbackUrl=/dashboard');
+    redirect("/login?callbackUrl=/dashboard");
   }
   const email = session?.user?.email;
   const role = session?.user?.role;
@@ -32,19 +33,19 @@ export default async function LoansPage() {
   console.log(data);
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 py-4 px-4 container mx-auto w-full">
-      <div className="flex flex-col items-center justify-start w-full h-full">
-        <h1 className="text-xl md:text-2xl text-green-600">
+    <div className="container relative mx-auto mt-5 w-full overflow-x-auto px-4 py-4 shadow-md sm:rounded-lg">
+      <div className="flex h-full w-full flex-col items-center justify-start">
+        <h1 className="text-xl text-green-600 md:text-2xl">
           Welcome {session?.user?.name}
         </h1>
       </div>
-      <div className="flex items-center px-8 py-4 justify-between">
-        <h2 className="text-lg md:text-xl text-green-700">
+      <div className="flex items-center justify-between px-8 py-4">
+        <h2 className="text-lg text-green-700 md:text-xl">
           Loan applications ({data.length})
         </h2>
-        {session?.user?.role === 'user' && (
+        {session?.user?.role === "user" && (
           <Link href="/loans/application">
-            <button className="p-2 rounded-md bg-green-600 hover:bg-green-700 transform transition duration-500 hover:scale-110 text-gray-100 font-bold text-base">
+            <button className="transform rounded-md bg-green-600 p-2 text-base font-bold text-gray-100 transition duration-500 hover:scale-110 hover:bg-green-700">
               Apply for a loan
             </button>
           </Link>
@@ -54,7 +55,10 @@ export default async function LoansPage() {
         <DataTable columns={columns} data={data} />
       </div>
       <div className="container flex flex-col gap-4 px-2 py-1">
-        <CalendarDemo />
+        <div className="flex items-center justify-between">
+          <CalendarDemo />
+          <AreaChartWithLabel />
+        </div>
         <TimelineDemo />
       </div>
     </div>
