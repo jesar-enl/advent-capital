@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
 import { Bell, Home, LogOut, MoreHorizontal, Send, Settings, User2, Users } from 'lucide-react';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
