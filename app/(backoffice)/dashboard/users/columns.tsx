@@ -50,10 +50,10 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>
               <Link
-                href={`dashboard/users/${user.id}`}
+                href={`users/${user.id}`}
                 className="flex items-center gap-2"
               >
-                <Pencil />
+                <Pencil size={15} />
                 Edit
               </Link>
             </DropdownMenuItem>
