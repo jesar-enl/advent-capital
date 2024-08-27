@@ -1,11 +1,10 @@
-'use client';
+"use client";
 import {
   Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Image,
   Link,
   Navbar,
   NavbarBrand,
@@ -14,9 +13,9 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from '@nextui-org/react';
-import { signOut, useSession } from 'next-auth/react';
-import { useState } from 'react';
+} from "@nextui-org/react";
+import { signOut, useSession } from "next-auth/react";
+import { useState } from "react";
 
 export default function NavbarSection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,21 +23,28 @@ export default function NavbarSection() {
 
   const menuItems = [
     {
-      name: 'Profile',
-      href: '/dashboard/profile',
+      name: "Home",
+      href: "/",
+      icon: "/icons/home.png",
     },
-    { name: 'Dashboard', href: '/dashboard' },
-    { name: 'About', href: '/about' },
+    { name: "Dashboard", href: "/dashboard", icon: "/icons/dashboard.png" },
+    { name: "About Us", href: "/about", icon: "/icons/about-us.png" },
     {
-      name: 'Contact',
-      href: '/contact-us',
+      name: "Contact Us",
+      href: "/contact-us",
+      icon: "/icons/contact.png",
+    },
+    {
+      name: "Profile",
+      href: "/dashboard/profile",
+      icon: "/icons/user.png",
     },
   ];
 
   function getInitials(fullName) {
     // Split the full name into words
-    const words = fullName.split(' ');
-    let initials = '';
+    const words = fullName.split(" ");
+    let initials = "";
     for (let i = 0; i < words.length; i++) {
       initials += words[i][0];
     }
@@ -47,40 +53,56 @@ export default function NavbarSection() {
     return initials;
   }
 
-  const initials = getInitials(session?.user?.name ?? 'John Doe');
+  const initials = getInitials(session?.user?.name ?? "John Doe");
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-green-600">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-[#266E2E]">
       <NavbarContent>
         <NavbarMenuToggle
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <NavbarBrand>
           <Link href="/">
-            <Image
-              isZoomed
-              width={100}
-              height={100}
-              alt="Advent Capital Logo"
-              src="/images/adventcapital_logo.png"
-            />
+            <h1 className="text-base tracking-wider text-[#10067F] leading-inherit">
+              ADVENT CAPITAL
+            </h1>
           </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent
-        className="hidden sm:flex gap-4 text-xl text-gray-50"
+        className="hidden gap-4 text-xl text-gray-50 sm:flex"
         justify="center"
       >
         <NavbarItem>
-          <Link className="text-xl text-gray-50" href="/dashboard">
-            Dashboard
+          <Link className="gap-1text-xl flex text-gray-50" href="/">
+            <img
+              src="/icons/home.png"
+              alt="icon"
+              className="h-[16px] w-[20px]"
+            />
+            <span>Home</span>
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-xl text-gray-50" href="/about">
-            About
+          <Link className="gap-1text-xl flex text-gray-50" href="/dashboard">
+            <img
+              src="/icons/dashboard.png"
+              alt="icon"
+              className="h-[16px] w-[20px]"
+            />
+            <span>Dashboard</span>
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link className="gap-1text-xl flex text-gray-50" href="/about">
+            <img
+              src="/icons/about-us.png"
+              alt="icon"
+              className="h-[16px] w-[20px]"
+            />
+            <span>About Us</span>
           </Link>
         </NavbarItem>
         <Dropdown>
@@ -90,16 +112,21 @@ export default function NavbarSection() {
                 disableRipple
                 radius="sm"
                 variant="light"
-                className="text-xl text-gray-50 p-0 bg-transparent data-[hover=true]:bg-transparent"
+                className="flex gap-1 bg-transparent p-0 text-xl text-gray-50 data-[hover=true]:bg-transparent"
               >
-                Services
+                <img
+                  src="/icons/services.png"
+                  alt="icon"
+                  className="h-[16px] w-[20px]"
+                />
+                <span>Services</span>
               </Button>
             </DropdownTrigger>
           </NavbarItem>
           <DropdownMenu
             aria-label="Link actions"
             className=""
-            itemClasses={{ base: 'gap-4' }}
+            itemClasses={{ base: "gap-4" }}
           >
             <DropdownItem key="loans" href="/services/loans">
               Loans
@@ -110,17 +137,18 @@ export default function NavbarSection() {
           </DropdownMenu>
         </Dropdown>
         <NavbarItem>
-          <Link className="text-xl text-gray-50" href="/contact-us">
-            Contact us
+          <Link className="flex gap-1 text-xl text-gray-50" href="/contact-us">
+            <img src="/icons/" alt="icon" className="h-[16px] w-[20px]" />
+            <span>Contact Us</span>
           </Link>
         </NavbarItem>
       </NavbarContent>
-      {status === 'authenticated' ? (
+      {status === "authenticated" ? (
         <>
           <NavbarContent justify="end">
             <NavbarItem className="hidden lg:flex">
               <div className="flex items-center space-x-4">
-                <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-600 rounded-full ">
+                <div className="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-600">
                   <span className="font-medium text-slate-200">{initials}</span>
                 </div>
 
@@ -146,16 +174,21 @@ export default function NavbarSection() {
                     disableRipple
                     radius="sm"
                     variant="light"
-                    className="text-xl p-0 bg-transparent data-[hover=true]:bg-transparent"
+                    className="flex gap-1 bg-transparent p-0 text-xl data-[hover=true]:bg-transparent"
                   >
-                    Services
+                    <img
+                      src="/icons/services.png"
+                      alt="icon"
+                      className="h-[16px] w-[20px]"
+                    />
+                    <span>Services</span>
                   </Button>
                 </DropdownTrigger>
               </NavbarMenuItem>
               <DropdownMenu
                 aria-label="Link actions"
                 className=""
-                itemClasses={{ base: 'gap-4' }}
+                itemClasses={{ base: "gap-4" }}
               >
                 <DropdownItem key="loans" href="/services/loans">
                   Loans
@@ -170,7 +203,8 @@ export default function NavbarSection() {
             </Dropdown>
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
-                <Link className="w-full" href={item.href} size="lg">
+                <Link className="flex w-full gap-1" href={item.href} size="lg">
+                  {item.icon}
                   {item.name}
                 </Link>
               </NavbarMenuItem>
@@ -197,16 +231,22 @@ export default function NavbarSection() {
                     disableRipple
                     radius="sm"
                     variant="light"
-                    className="text-xl p-0 bg-transparent data-[hover=true]:bg-transparent"
+                    className="flex gap-1 bg-transparent p-0 text-xl data-[hover=true]:bg-transparent"
                   >
-                    Services
+                    {" "}
+                    <img
+                      src="/icons/services.png"
+                      alt="icon"
+                      className="h-[16px] w-[20px]"
+                    />
+                    <span>Services</span>
                   </Button>
                 </DropdownTrigger>
               </NavbarMenuItem>
               <DropdownMenu
                 aria-label="Link actions"
                 className=""
-                itemClasses={{ base: 'gap-4' }}
+                itemClasses={{ base: "gap-4" }}
               >
                 <DropdownItem key="loans" href="/services/loans">
                   Loans
@@ -221,11 +261,22 @@ export default function NavbarSection() {
             </Dropdown>
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
-                <Link className="w-full" href={item.href} size="lg">
+                <Link className="flex w-full gap-1" href={item.href} size="lg">
+                  {item.icon}
                   {item.name}
                 </Link>
               </NavbarMenuItem>
             ))}
+            <Link href="/login">
+              <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px]">
+                <img
+                  src="/icons/user.png"
+                  alt="icon"
+                  className="h-[16px] w-[16px]"
+                />
+                <span>OPEN AN ACCOUNT</span>
+              </button>
+            </Link>
             <Button as={Link} color="primary" href="/login" variant="solid">
               Get Started
             </Button>

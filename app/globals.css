@@ -6,7 +6,7 @@
 .containe div {
   margin-bottom: 9rem;
 }
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
