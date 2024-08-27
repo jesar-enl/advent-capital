@@ -80,7 +80,7 @@ export default function NavbarSection() {
             <img
               src="/icons/home.png"
               alt="icon"
-              className="h-[20px] w-[20px]"
+              className="h-[12px] w-[12px]"
             />
             <span>Home</span>
           </Link>
@@ -90,7 +90,7 @@ export default function NavbarSection() {
             <img
               src="/icons/dashboard.png"
               alt="icon"
-              className="h-[20px] w-[20px]"
+              className="h-[12px] w-[12px]"
             />
             <span>Dashboard</span>
           </Link>
@@ -100,7 +100,7 @@ export default function NavbarSection() {
             <img
               src="/icons/about-us.png"
               alt="icon"
-              className="h-[20px] w-[20px]"
+              className="h-[12px] w-[12px]"
             />
             <span>About Us</span>
           </Link>
@@ -117,7 +117,7 @@ export default function NavbarSection() {
                 <img
                   src="/icons/services.png"
                   alt="icon"
-                  className="h-[20px] w-[20px]"
+                  className="h-[12px] w-[12px]"
                 />
                 <span>Services</span>
               </Button>
@@ -141,7 +141,7 @@ export default function NavbarSection() {
             <img
               src="/icons/contact.png"
               alt="icon"
-              className="h-[20px] w-[20px]"
+              className="h-[12px] w-[12px]"
             />
             <span>Contact Us</span>
           </Link>
@@ -183,7 +183,7 @@ export default function NavbarSection() {
                     <img
                       src="/icons/services.png"
                       alt="icon"
-                      className="h-[20px] w-[20px]"
+                      className="h-[12px] w-[12px]"
                     />
                     <span>Services</span>
                   </Button>
@@ -227,7 +227,7 @@ export default function NavbarSection() {
                   <img
                     src="/icons/user.png"
                     alt="icon"
-                    className="h-[16px] w-[16px]"
+                    className="h-[12px] w-[12px]"
                   />
                   <span className="text-white">OPEN AN ACCOUNT</span>
                 </button>
@@ -248,7 +248,7 @@ export default function NavbarSection() {
                     <img
                       src="/icons/services.png"
                       alt="icon"
-                      className="h-[20px] w-[20px]"
+                      className="h-[12px] w-[12px]"
                     />
                     <span>Services</span>
                   </Button>
@@ -283,7 +283,7 @@ export default function NavbarSection() {
                 <img
                   src="/icons/user.png"
                   alt="icon"
-                  className="h-[16px] w-[16px]"
+                  className="h-[12px] w-[12px]"
                 />
                 <span className="text-white text-base">OPEN AN ACCOUNT</span>
               </button>

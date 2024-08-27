@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -41,7 +40,7 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/loans/application"
-              className="duration:300 rounded-lg border border-[#F0660A] bg-transparent px-4 py-2 text-[#F0660A] shadow-lg transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[#F0660A] hover:text-white"
+              className="duration:300 flex items-center rounded-lg border border-[#F0660A] bg-transparent px-4 py-2 text-[#F0660A] shadow-lg transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[#F0660A] hover:text-white"
             >
               <span>Apply Now!</span>
               <img
@@ -53,7 +52,11 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="flex h-[762px] w-full items-center justify-center rounded-l-md md:w-[777px]">
-          <img src="/images/hero1.png" alt="hero image" className='w-[690px] h-full' />
+          <img
+            src="/images/hero1.png"
+            alt="hero image"
+            className="h-full w-[690px]"
+          />
         </div>
       </div>
     </div>
