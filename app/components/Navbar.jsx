@@ -72,11 +72,11 @@ export default function NavbarSection() {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden gap-3 text-xl text-gray-50 sm:flex"
+        className="hidden gap-3 text-base text-gray-50 sm:flex"
         justify="center"
       >
         <NavbarItem>
-          <Link className="gap-1 text-xl flex text-gray-50" href="/">
+          <Link className="gap-1 text-base flex text-gray-50" href="/">
             <img
               src="/icons/home.png"
               alt="icon"
@@ -86,7 +86,7 @@ export default function NavbarSection() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="gap-1 text-xl flex text-gray-50" href="/dashboard">
+          <Link className="gap-1 text-base flex text-gray-50" href="/dashboard">
             <img
               src="/icons/dashboard.png"
               alt="icon"
@@ -96,7 +96,7 @@ export default function NavbarSection() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="gap-1 text-xl flex text-gray-50" href="/about">
+          <Link className="gap-1 text-base flex text-gray-50" href="/about">
             <img
               src="/icons/about-us.png"
               alt="icon"
@@ -112,7 +112,7 @@ export default function NavbarSection() {
                 disableRipple
                 radius="sm"
                 variant="light"
-                className="flex gap-1 bg-transparent p-0 text-xl text-gray-50 data-[hover=true]:bg-transparent"
+                className="flex gap-1 bg-transparent p-0 text-base text-gray-50 data-[hover=true]:bg-transparent"
               >
                 <img
                   src="/icons/services.png"
@@ -137,7 +137,7 @@ export default function NavbarSection() {
           </DropdownMenu>
         </Dropdown>
         <NavbarItem>
-          <Link className="flex gap-1 text-xl text-gray-50" href="/contact-us">
+          <Link className="flex gap-1 text-base text-gray-50" href="/contact-us">
             <img
               src="/icons/contact.png"
               alt="icon"
@@ -178,7 +178,7 @@ export default function NavbarSection() {
                     disableRipple
                     radius="sm"
                     variant="light"
-                    className="flex gap-1 bg-transparent p-0 text-xl data-[hover=true]:bg-transparent"
+                    className="flex gap-1 bg-transparent p-0 text-base data-[hover=true]:bg-transparent"
                   >
                     <img
                       src="/icons/services.png"
@@ -242,7 +242,7 @@ export default function NavbarSection() {
                     disableRipple
                     radius="sm"
                     variant="light"
-                    className="flex gap-1 bg-transparent p-0 text-xl data-[hover=true]:bg-transparent"
+                    className="flex gap-1 bg-transparent p-0 text-base data-[hover=true]:bg-transparent"
                   >
                     {" "}
                     <img
@@ -285,7 +285,7 @@ export default function NavbarSection() {
                   alt="icon"
                   className="h-[16px] w-[16px]"
                 />
-                <span className="text-white">OPEN AN ACCOUNT</span>
+                <span className="text-white text-base">OPEN AN ACCOUNT</span>
               </button>
             </Link>
           </NavbarMenu>
