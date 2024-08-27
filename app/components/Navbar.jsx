@@ -64,7 +64,7 @@ export default function NavbarSection() {
         />
         <NavbarBrand>
           <Link href="/">
-            <h1 className="text-base md:text-2xl font-extrabold tracking-wider text-[#10067F] leading-inherit">
+            <h1 className="text-base font-extrabold tracking-wider text-[#10067F] leading-inherit md:text-2xl">
               ADVENT CAPITAL
             </h1>
           </Link>
@@ -138,7 +138,11 @@ export default function NavbarSection() {
         </Dropdown>
         <NavbarItem>
           <Link className="flex gap-1 text-xl text-gray-50" href="/contact-us">
-            <img src="/icons/contact.png" alt="icon" className="h-[20px] w-[20px]" />
+            <img
+              src="/icons/contact.png"
+              alt="icon"
+              className="h-[20px] w-[20px]"
+            />
             <span>Contact Us</span>
           </Link>
         </NavbarItem>
@@ -218,9 +222,16 @@ export default function NavbarSection() {
         <>
           <NavbarContent justify="end">
             <NavbarItem>
-              <Button as={Link} color="primary" href="/login" variant="solid">
-                Get Started
-              </Button>
+              <Link href="/login">
+                <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px]">
+                  <img
+                    src="/icons/user.png"
+                    alt="icon"
+                    className="h-[16px] w-[16px]"
+                  />
+                  <span>OPEN AN ACCOUNT</span>
+                </button>
+              </Link>
             </NavbarItem>
           </NavbarContent>
           <NavbarMenu>
