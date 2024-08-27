@@ -56,7 +56,7 @@ export default function NavbarSection() {
   const initials = getInitials(session?.user?.name ?? "John Doe");
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-[#266E2E]">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-green-500">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -64,7 +64,7 @@ export default function NavbarSection() {
         />
         <NavbarBrand>
           <Link href="/">
-            <h1 className="text-base tracking-wider text-[#10067F] leading-inherit">
+            <h1 className="text-base md:text-2xl font-extrabold tracking-wider text-[#10067F] leading-inherit">
               ADVENT CAPITAL
             </h1>
           </Link>
@@ -80,7 +80,7 @@ export default function NavbarSection() {
             <img
               src="/icons/home.png"
               alt="icon"
-              className="h-[16px] w-[20px]"
+              className="h-[20px] w-[20px]"
             />
             <span>Home</span>
           </Link>
@@ -90,7 +90,7 @@ export default function NavbarSection() {
             <img
               src="/icons/dashboard.png"
               alt="icon"
-              className="h-[16px] w-[20px]"
+              className="h-[20px] w-[20px]"
             />
             <span>Dashboard</span>
           </Link>
@@ -100,7 +100,7 @@ export default function NavbarSection() {
             <img
               src="/icons/about-us.png"
               alt="icon"
-              className="h-[16px] w-[20px]"
+              className="h-[20px] w-[20px]"
             />
             <span>About Us</span>
           </Link>
@@ -117,7 +117,7 @@ export default function NavbarSection() {
                 <img
                   src="/icons/services.png"
                   alt="icon"
-                  className="h-[16px] w-[20px]"
+                  className="h-[20px] w-[20px]"
                 />
                 <span>Services</span>
               </Button>
@@ -138,7 +138,7 @@ export default function NavbarSection() {
         </Dropdown>
         <NavbarItem>
           <Link className="flex gap-1 text-xl text-gray-50" href="/contact-us">
-            <img src="/icons/" alt="icon" className="h-[16px] w-[20px]" />
+            <img src="/icons/contact.png" alt="icon" className="h-[20px] w-[20px]" />
             <span>Contact Us</span>
           </Link>
         </NavbarItem>
@@ -179,7 +179,7 @@ export default function NavbarSection() {
                     <img
                       src="/icons/services.png"
                       alt="icon"
-                      className="h-[16px] w-[20px]"
+                      className="h-[20px] w-[20px]"
                     />
                     <span>Services</span>
                   </Button>
@@ -237,7 +237,7 @@ export default function NavbarSection() {
                     <img
                       src="/icons/services.png"
                       alt="icon"
-                      className="h-[16px] w-[20px]"
+                      className="h-[20px] w-[20px]"
                     />
                     <span>Services</span>
                   </Button>
@@ -277,9 +277,6 @@ export default function NavbarSection() {
                 <span>OPEN AN ACCOUNT</span>
               </button>
             </Link>
-            <Button as={Link} color="primary" href="/login" variant="solid">
-              Get Started
-            </Button>
           </NavbarMenu>
         </>
       )}
