@@ -5,22 +5,22 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <div className="flex h-[762px] w-full flex-col bg-gray-200 p-4 pb-7 pt-7">
-      <div className="mx-auto flex flex-col gap-3 md:flex-row">
+      <div className="mx-auto flex flex-col gap-3 lg:flex-row">
         {/* image for the company */}
 
-        <div className="flex h-[525px] w-full flex-col gap-4 md:w-[548px]">
-          <p className="mb-[8px] text-start text-[15px] font-bold tracking-wide text-green-500 md:text-[20px]">
+        <div className="flex h-[425px] w-full flex-col gap-4 lg:w-[500px]">
+          <p className="mb-[8px] text-start text-[15px] font-bold tracking-wide text-green-500 lg:text-[20px]">
             Welcome to Advent Capital
           </p>
-          <p className="mb-[16px] text-[40px] font-extrabold text-gray-900 md:text-[48px]">
+          <p className="mb-[16px] text-[40px] font-extrabold text-gray-900 lg:text-[48px]">
             Low Interest Banking Institution in Uganda You can trust.
           </p>
-          <p className="mb-[16px] text-start text-[15px] font-bold tracking-wide text-gray-700 md:text-[20px]">
+          <p className="mb-[16px] text-start text-[15px] font-bold tracking-wide text-gray-700 lg:text-[20px]">
             Your trusted partner in financial growth. We believe in your dreams.
             Get the support you need to make them a reality and let&#39;s build
             your future together.
           </p>
-          <p className="mb-[16px] text-start text-[12px] text-sm font-light italic md:text-[18px]">
+          <p className="mb-[16px] text-start text-[12px] text-sm font-light italic lg:text-[18px]">
             &#39;We make a living by what we get but we make a life by what we
             give.&#39; You got{" "}
             {new Date().toLocaleString("default", { month: "long" })} financial
@@ -51,11 +51,11 @@ export default function HeroSection() {
             </Link>
           </div>
         </div>
-        <div className="flex h-[762px] w-full items-center justify-center rounded-l-md md:w-[777px]">
+        <div className="flex w-full items-center justify-center lg:w-fit">
           <img
             src="/images/hero1.png"
             alt="hero image"
-            className="h-full w-[690px]"
+            className="h-full w-fit rounded-l-lg"
           />
         </div>
       </div>
