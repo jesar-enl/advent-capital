@@ -72,11 +72,11 @@ export default function NavbarSection() {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden gap-4 text-xl text-gray-50 sm:flex"
+        className="hidden gap-3 text-xl text-gray-50 sm:flex"
         justify="center"
       >
         <NavbarItem>
-          <Link className="gap-1text-xl flex text-gray-50" href="/">
+          <Link className="gap-1 text-xl flex text-gray-50" href="/">
             <img
               src="/icons/home.png"
               alt="icon"
@@ -86,7 +86,7 @@ export default function NavbarSection() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="gap-1text-xl flex text-gray-50" href="/dashboard">
+          <Link className="gap-1 text-xl flex text-gray-50" href="/dashboard">
             <img
               src="/icons/dashboard.png"
               alt="icon"
@@ -96,7 +96,7 @@ export default function NavbarSection() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="gap-1text-xl flex text-gray-50" href="/about">
+          <Link className="gap-1 text-xl flex text-gray-50" href="/about">
             <img
               src="/icons/about-us.png"
               alt="icon"
@@ -223,13 +223,13 @@ export default function NavbarSection() {
           <NavbarContent justify="end">
             <NavbarItem>
               <Link href="/login">
-                <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px]">
+                <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px] rounded-full ml-4">
                   <img
                     src="/icons/user.png"
                     alt="icon"
                     className="h-[16px] w-[16px]"
                   />
-                  <span>OPEN AN ACCOUNT</span>
+                  <span className="text-white">OPEN AN ACCOUNT</span>
                 </button>
               </Link>
             </NavbarItem>
@@ -279,13 +279,13 @@ export default function NavbarSection() {
               </NavbarMenuItem>
             ))}
             <Link href="/login">
-              <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px]">
+              <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px] rounded-full ml-4">
                 <img
                   src="/icons/user.png"
                   alt="icon"
                   className="h-[16px] w-[16px]"
                 />
-                <span>OPEN AN ACCOUNT</span>
+                <span className="text-white">OPEN AN ACCOUNT</span>
               </button>
             </Link>
           </NavbarMenu>
