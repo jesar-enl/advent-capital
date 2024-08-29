@@ -102,7 +102,7 @@ export default function AboutUs() {
             how they shape our interactions with our clients.
           </span>
         </p>
-        <div className="flex gap-6 flex-wrap mt-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
           <div className="relative max-w-md mb-1 p-6 text-center rounded-lg shadow-md">
             <h3 className="mb-2 text-center uppercase text-2xl font-bold tracking-tight text-green-500">
               Values
@@ -142,7 +142,7 @@ export default function AboutUs() {
           clients and keep their data safe and secure on our data servers.
         </p>
       </div>
-      <div className="mt-3 text-center text-white bg-green-600 w-full mx-auto max-w-screen-xl p-6">
+      <div className="text-center text-white bg-green-600 w-full mx-auto max-w-screen-xl p-6">
         <span className="text-md">
           © {new Date().getFullYear()}{' '}
           <Link href="/" className="hover:underline">

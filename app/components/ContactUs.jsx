@@ -46,185 +46,194 @@ export default function ContactUs() {
     });
   return (
     <section
-      className="py-2 text-white h-full relative bg-cover bg-center"
+      className="relative mx-auto h-full max-w-screen-xl bg-cover bg-center text-white"
       style={{ backgroundImage: "url('/images/adventcapital_logo.png')" }}
     >
-      <div className="bg-black bg-opacity-75 h-full w-full absolute"></div>
-      <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x relative">
-        <div className="py-6 md:py-0 md:px-6 relative">
-          <h1 className="text-4xl font-bold">Get in touch</h1>
-          <p className="pt-2 pb-4">
-            Fill out the form to start a conversation. We are ready to get back
-            to you as soon as possible.
+      <div className="absolute h-full w-full bg-black bg-opacity-75"></div>
+      <div className="grid grid-cols-1 md:grid-cols-12 relative">
+        <div className="bg-gray-900 p-10 text-white sm:rounded-t-md md:col-span-4 md:rounded-l-md">
+          <p className="font-regular mt-4 text-sm uppercase leading-7">
+            Contact
           </p>
-          <div className="space-y-4">
-            <p className="flex items-center gap-3">
-              <FaLocationDot className="text-cyan-600" />
-              <span>Makerere - Kikoni A, Adwori Road, Near MZ Guest House</span>
-            </p>
-            <p className="flex items-center gap-3">
-              <FaPhoneAlt />
-              <span>(+256) 200 915172</span>
-            </p>
-            <p className="flex items-center gap-3">
-              <FaWhatsapp className="text-green-400" />
-              <span>(+256) 784 208372</span>
-            </p>
-            <p className="flex items-center gap-3">
-              <MdOutlineMailOutline className="text-rose-400" />
-              <span>adventcapital2023@gmail.com</span>
-            </p>
+          <h3 className="text-3xl font-extrabold leading-normal tracking-tight sm:text-4xl">
+            Get In <span className="text-indigo-600">Touch</span>
+          </h3>
+          <p className="mt-4 leading-7 text-gray-200">
+            Fill out the form to start a conversation with our customer service
+            team.
+          </p>
+
+          <div className="mt-5 flex items-center gap-3">
+            <FaLocationDot className="text-cyan-600" />
+            <span className="text-sm">
+              Makerere - Kikoni A, Adwori Road, Near MZ Guest House
+            </span>
+          </div>
+          <div className="mt-5 flex items-center gap-3">
+            <FaPhoneAlt />
+            <span className="text-sm">(+256) 200 91 51 72</span>
+          </div>
+          <div className="mt-5 flex items-center gap-3">
+            <FaWhatsapp className="text-green-400" />
+            <span className="text-sm">(+256) 784 20 83 72</span>
+          </div>
+          <div className="mt-5 flex items-center gap-3">
+            <MdOutlineMailOutline className="text-rose-400" />
+            <span className="text-sm">adventcapital2023@gmail.com</span>
           </div>
         </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col py-6 space-y-6 my-10 md:py-0 md:px-6 relative"
-        >
+
+        {/* Form to fill out by the client */}
+        <form onSubmit={handleSubmit(onSubmit)} className="p-10 md:col-span-8">
           <input
             type="checkbox"
             id=""
             className="hidden"
-            style={{ display: 'none' }}
-            {...register('botcheck')}
+            style={{ display: "none" }}
+            {...register("botcheck")}
           ></input>
-
-          <div className="mb-5">
-            <input
-              type="text"
-              placeholder="Full Name"
-              autoComplete="false"
-              className={`block text-gray-900 shadow-sm w-full px-4 py-3 border-2 placeholder:text-gray-600 rounded-md outline-none focus:ring-4 bg-gray-100 ${
-                errors.name
-                  ? 'border-red-600 focus:border-red-600 ring-red-100'
-                  : 'border-gray-300 focus:border-gray-600 ring-gray-100'
-              }`}
-              {...register('name', {
-                required: 'Full name is required',
-                maxLength: 80,
-              })}
-            />
-            {errors.name && (
-              <div className="mt-1 text-red-600">
-                <small>{errors.name.message}</small>
-              </div>
-            )}
-          </div>
-
-          <div className="mb-5">
-            <label htmlFor="email_address" className="sr-only">
-              Email Address
-            </label>
-            <input
-              id="email_address"
-              type="email"
-              placeholder="Email Address"
-              name="email"
-              autoComplete="false"
-              className={`block text-gray-900 shadow-sm bg-gray-100 w-full px-4 py-3 border-2 placeholder:text-gray-600 rounded-md outline-none focus:ring-4  ${
-                errors.email
-                  ? 'border-red-600 focus:border-red-600 ring-red-100'
-                  : 'border-gray-300 focus:border-gray-600 ring-gray-100'
-              }`}
-              {...register('email', {
-                required: 'Enter your email',
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: 'Please enter a valid email',
-                },
-              })}
-            />
-            {errors.email && (
-              <div className="mt-1 text-red-600">
-                <small>{errors.email.message}</small>
-              </div>
-            )}
-          </div>
-
-          <div className="mb-5">
-            <input
-              type="text"
-              placeholder="Address"
-              autoComplete="false"
-              className={`block text-gray-900 shadow-sm w-full px-4 py-3 border-2 placeholder:text-gray-600 rounded-md outline-none focus:ring-4 bg-gray-100 ${
-                errors.address
-                  ? 'border-red-600 focus:border-red-600 ring-red-100'
-                  : 'border-gray-300 focus:border-gray-600 ring-gray-100'
-              }`}
-              {...register('address', {
-                required: 'Address is required',
-                maxLength: 80,
-              })}
-            />
-            {errors.address && (
-              <div className="mt-1 text-red-600">
-                <small>{errors.address.message}</small>
-              </div>
-            )}
-          </div>
-
-          <div className="mb-3">
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              className={`block text-gray-900 shadow-sm bg-gray-100 w-full px-4 py-3 border-2 placeholder:text-gray-600 rounded-md outline-none  h-36 focus:ring-4  ${
-                errors.message
-                  ? 'border-red-600 focus:border-red-600 ring-red-100'
-                  : 'border-gray-300 focus:border-gray-600 ring-gray-100'
-              }`}
-              {...register('message', {
-                required: 'Enter your Message',
-              })}
-            />
-            {errors.message && (
-              <div className="mt-1 text-red-600">
-                {' '}
-                <small>{errors.message.message}</small>
-              </div>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            className="self-center py-4 font-semibold text-white transition-colors bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7"
-          >
-            {isSubmitting ? (
-              <svg
-                className="w-5 h-5 mx-auto text-white animate-spin"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
+          <div className="-mx-3 mb-6 flex flex-wrap">
+            <div className="mb-6 w-full px-3 md:mb-0">
+              <label
+                className="mb-2 block text-base font-bold uppercase tracking-wide text-white"
+                htmlFor="grid-first-name"
               >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-            ) : (
-              'Send Message'
-            )}
-          </button>
-        </form>
+                Full Name
+              </label>
+              <input
+                type="text"
+                placeholder="John Doe"
+                autoComplete="false"
+                className={`block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:text-gray-600 focus:ring-4 ${
+                  errors.name
+                    ? "border-red-600 ring-red-100 focus:border-red-600"
+                    : "border-gray-300 ring-gray-100 focus:border-gray-600"
+                }`}
+                {...register("name", {
+                  required: "Full name is required",
+                  maxLength: 80,
+                })}
+              />
+              {errors.name && (
+                <div className="mt-1 text-red-600">
+                  <small>{errors.name.message}</small>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="-mx-3 mb-6 flex flex-wrap">
+            <div className="w-full px-3">
+              <label
+                className="mb-2 block text-base font-bold uppercase tracking-wide text-white"
+                htmlFor="grid-password"
+              >
+                Email Address
+              </label>
+              <input
+                id="email_address"
+                type="email"
+                placeholder="email@email.domain"
+                name="email"
+                autoComplete="false"
+                className={`block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:text-gray-600 focus:ring-4 ${
+                  errors.email
+                    ? "border-red-600 ring-red-100 focus:border-red-600"
+                    : "border-gray-300 ring-gray-100 focus:border-gray-600"
+                }`}
+                {...register("email", {
+                  required: "Enter your email",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Please enter a valid email",
+                  },
+                })}
+              />
+              {errors.email && (
+                <div className="mt-1 text-red-600">
+                  <small>{errors.email.message}</small>
+                </div>
+              )}
+            </div>
+          </div>
 
-        {isSubmitSuccessful &&
-          isSuccess &&
-          toast.success('Success. Message sent successfully')}
-        {isSubmitSuccessful &&
-          !isSuccess &&
-          toast.error('Something went wrong. Please try later.')}
+          <div className="-mx-3 mb-6 flex flex-wrap">
+            <div className="w-full px-3">
+              <label
+                className="mb-2 block text-base font-bold uppercase tracking-wide text-white"
+                htmlFor="grid-password"
+              >
+                Your Message
+              </label>
+              <textarea
+                rows="10"
+                name="message"
+                placeholder="Your Message"
+                className={`mb-3 block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:text-gray-600 focus:ring-4 ${
+                  errors.message
+                    ? "border-red-600 ring-red-100 focus:border-red-600"
+                    : "border-gray-300 ring-gray-100 focus:border-gray-600"
+                }`}
+                {...register("message", {
+                  required: "Enter your Message",
+                })}
+              />
+              {errors.message && (
+                <div className="mt-1 text-red-600">
+                  {" "}
+                  <small>{errors.message.message}</small>
+                </div>
+              )}
+            </div>
+            <div className="flex w-full justify-between px-3">
+              <div className="md:flex md:items-center">
+                <label className="block font-bold text-white">
+                  <input className="mr-2 leading-tight" type="checkbox" />
+                  <span className="text-sm">Send me your newsletter!</span>
+                </label>
+              </div>
+              <button
+                className="focus:shadow-outline inline-flex items-center rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg hover:bg-blue-900 focus:outline-none md:px-10 md:py-4 md:text-lg"
+                type="submit"
+              >
+                {isSubmitting ? (
+                  <svg
+                    className="mx-auto h-5 w-5 animate-spin text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                ) : (
+                  "Send Message"
+                )}
+              </button>
+              {isSubmitSuccessful &&
+                isSuccess &&
+                toast.success("Success. Message sent successfully")}
+              {isSubmitSuccessful &&
+                !isSuccess &&
+                toast.error("Something went wrong. Please try later.")}
+            </div>
+          </div>
+        </form>
       </div>
-      <div className="relative mt-4 mb-4 px-8 py-4 flex items-center justify-between gap-4 bg-gray-300 rounded-xl">
-        <FaFacebook className="text-blue-500 text-4xl" />
-        <FaSquareXTwitter className="text-gray-800 text-4xl" />
-        <FaWhatsapp className="text-green-500 text-4xl" />
+      <div className="relative mb-4 mt-4 flex items-center justify-between gap-4 rounded-xl bg-gray-300 px-8 py-4">
+        <FaFacebook className="text-4xl text-blue-500" />
+        <FaSquareXTwitter className="text-4xl text-gray-800" />
+        <FaWhatsapp className="text-4xl text-green-500" />
       </div>
     </section>
   );
