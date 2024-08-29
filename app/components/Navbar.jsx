@@ -158,13 +158,6 @@ export default function NavbarSection() {
                 <div className="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-600">
                   <span className="font-medium text-slate-200">{initials}</span>
                 </div>
-
-                <div className="font-medium">
-                  <div>{session.user.name}</div>
-                  <div className="text-sm text-slate-200">
-                    {session.user.email}
-                  </div>
-                </div>
               </div>
             </NavbarItem>
             <NavbarItem>
