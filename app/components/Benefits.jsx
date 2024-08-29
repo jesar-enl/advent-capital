@@ -34,26 +34,26 @@ export default function Benefits() {
   ];
 
   return (
-    <section className="py-6 bg-gray-100 text-white">
-      <div className="container mx-auto flex flex-col justify-around p-4 md:text-center md:p-10 lg:flex-row">
+    <section className="bg-gray-100 py-6 text-white">
+      <div className="container mx-auto flex flex-col justify-around p-4 md:p-10 md:text-center lg:flex-row">
         <div className="flex flex-col justify-center lg:text-left">
-          <h1 className="py-2 text-2xl md:text-3xl text-green-500 text-center mb-4 font-medium uppercase leadi title-font">
+          <h1 className="leading-snug title-font mb-4 py-2 text-center text-3xl font-extrabold uppercase text-green-500 md:text-4xl">
             Benefits from our affordable loans
           </h1>
           {benefits.map((benefit, i) => {
             return (
               <p
                 key={i}
-                className="flex gap-2 items-center md:items-start mb-1 text-sm md:text-lg font-medium tracking-wide text-green-600"
+                className="mb-1 flex items-center gap-2 text-sm font-medium tracking-wide text-gray-900 md:text-lg"
               >
-                <PiSealCheckLight className="text-black" />
-                {benefit.ben}
+                <PiSealCheckLight className="text-[#1703AD]" size={20} />
+                <span>{benefit.ben}</span>
               </p>
             );
           })}
         </div>
-        <div className="flex items-center justify-center flex-shrink-0 mt-6 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 lg:ml-4 lg:mt-0 lg:justify-end">
-          <button className="inline-flex items-center px-4 py-2 rounded-lg bg-green-500 text-white">
+        <div className="mt-6 flex flex-shrink-0 items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 lg:ml-4 lg:mt-0 lg:justify-end">
+          <button className="inline-flex items-center rounded-lg bg-[#1703AD] px-8  py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-lg">
             <Link href="/loans/application">Apply Now</Link>
           </button>
         </div>

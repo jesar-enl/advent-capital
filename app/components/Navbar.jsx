@@ -76,7 +76,7 @@ export default function NavbarSection() {
         justify="center"
       >
         <NavbarItem>
-          <Link className="gap-1 text-base flex text-gray-50" href="/">
+          <Link className="flex gap-1 text-base text-gray-50" href="/">
             <img
               src="/icons/home.png"
               alt="icon"
@@ -86,7 +86,7 @@ export default function NavbarSection() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="gap-1 text-base flex text-gray-50" href="/dashboard">
+          <Link className="flex gap-1 text-base text-gray-50" href="/dashboard">
             <img
               src="/icons/dashboard.png"
               alt="icon"
@@ -96,7 +96,7 @@ export default function NavbarSection() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="gap-1 text-base flex text-gray-50" href="/about">
+          <Link className="flex gap-1 text-base text-gray-50" href="/about">
             <img
               src="/icons/about-us.png"
               alt="icon"
@@ -137,7 +137,10 @@ export default function NavbarSection() {
           </DropdownMenu>
         </Dropdown>
         <NavbarItem>
-          <Link className="flex gap-1 text-base text-gray-50" href="/contact-us">
+          <Link
+            className="flex gap-1 text-base text-gray-50"
+            href="/contact-us"
+          >
             <img
               src="/icons/contact.png"
               alt="icon"
@@ -222,14 +225,16 @@ export default function NavbarSection() {
         <>
           <NavbarContent justify="end">
             <NavbarItem>
-              <Link href="/login">
-                <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px] rounded-full ml-4">
+              <Link href="/register">
+                <button className="flex h-[38px] w-full lg:w-[189px] items-center justify-center gap-1 rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-base">
                   <img
                     src="/icons/user.png"
                     alt="icon"
                     className="h-[12px] w-[12px]"
                   />
-                  <span className="text-white">OPEN AN ACCOUNT</span>
+                  <span className="hidden text-white lg:block">
+                    Open an Account
+                  </span>
                 </button>
               </Link>
             </NavbarItem>
@@ -279,13 +284,15 @@ export default function NavbarSection() {
               </NavbarMenuItem>
             ))}
             <Link href="/login">
-              <button className="flex h-[38px] w-[189px] items-center gap-1 bg-[#1703AD] px-[10px] py-[8px] rounded-full ml-4">
+              <button className="ml-4 flex h-[38px] w-full lg:w-[189px] items-center gap-1 rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-lg">
                 <img
                   src="/icons/user.png"
                   alt="icon"
                   className="h-[12px] w-[12px]"
                 />
-                <span className="text-white text-base">OPEN AN ACCOUNT</span>
+                <span className="hidden text-base text-white lg:block">
+                  Open an Account
+                </span>
               </button>
             </Link>
           </NavbarMenu>

@@ -142,10 +142,10 @@ export default function AboutUs() {
           clients and keep their data safe and secure on our data servers.
         </p>
       </div>
-      <div class="mt-3 text-center text-white bg-green-600 w-full mx-auto max-w-screen-xl p-6">
-        <span class="text-md">
+      <div className="mt-3 text-center text-white bg-green-600 w-full mx-auto max-w-screen-xl p-6">
+        <span className="text-md">
           © {new Date().getFullYear()}{' '}
-          <Link href="/" class="hover:underline">
+          <Link href="/" className="hover:underline">
             Advent Capital&reg;
           </Link>
           . All Rights Reserved.

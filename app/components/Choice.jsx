@@ -30,7 +30,7 @@ function Choice() {
   return (
     <div className="p-4 bg-gray-200">
       <div className="text-center text-green-500 mb-4">
-        <h1 className="text-3xl tracking-wide">Why People Choose Us</h1>
+        <h1 className="text-3xl md:text-5xl font-bold tracking-wide">Why People Choose Us</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {cards.map(({ title, content }) => (
@@ -39,7 +39,7 @@ function Choice() {
             className="bg-white rounded-lg p-6 text-center shadow-md"
           >
             <h3 className="text-xl font-bold mb-2 text-gray-800">{title}</h3>
-            <p className="tracking-wide leading-relaxed text-gray-600">{content}</p>
+            <p className="tracking-wide text-start leading-relaxed text-gray-600">{content}</p>
           </div>
         ))}
       </div>

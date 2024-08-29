@@ -8,23 +8,26 @@ export default function Steps() {
     {list: 'Get the money in your account within 24 hours after being approved'},
   ];
   return (
-    <div className="bg-green-500 text-white px-4 py-5">
-      <div className="mx-auto flex flex-col gap-3 items-center justify-center">
-        <h1 className="text-xl md:text-3xl mb-3">
+    <div className="bg-green-500 px-4 py-5 text-white">
+      <div className="mx-auto flex flex-col items-center justify-center gap-3">
+        <h1 className="mb-3 text-xl md:text-3xl">
           100 % Online, Fast Application
         </h1>
-        <div className="mb-3 py-3 px-4">
+        <div className="mb-3 px-4 py-3">
           {lists.map(({ list }) => (
-            <div key={list} className="flex gap-2 items-center text-left mb-4 tracking-wide text-xl md:text-2xl">
-              <FaArrowCircleRight className="text-black" />
+            <div
+              key={list}
+              className="mb-4 flex items-center gap-2 text-left text-xl tracking-wide md:text-2xl"
+            >
+              <FaArrowCircleRight className="text-[#1703AD]" />
               <p>{list}</p>
             </div>
           ))}
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <Link
             href="/loans/application"
-            className="rounded-lg shadow-lg bg-black text-white px-4 py-2"
+            className="rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-lg"
           >
             Start Application
           </Link>

@@ -4,7 +4,7 @@ import { Carousel, Rating } from 'flowbite-react';
 
 function Component() {
   return (
-    <div className="h-64 sm:h-64 xl:h-80 2xl:h-96">
+    <div className="h-64 sm:h-[300px] xl:h-80 2xl:h-96 w-full">
       <Carousel>
         <div className="flex flex-col justify-center items-center gap-4">
           <p className="bg-gray-400 text-green-700 text-lg md:text-2xl tracking-wider rounded-md py-8 px-8">
@@ -128,7 +128,7 @@ export default function Testimonial() {
   return (
     <section className="p-6 my-8">
       <div className="container flex items-center justify-center pb-6 mb-4 md:p-10 md:px-12 mx-auto">
-        <h1 className="text-4xl font-semibold text-green-500 leadi text-center">
+        <h1 className="text-4xl font-semibold text-green-500 leading-snug text-center">
           What our customers say about us
         </h1>
       </div>
