@@ -28,7 +28,7 @@ const Printable = ({ app }) => {
   const printLetter = useRef();
   return (
     <div className="">
-      <Buttons printForm={printLetter} />
+      <Buttons printLetter={printLetter} />
       <div ref={printLetter}>
         <PreviewLetter data={app} />
       </div>
