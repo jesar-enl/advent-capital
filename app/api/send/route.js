@@ -65,6 +65,7 @@ export async function POST(request) {
         loanAmount,
         loanInterest,
         security,
+        loanPeriod,
       },
     });
 

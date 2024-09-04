@@ -25,11 +25,11 @@ const Buttons = ({ printLetter }) => {
 };
 
 const Printable = ({ app }) => {
-  const printForm = useRef();
+  const printLetter = useRef();
   return (
     <div className="">
-      <Buttons printForm={printForm} />
-      <div ref={printForm}>
+      <Buttons printForm={printLetter} />
+      <div ref={printLetter}>
         <PreviewLetter data={app} />
       </div>
     </div>

@@ -11,7 +11,7 @@ export default function Layout({ children }) {
   return (
     <div className="flex ">
       <Sidebar />
-      <div className="ml-[300px] flex flex-col flex-grow">
+      <div className="ml-[240px] my-4 flex flex-col flex-grow">
         {/* <Navbar /> */}
         <main className="">{children}</main>
       </div>

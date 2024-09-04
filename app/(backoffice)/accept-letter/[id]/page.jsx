@@ -1,4 +1,5 @@
 import React from 'react';
+import Printable from '../(components)/Printable';
 import { AcceptLetter } from '../../../libs/letter';
 
 export const metadata = {
@@ -12,7 +13,7 @@ export default async function Letter({ params: { id } }) {
   console.log(acceptLetter);
   return (
     <div className="container">
-      Accept letter
+      <Printable app={acceptLetter}/>
     </div>
   );
 }

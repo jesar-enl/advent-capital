@@ -124,6 +124,7 @@ model Letter {
   purpose     String
   loanAmount  String
   loanInterest String
+  loanPeriod  String
   security    String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

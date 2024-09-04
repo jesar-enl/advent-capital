@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
-import db from '../../libs/db';
+import { NextResponse } from "next/server";
+import db from "../../libs/db";
 
 export async function POST(req) {
   try {
@@ -17,6 +17,7 @@ export async function POST(req) {
         loanAmount: formdata.loanAmount,
         loanInterest: formdata.loanInterest,
         security: formdata.security,
+        loanPeriod: formdata.loanPeriod,
       },
     });
 
