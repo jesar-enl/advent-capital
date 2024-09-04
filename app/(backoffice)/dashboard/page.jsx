@@ -57,7 +57,7 @@ export default async function LoansPage() {
       <div className="container flex flex-col gap-4 px-2 py-1">
         <div className="flex items-center justify-between">
           <CalendarDemo />
-          <AreaChartWithLabel />
+          {session?.user?.role === "admin" && <AreaChartWithLabel />}
         </div>
         <TimelineDemo />
       </div>
