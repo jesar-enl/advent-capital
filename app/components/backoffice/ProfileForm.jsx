@@ -1,12 +1,12 @@
-'use client';
-import { signIn, useSession } from 'next-auth/react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
-import ImageInput from '../FormInputs/ImageInput';
+"use client";
+import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import ImageInput from "../FormInputs/ImageInput";
 
 export default function ProfileForm() {
   const { data: session, status } = useSession();
@@ -18,46 +18,55 @@ export default function ProfileForm() {
     formState: { errors },
   } = useForm();
   const [imageUrl, setImageUrl] = useState(
-    'https://utfs.io/f/8b034fb4-1f45-425a-8c57-a7a68835311f-2558r.png'
+    "https://utfs.io/f/8b034fb4-1f45-425a-8c57-a7a68835311f-2558r.png",
   );
   const [loading, setLoading] = useState(false);
-  const [emailErr, setEmailErr] = useState('');
-  
+  const [emailErr, setEmailErr] = useState("");
+
   async function onSubmit(data) {
+    const updatedData = {};
+    if (data.name) updatedData.name = data.name;
+    if (data.email) updatedData.email = data.email;
+    if (data.image) updatedData.image = data.image;
+
     try {
-      console.log(data);
+      console.log(updatedData);
       setLoading(true);
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-      const response = await fetch(`${baseUrl}/api/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${baseUrl}/api/users/${session?.user?.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedData),
         },
-        body: JSON.stringify(data),
-      });
+      );
 
       const responseData = await response.json();
 
       if (response.ok) {
         setLoading(false);
-        toast.success('User updated Successfully');
+        toast.success("User updated Successfully");
         reset();
-        router.push('/dashboard');
+        router.push("/dashboard");
       } else {
         setLoading(false);
-        if (response.status === 409) {
-          setEmailErr('User with this Email already exists');
-          toast.error('User with this Email already exists');
+        if (response.status === 400) {
+          // Handle validation errors
+          console.error("Validation Error:", responseData.message);
+          toast.error("Validation Error");
         } else {
           // Handle other errors
-          console.error('Server Error:', responseData.message);
-          toast.error('Oops Something Went wrong');
+          console.error("Server Error:", responseData.message);
+          toast.error("Oops Something Went wrong");
         }
       }
     } catch (error) {
       setLoading(false);
-      console.error('Network Error:', error);
-      toast.error('Something Went wrong, Please Try Again');
+      console.error("Network Error:", error);
+      toast.error("Something Went wrong, Please Try Again");
     }
   }
 
@@ -74,60 +83,56 @@ export default function ProfileForm() {
       <div>
         <label
           htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="mb-2 block text-sm font-medium text-gray-900"
         >
           Name
         </label>
         <input
-          {...register('name', { required: true })}
+          {...register("name", { required: true })}
           type="text"
           name="name"
           id="name"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
           // placeholder="John Doe"
           defaultValue={session?.user?.name}
           required=""
         />
         {errors.name && (
-          <small className="text-red-600 text-sm ">
-            This field is required
-          </small>
+          <small className="text-sm text-red-600">This field is required</small>
         )}
       </div>
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="mb-2 block text-sm font-medium text-gray-900"
         >
           Your email
         </label>
         <input
-          {...register('email', { required: true })}
+          {...register("email", { required: true })}
           type="email"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
           defaultValue={session?.user?.email}
           required=""
         />
         {errors.email && (
-          <small className="text-red-600 text-sm ">
-            This field is required
-          </small>
+          <small className="text-sm text-red-600">This field is required</small>
         )}
-        <small className="text-red-600 text-sm ">{emailErr}</small>
+        <small className="text-sm text-red-600">{emailErr}</small>
       </div>
 
       {loading ? (
         <button
           disabled
           type="button"
-          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 inline-flex items-center mt-4"
+          className="mr-2 mt-4 inline-flex w-full items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
         >
           <svg
             aria-hidden="true"
             role="status"
-            className="inline w-4 h-4 mr-3 text-white animate-spin"
+            className="mr-3 inline h-4 w-4 animate-spin text-white"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +151,7 @@ export default function ProfileForm() {
       ) : (
         <button
           type="submit"
-          className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4"
+          className="mt-4 w-full rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
         >
           Update Profile
         </button>

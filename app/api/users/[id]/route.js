@@ -1,5 +1,5 @@
-import db from '../../../libs/db';
 import { NextResponse } from 'next/server';
+import db from '../../../libs/db';
 
 export async function GET(request, { params: { id } }) {
   try {
@@ -21,26 +21,21 @@ export async function GET(request, { params: { id } }) {
   }
 }
 
-export async function PUT(request, { params: { id } }) {
+export async function PATCH(request, { params: { id } }) {
   try {
     const body = await request.json();
-    const { image, name, email } = body;
 
     // Validate the input
-    if (!image || !name || !email) {
-      return NextResponse.json(
-        { message: 'Missing fields: image, name, or email' },
-        { status: 400 }
-      );
-    }
+    if (!body || Object.keys(body).length === 0) {
+    return NextResponse.json(
+      { message: 'No updates provided' },
+      { status: 400 }
+    );
+  }
 
     const updatedUser = await db.user.update({
       where: { id },
-      data: {
-        image,
-        name,
-        email,
-      },
+      data: body,
     });
 
     return NextResponse.json(updatedUser);
