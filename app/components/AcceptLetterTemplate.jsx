@@ -41,7 +41,7 @@ async function AcceptLetterTemplate({
             <Img
               src={`${baseUrl}/images/adventcapital_logo.png`}
               width="49"
-              height="21"
+              height="35"
               alt="Advent Capital"
             />
             <Hr style={hr} />

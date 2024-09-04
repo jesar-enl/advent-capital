@@ -23,10 +23,10 @@ export const EmailTemplate = ({ name, redirectUrl = '/login' }) => (
     <Body style={main}>
       <Container style={container}>
         <Img
-          src="/images/adventcapital_logo.png"
+          src={`${baseUrl}/images/adventcapital_logo.png`}
           width="32"
           height="32"
-          alt="Github"
+          alt="Advent Capital logo"
         />
 
         <Text style={title}>
