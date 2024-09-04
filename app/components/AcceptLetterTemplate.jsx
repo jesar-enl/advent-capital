@@ -39,7 +39,7 @@ async function AcceptLetterTemplate({
         <Container style={container}>
           <Section style={box}>
             <Img
-              src={`${baseUrl}/public/images/adventcapital_logo.png`}
+              src={`${baseUrl}/images/adventcapital_logo.png`}
               width="49"
               height="21"
               alt="Advent Capital"
