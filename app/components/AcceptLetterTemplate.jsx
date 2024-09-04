@@ -29,6 +29,7 @@ async function AcceptLetterTemplate({
       id: id,
     },
   });
+  console.log(letterId)
 
   return (
     <Html>
@@ -69,7 +70,7 @@ async function AcceptLetterTemplate({
               photos.
               <Button
                 style={button}
-                href={`${baseUrl}/accept-letter/${letterId}`}
+                href={`${baseUrl}/accept-letter/${letterId.id}`}
               >
                 Your Acceptance letter
               </Button>
