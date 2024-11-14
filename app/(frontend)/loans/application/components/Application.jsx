@@ -1,61 +1,59 @@
-'use client';
+"use client";
 
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { UploadButton } from '@/utils/uploadthing';
-import toast from 'react-hot-toast';
-import Declarations from '../../../../components/Declarations';
-import LoanDetails from '../../../../components/LoanDetails';
-import PersonalDetails from '../../../../components/PersonalDetails';
-import { redirect } from 'next/navigation';
+import { UploadButton } from "@/utils/uploadthing";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import Declarations from "../../../../components/Declarations";
+import LoanDetails from "../../../../components/LoanDetails";
+import PersonalDetails from "../../../../components/PersonalDetails";
 
-import { useState } from 'react';
-import React from 'react';
+import { useState } from "react";
 
 export default function Application() {
   const { data: session, status } = useSession();
   const [files, setFiles] = useState();
   const [previous, setPrevious] = useState();
   const [formData, setFormData] = useState({
-    surname: '',
-    othername: '',
-    email: '',
-    dob: '',
-    gender: '',
-    marital: '',
-    mobile: '',
-    nin: '',
-    nindate: '',
-    type: '',
-    owner: '',
-    period: '',
-    district: '',
-    village: '',
-    role: '',
-    child: '',
-    spoucename: '',
-    spoucemobile: '',
-    spouceemail: '',
-    purpose: '',
-    loantype: '',
-    amount: '',
-    duration: '',
-    words: '',
-    source: '',
-    bustype: '',
-    permonth: '',
-    collateral: '',
-    appname: '',
-    appdate: '',
+    surname: "",
+    othername: "",
+    email: "",
+    dob: "",
+    gender: "",
+    marital: "",
+    mobile: "",
+    nin: "",
+    nindate: "",
+    type: "",
+    owner: "",
+    period: "",
+    district: "",
+    village: "",
+    role: "",
+    child: "",
+    spoucename: "",
+    spoucemobile: "",
+    spouceemail: "",
+    purpose: "",
+    loantype: "",
+    amount: "",
+    duration: "",
+    words: "",
+    source: "",
+    bustype: "",
+    permonth: "",
+    collateral: "",
+    appname: "",
+    appdate: "",
   });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
 
   if (!session) {
-    redirect('/login?callbackUrl=/loans/application')
+    redirect("/login?callbackUrl=/loans/application");
   }
 
   const handleChange = (e) => {
@@ -65,45 +63,52 @@ export default function Application() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // check if the image is missing be4 the form is submitted
+    if (!image) {
+      toast.error("Please upload your image before submitting the application");
+      return;
+    }
+
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     try {
       setLoading(true);
       const res = await fetch(`${baseUrl}/api/application`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, image }),
       });
       console.log(res);
       if (!res.ok) {
         setLoading(false);
-        toast.error('Error while submitting application');
+        toast.error("Error while submitting application");
         return;
       }
       setLoading(false);
-      toast.success('Application submitted');
-      router.push('/dashboard');
+      toast.success("Application submitted");
+      router.push("/dashboard");
     } catch (error) {
       setLoading(false);
       console.log(error);
-      toast.error('Error submitting application');
+      toast.error("Error submitting application");
     }
   };
 
   return (
-    <section className="p-6 bg-gray-200 text-gray-900 mt-1">
+    <section className="mt-1 bg-gray-200 p-6 text-gray-900">
       <Image
         src="/images/adventcapital_logo.png"
         alt="Advent Capital Logo"
-        className="absolute top-16 right-0 h-16 w-auto"
+        className="absolute right-0 top-16 h-16 w-auto"
         width="120"
         height={120}
       />
-      {status === 'authenticated' && (
+      {status === "authenticated" && (
         <form
           noValidate=""
           onSubmit={handleSubmit}
-          className="container flex flex-col mx-auto space-y-12"
+          className="container mx-auto flex flex-col space-y-12"
         >
           {/* Personal details of the applicant */}
           <label htmlFor="files" className="block text-sm font-medium">
@@ -140,12 +145,12 @@ export default function Application() {
               <button
                 disabled
                 type="button"
-                className="p-2 rounded-md bg-teal-600 text-gray-100 font-bold text-xl"
+                className="rounded-md bg-teal-600 p-2 text-xl font-bold text-gray-100"
               >
                 <svg
                   aria-hidden="true"
                   role="status"
-                  className="inline w-4 h-4 mr-3 text-white animate-spin"
+                  className="mr-3 inline h-4 w-4 animate-spin text-white"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +171,7 @@ export default function Application() {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="p-2 rounded-md bg-green-600 hover:bg-green-700 transform transition duration-500 hover:scale-110 text-gray-100 font-bold text-xl"
+                className="transform rounded-md bg-green-600 p-2 text-xl font-bold text-gray-100 transition duration-500 hover:scale-110 hover:bg-green-700"
               >
                 Submit Application
               </button>
@@ -175,7 +180,7 @@ export default function Application() {
           <div className="flex justify-end">
             <Link
               href="/dashboard"
-              className="text-green-600 text-md hover:text-white hover:bg-green-400 hover:p-3 hover:rounded-lg transform transition duration-500 hover:scale-110"
+              className="text-md transform text-green-600 transition duration-500 hover:scale-110 hover:rounded-lg hover:bg-green-400 hover:p-3 hover:text-white"
             >
               Go to your Dashboard
             </Link>

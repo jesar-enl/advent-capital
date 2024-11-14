@@ -95,7 +95,7 @@ export default function SidebarDesktop() {
   const initials = getInitials(session?.user?.name ?? 'John Doe');
 
   return (
-    <aside className="w-[210px] h-screen fixed  left-0 top-0 z-40 border-r bg-green-500 text-gray-100">
+    <aside className="w-[220px] h-screen fixed  left-0 top-0 z-40 border-r bg-green-500 text-gray-100">
       <div className="h-full px-3 py-4">
         <Link href="/" className="flex items-center">
           <Image
@@ -143,7 +143,7 @@ export default function SidebarDesktop() {
                   </div>
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="mb-2 w-56 p-2 rounded-[1rem]">
+              <PopoverContent className="mb-2 w-40 p-2 rounded-[1rem]">
                 <Button
                 variant='destructive'
                   onClick={() => signOut()}

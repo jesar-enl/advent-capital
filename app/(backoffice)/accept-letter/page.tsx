@@ -109,8 +109,8 @@ const AcceptanceLetter = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="container bg-zinc-100 p-2">
-        <div className="space-y-2 grid grid-cols-2 gap-2 mb-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="p-2">
+        <div className="mb-6 grid grid-cols-1 gap-2 space-y-2 md:grid-cols-2">
           <FormField
             control={form.control}
             name="name"
@@ -185,7 +185,7 @@ const AcceptanceLetter = () => {
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-2 mb-6">
+        <div className="mb-6 grid grid-cols-1 gap-2 md:grid-cols-2">
           <FormField
             control={form.control}
             name="loanType"
@@ -283,15 +283,15 @@ const AcceptanceLetter = () => {
           )}
         />
         <div className="mt-6">
-        {loading ? (
-          <div className="flex items-center justify-center">
-            <LoadingButton />
-          </div>
-        ) : (
-          <div className="flex items-center justify-center">
-            <SendButton />
-          </div>
-        )}
+          {loading ? (
+            <div className="flex items-center justify-center">
+              <LoadingButton />
+            </div>
+          ) : (
+            <div className="flex items-center justify-center">
+              <SendButton />
+            </div>
+          )}
         </div>
       </form>
     </Form>
