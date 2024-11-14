@@ -28,7 +28,7 @@ function Choice() {
   ];
 
   return (
-    <div className="p-4 bg-gray-200">
+    <div className="p-16 bg-gray-200">
       <div className="text-center text-green-500 mb-4">
         <h1 className="text-3xl md:text-5xl font-bold tracking-wide">Why People Choose Us</h1>
       </div>

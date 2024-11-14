@@ -1,14 +1,14 @@
-'use client';
-import { signIn } from 'next-auth/react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export default function RegisterForm({ role }) {
   const router = useRouter();
+  // const { toast } = useToast();
+
   const {
     register,
     handleSubmit,
@@ -16,7 +16,7 @@ export default function RegisterForm({ role }) {
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
-  const [emailErr, setEmailErr] = useState('');
+  const [emailErr, setEmailErr] = useState("");
 
   async function onSubmit(data) {
     try {
@@ -25,9 +25,9 @@ export default function RegisterForm({ role }) {
       setLoading(true);
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
       const response = await fetch(`${baseUrl}/api/users`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -36,25 +36,26 @@ export default function RegisterForm({ role }) {
 
       if (response.ok) {
         setLoading(false);
-        toast.success('User Created Successfully');
+        toast.success("User created Successfully");
+        toast.success("Please check your email to verify your account.");
         reset();
         // router.push('/');
         router.push(`/verify-account/${responseData.data.id}`);
       } else {
         setLoading(false);
         if (response.status === 409) {
-          setEmailErr('User with this Email already exists');
-          toast.error('User with this Email already exists');
+          setEmailErr("User with this Email already exists");
+          toast.error("User with this Email already exists");
         } else {
           // Handle other errors
-          console.error('Server Error:', responseData.message);
-          toast.error('Oops Something Went wrong');
+          console.error("Server Error:", responseData.message);
+          toast.error("Oops Something Went wrong");
         }
       }
     } catch (error) {
       setLoading(false);
-      console.error('Network Error:', error);
-      toast.error('Something Went wrong, Please Try Again');
+      console.error("Network Error:", error);
+      toast.error("Something Went wrong, Please Try Again");
     }
   }
 
@@ -63,67 +64,62 @@ export default function RegisterForm({ role }) {
       <div>
         <label
           htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="mb-2 block text-sm font-medium text-gray-900"
         >
           Your name
         </label>
         <input
-          {...register('name', { required: true })}
+          {...register("name", { required: true })}
           type="text"
           name="name"
           id="name"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 placeholder:italic placeholder:text-gray-400 focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
           placeholder="John Doe"
-          required=""
         />
         {errors.name && (
-          <small className="text-red-600 text-sm ">
-            This field is required
-          </small>
+          <small className="text-sm text-red-600">Your name is required</small>
         )}
       </div>
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm font-medium text-gray-900 "
+          className="mb-2 block text-sm font-medium text-gray-900"
         >
           Your email
         </label>
         <input
-          {...register('email', { required: true })}
+          {...register("email", { required: true })}
           type="email"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 placeholder:italic placeholder:text-gray-400 focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
           placeholder="name@company.com"
           required=""
         />
         {errors.email && (
-          <small className="text-red-600 text-sm ">
-            This field is required
-          </small>
+          <small className="text-sm text-red-600">Your email is required</small>
         )}
-        <small className="text-red-600 text-sm ">{emailErr}</small>
+        <small className="text-sm text-red-600">{emailErr}</small>
       </div>
       <div>
         <label
           htmlFor="password"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="mb-2 block text-sm font-medium text-gray-900"
         >
           Password
         </label>
         <input
-          {...register('password', { required: true })}
+          {...register("password", { required: true })}
           type="password"
           name="password"
           id="password"
           placeholder="••••••••"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 placeholder:italic placeholder:text-gray-400 focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
           required=""
         />
         {errors.password && (
-          <small className="text-red-600 text-sm ">
-            This field is required
+          <small className="text-sm text-red-600">
+            A password is required to create your account
           </small>
         )}
       </div>
@@ -131,12 +127,12 @@ export default function RegisterForm({ role }) {
         <button
           disabled
           type="button"
-          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 inline-flex items-center"
+          className="mr-2 inline-flex w-full items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
         >
           <svg
             aria-hidden="true"
             role="status"
-            className="inline w-4 h-4 mr-3 text-white animate-spin"
+            className="mr-3 inline h-4 w-4 animate-spin text-white"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -155,44 +151,22 @@ export default function RegisterForm({ role }) {
       ) : (
         <button
           type="submit"
-          className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          className="w-full rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
         >
           Sign Up
         </button>
       )}
-      <div className="flex items-center ">
-        <div className="w-full bg-slate-500 h-[1px]"></div>
-        <span className="mx-2">or</span>
-        <div className="w-full bg-slate-500 h-[1px]"></div>
+      <div className="my-4">
+        <p className="text-sm font-semibold text-gray-500">
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            className="font-medium text-blue-600 hover:underline"
+          >
+            Login
+          </Link>
+        </p>
       </div>
-      <div className="">
-        <button
-          type="button"
-          onClick={() => signIn('google')}
-          className="w-full text-slate-950 bg-white hover:bg-slate-50 focus:ring-4 focus:outline-none focus:ring-slate-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center justify-center flex items-center me-2 mb-4 border border-slate-200"
-        >
-          <FaGoogle className="mr-2 text-red-600 w-4 h-4" />
-          Sign up with Google
-        </button>
-        <button
-          type="button"
-          onClick={() => signIn('github')}
-          className="w-full justify-center text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-        >
-          {/* Icon */}
-          <FaGithub className="mr-2 w-4 h-4" />
-          Sign up with Github
-        </button>
-      </div>
-      <p className="text-sm font-light text-gray-500">
-        Already have an account?{' '}
-        <Link
-          href="/login"
-          className="font-medium text-blue-600 hover:underline"
-        >
-          Login
-        </Link>
-      </p>
     </form>
   );
 }

@@ -45,9 +45,9 @@ export default function Contact() {
   });
 
   return (
-    <section className="mx-auto max-w-screen-xl p-5 text-gray-900">
+    <section className="mx-auto max-w-screen-xl p-16 text-gray-900">
       <div className="grid grid-cols-1 rounded-md border md:grid-cols-12">
-        <div className="bg-gray-900 p-10 sm:rounded-t-md md:rounded-l-md text-white md:col-span-4">
+        <div className="bg-gray-900 p-10 text-white sm:rounded-t-md md:col-span-4 md:rounded-l-md">
           <p className="font-regular mt-4 text-sm uppercase leading-7">
             Contact
           </p>
@@ -100,7 +100,7 @@ export default function Contact() {
                 type="text"
                 placeholder="John Doe"
                 autoComplete="false"
-                className={`block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:text-gray-600 focus:ring-4 ${
+                className={`block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:italic placeholder:text-gray-400 focus:ring-4 ${
                   errors.name
                     ? "border-red-600 ring-red-100 focus:border-red-600"
                     : "border-gray-300 ring-gray-100 focus:border-gray-600"
@@ -128,10 +128,10 @@ export default function Contact() {
               <input
                 id="email_address"
                 type="email"
-                placeholder="email@email.domain"
+                placeholder="email@example.com"
                 name="email"
                 autoComplete="false"
-                className={`block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:text-gray-600 focus:ring-4 ${
+                className={`block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:italic placeholder:text-gray-400 focus:ring-4 ${
                   errors.email
                     ? "border-red-600 ring-red-100 focus:border-red-600"
                     : "border-gray-300 ring-gray-100 focus:border-gray-600"
@@ -164,7 +164,7 @@ export default function Contact() {
                 rows="10"
                 name="message"
                 placeholder="Your Message"
-                className={`mb-3 block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:text-gray-600 focus:ring-4 ${
+                className={`mb-3 block w-full rounded-md border-2 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm outline-none placeholder:italic placeholder:text-gray-400 focus:ring-4 ${
                   errors.message
                     ? "border-red-600 ring-red-100 focus:border-red-600"
                     : "border-gray-300 ring-gray-100 focus:border-gray-600"

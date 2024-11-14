@@ -29,7 +29,7 @@ const cards = [
 
 export default function Card() {
   return (
-    <section className="bg-white px-4 py-4">
+    <section className="bg-white px-16 py-4">
       <div className="mx-auto max-w-xl text-center xl:max-w-2xl">
         <h2 className="mb-6 text-3xl font-bold leading-tight text-green-500 sm:text-4xl xl:text-5xl">
           Let&#39;s just get you started!

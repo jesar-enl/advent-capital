@@ -10,9 +10,6 @@ export default function Benefits() {
       ben: 'Get loans as low as UGX 10,000 and pay UGX 500 only per day.',
     },
     {
-      ben: 'Interest fee Saturdays and Sundays. Pay interest for only 22 days in a month.',
-    },
-    {
       ben: 'Convenient and easy application process.',
     },
     {

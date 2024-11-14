@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <div className="relative mx-auto flex max-w-screen-xl flex-col items-center px-4 sm:px-6 md:flex-row">
+    <div className="relative mx-auto flex max-w-screen-xl flex-col items-center px-8 sm:px-16 md:flex-row">
       <div className="flex items-center py-5 md:w-1/2 md:pb-20 md:pr-10 md:pt-10">
         <div className="text-left">
           <h2 className="flex flex-col text-3xl font-extrabold leading-10 tracking-tight text-gray-800 sm:text-5xl sm:leading-none md:text-5xl">
@@ -12,7 +12,7 @@ export default function HeroSection() {
               Welcome to Advent Capital
             </span>
             <span className="font-bold text-gray-900">
-              Low Interest Banking Institution in Uganda you can Trust.
+              Quick financial solution in Uganda you can Trust.
             </span>
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base text-gray-700 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">

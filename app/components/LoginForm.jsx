@@ -1,11 +1,11 @@
-'use client';
-import { getSession, signIn } from 'next-auth/react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { FaGoogle } from 'react-icons/fa';
+"use client";
+import { getSession, signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
 // import {useSearchParams} from 'next/navigation';
 // import {useEffect} from 'react';
 // import { getData } from '@/app/libs/getData';
@@ -19,125 +19,89 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
-  // const searchParams = useSearchParams();
-  // const [isVerifying, setIsVerifying] = useState(false);
-
-  // useEffect(() => {
-  //   setIsVerifying(true);
-  //   const token = searchParams.get('token');
-  //   const id = searchParams.get('id');
-  //   const baseUrl =  process.env.NEXT_PUBLIC_BASE _URL;
-  //   const verifyData = {token, id};
-
-  //   async function verify() {
-  //     const data = await getData(`users/${id}`);
-
-  //     if (data) {
-  //      try {
-  //        const response = await fetch(`${baseUrl}/api/users/verify`, {
-  //         method: "PUT",
-  //         headers: {'Content-Type': 'application.json',},
-  //         body: JSON.stringify(verifyData)
-  //       });
-
-  //       if (response.ok) {
-  //         setIsVerifying(false);
-  //         toast.success('Account verified')
-  //       } else {
-  //         setIsVerifying(false);
-  //         toast.error('Something went wrong')
-  //       };
-  //      } catch (error) {
-  //         setIsVerifying(false);
-  //        console.log(error);
-  //      }
-  //     }
-  //     verify()
-  //   }
-  // });
 
   async function onSubmit(data) {
     console.log(data);
     try {
       setLoading(true);
-      console.log('Attempting to sign in with credentials:', data);
-      const loginData = await signIn('credentials', {
+      console.log("Attempting to sign in with credentials:", data);
+      const loginData = await signIn("credentials", {
         ...data,
         redirect: false,
       });
-      console.log('SignIn response:', loginData);
+      console.log("SignIn response:", loginData);
       if (loginData?.error) {
         setLoading(false);
-        toast.error('Sign-in error: Check your credentials');
+        toast.error("Sign-in error: Check your credentials");
       } else {
         // Sign-in was successful
-        toast.success('Login Successful');
+        toast.success("Login Successful");
         reset();
 
         const session = await getSession();
         const user = session.user;
 
-        if (user.role === 'admin') {
-          router.push('/dashboard');
-        } else if (user.role === 'user') {
-          router.push('/');
+        if (user.role === "admin") {
+          router.push("/dashboard");
+        } else if (user.role === "user") {
+          router.push("/");
         }
       }
     } catch (error) {
       setLoading(false);
-      console.error('Network Error:', error);
-      toast.error('Its seems something is wrong with your Network');
+      console.error("Network Error:", error);
+      toast.error("Its seems something is wrong with your Network");
     }
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 " action="#">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-2" action="#">
       {/* {isVerifying && <p>loading...</p>} */}
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="mb-2 block text-sm font-medium text-gray-900"
         >
           Your email
         </label>
         <input
-          {...register('email', { required: true })}
+          {...register("email", { required: true })}
           type="email"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-          placeholder="name@company.com"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 placeholder:italic placeholder:text-gray-400 focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
+          placeholder="email@example.com"
           required=""
         />
         {errors.email && (
-          <small className="text-red-600 text-sm ">
-            This field is required
+          <small className="text-sm text-red-600">
+            Your email is required to login
           </small>
         )}
       </div>
       <div>
         <label
           htmlFor="password"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="mb-2 block text-sm font-medium text-gray-900"
         >
           Password
         </label>
         <input
-          {...register('password', { required: true })}
+          {...register("password", { required: true })}
           type="password"
           name="password"
           id="password"
           placeholder="••••••••"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 placeholder:italic placeholder:text-gray-400 focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
           required=""
         />
         {errors.password && (
-          <small className="text-red-600 text-sm ">
-            This field is required
+          <small className="text-sm text-red-600">
+            Please provide the correct password
           </small>
         )}
       </div>
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         <Link
           href="/forgot-password"
           className="shrink-0 font-medium text-blue-600 hover:underline"
@@ -148,12 +112,12 @@ export default function LoginForm() {
           <button
             disabled
             type="button"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 inline-flex items-center"
+            className="mr-2 inline-flex w-full items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
           >
             <svg
               aria-hidden="true"
               role="status"
-              className="inline w-4 h-4 mr-3 text-white animate-spin"
+              className="mr-3 inline h-4 w-4 animate-spin text-white"
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -172,30 +136,15 @@ export default function LoginForm() {
         ) : (
           <button
             type="submit"
-            className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            className="w-full rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
           >
             Login
           </button>
         )}
       </div>
-      <div className="flex items-center">
-        <div className="w-full bg-slate-500 h-[1px]"></div>
-        <span className="mx-2">or</span>
-        <div className="w-full bg-slate-500 h-[1px]"></div>
-      </div>
-      <div className="">
-        <button
-          type="button"
-          className="w-full text-slate-950 bg-white hover:bg-slate-50 focus:ring-4 focus:outline-none focus:ring-slate-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center justify-center flex items-center me-2 mb-4 border border-slate-200"
-          onClick={() => signIn('google')}
-        >
-          <FaGoogle className="mr-2 text-red-600 w-4 h-4" />
-          Sign in with Google
-        </button>
-      </div>
 
-      <p className="text-sm font-light text-gray-500">
-        New user?{' '}
+      <p className="text-sm font-semibold text-gray-500">
+        New user?{" "}
         <Link
           href="/register"
           className="font-medium text-blue-600 hover:underline"

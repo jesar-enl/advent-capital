@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Overview() {
   return (
-    <div className="flex flex-col text-xl items-center bg-teal-50 shadow md:flex-row py-6 mx-auto px-4">
+    <div className="flex flex-col text-xl items-center bg-teal-50 shadow md:flex-row py-6 mx-auto px-16">
       <div className="flex flex-col justify-between gap-4 p-4 leading-normal w-full md:w-2/3">
         <h3 className="mb-4 text-xl md:text-3xl font-bold tracking-tight text-green-500">
           Overview of Advent Product Basket

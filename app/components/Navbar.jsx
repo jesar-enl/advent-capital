@@ -14,6 +14,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
+import { LockKeyholeIcon } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 
@@ -219,7 +220,7 @@ export default function NavbarSection() {
           <NavbarContent justify="end">
             <NavbarItem>
               <Link href="/register">
-                <button className="flex h-[38px] w-full lg:w-[189px] items-center justify-center gap-1 rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-base">
+                <button className="flex h-[38px] w-full items-center justify-center gap-1 rounded-lg bg-[#1703AD] px-2 py-3 font-medium leading-6 text-white shadow-lg md:px-4 md:py-4 md:text-base lg:w-fit">
                   <img
                     src="/icons/user.png"
                     alt="icon"
@@ -228,6 +229,14 @@ export default function NavbarSection() {
                   <span className="hidden text-white lg:block">
                     Open an Account
                   </span>
+                </button>
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link href="/login">
+                <button className="flex h-[38px] w-full items-center justify-center gap-1 rounded-lg bg-[#211b4b] px-2 py-3 font-medium leading-6 text-white shadow-lg md:px-3 md:py-4 md:text-base lg:w-fit">
+                  <LockKeyholeIcon size={14}/>
+                  <span className="hidden text-white lg:block">ADMIN</span>
                 </button>
               </Link>
             </NavbarItem>
@@ -277,7 +286,7 @@ export default function NavbarSection() {
               </NavbarMenuItem>
             ))}
             <Link href="/login">
-              <button className="ml-4 flex h-[38px] w-full lg:w-[189px] items-center gap-1 rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-lg">
+              <button className="ml-4 flex h-[38px] w-full items-center gap-1 rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-lg lg:w-[189px]">
                 <img
                   src="/icons/user.png"
                   alt="icon"
@@ -285,6 +294,14 @@ export default function NavbarSection() {
                 />
                 <span className="hidden text-base text-white lg:block">
                   Open an Account
+                </span>
+              </button>
+            </Link>
+            <Link href="/login">
+              <button className="ml-4 flex h-[38px] w-full items-center gap-1 rounded-lg bg-[#1703AD] px-8 py-3 font-medium leading-6 text-white shadow-lg md:px-10 md:py-4 md:text-lg lg:w-[189px]">
+                <LockKeyholeIcon />
+                <span className="hidden text-base text-white lg:block">
+                  ADMIN
                 </span>
               </button>
             </Link>
